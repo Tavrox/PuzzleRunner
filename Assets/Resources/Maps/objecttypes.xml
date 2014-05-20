@@ -3,4 +3,7 @@
  <objecttype name="Room_Paper" color="#a40000"/>
  <objecttype name="Room_Sleep" color="#ffffff"/>
  <objecttype name="Room_Food" color="#1300a4"/>
+ <objecttype name="Wall" color="#3b433c"/>
+ <objecttype name="Floor" color="#c68400"/>
+ <objecttype name="Room_Mail" color="#a4008e"/>
 </objecttypes>

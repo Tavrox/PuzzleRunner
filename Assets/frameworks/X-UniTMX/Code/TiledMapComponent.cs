@@ -25,6 +25,7 @@ public class TiledMapComponent : MonoBehaviour {
 	public bool[] CollidersAddGround;
 	public bool MakeUniqueTiles = true;
 	private Map tiledMap;
+	private GameObject coll;
 
 	public Map TiledMap
 	{
@@ -52,18 +53,29 @@ public class TiledMapComponent : MonoBehaviour {
 				{
 					switch (collider.MapObjectType)
 					{
-						case MapObjectType.Box:
-							tiledMap.GenerateBoxCollider(collider, CollidersZDepth[i], CollidersWidth[i], CollidersAddGround[i]);
-							break;
-						case MapObjectType.Ellipse:
-							tiledMap.GenerateEllipseCollider(collider, CollidersZDepth[i], CollidersWidth[i]);
-							break;
-						case MapObjectType.Polygon:
-							tiledMap.GeneratePolygonCollider(collider, CollidersZDepth[i], CollidersWidth[i], CollidersIsInner[i]);
-							break;
-						case MapObjectType.Polyline:
-							tiledMap.GeneratePolylineCollider(collider, CollidersZDepth[i], CollidersWidth[i], CollidersIsInner[i]);
-							break;
+					case MapObjectType.Box:
+					{
+						coll = tiledMap.GenerateBoxCollider(collider, CollidersZDepth[i], CollidersWidth[i], CollidersAddGround[i]);
+						LevelBrick brk = coll.gameObject.AddComponent<LevelBrick>();
+						BoxCollider collidR = coll.GetComponent<BoxCollider>();
+						brk.brickDef = collider.brickType;
+						brk.giveInfos();
+						break;
+					}
+
+					case MapObjectType.Ellipse:
+					{
+						tiledMap.GenerateEllipseCollider(collider, CollidersZDepth[i], CollidersWidth[i]);
+						break;
+					}
+					case MapObjectType.Polygon:
+					{
+						tiledMap.GeneratePolygonCollider(collider, CollidersZDepth[i], CollidersWidth[i], CollidersIsInner[i]);
+						break;
+					}
+					case MapObjectType.Polyline:
+						tiledMap.GeneratePolylineCollider(collider, CollidersZDepth[i], CollidersWidth[i], CollidersIsInner[i]);
+						break;
 					}
 				}
 			}

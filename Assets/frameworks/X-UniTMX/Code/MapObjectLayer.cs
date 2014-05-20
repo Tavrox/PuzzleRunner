@@ -78,7 +78,7 @@ namespace X_UniTMX
                     } while (Objects.Find(o => o.Name.Equals(objectName)) != null);
 
                     // log a warning for the user to see
-                    Debug.Log("Renaming object \"" + mapObjectContent.Name + "\" to \"" + objectName + "\" in layer \"" + Name + "\" to make a unique name.");
+//                    Debug.Log("Renaming object \"" + mapObjectContent.Name + "\" to \"" + objectName + "\" in layer \"" + Name + "\" to make a unique name.");
 
                     // save that name
 					mapObjectContent.Name = objectName;
