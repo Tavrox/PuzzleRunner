@@ -30,10 +30,49 @@
                 <key>sourceSize</key>
                 <string>{5,10}</string>
             </dict>
+            <key>food.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{79,5},{96,96}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{96,96}}</string>
+                <key>sourceSize</key>
+                <string>{96,96}</string>
+            </dict>
+            <key>food_crate.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{5,106},{96,96}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{96,96}}</string>
+                <key>sourceSize</key>
+                <string>{96,96}</string>
+            </dict>
+            <key>food_highlight.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{106,106},{96,96}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{96,96}}</string>
+                <key>sourceSize</key>
+                <string>{96,96}</string>
+            </dict>
             <key>paper.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{79,5},{41,42}}</string>
+                <string>{{207,106},{41,42}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -51,9 +90,9 @@
             <key>realTextureFileName</key>
             <string>gameplay.png</string>
             <key>size</key>
-            <string>{128,64}</string>
+            <string>{256,256}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:a5adb538682f8f6a98f5048a36aef689:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:778cdea5a78647ca3359cc89e893ebe7:1/1$</string>
             <key>textureFileName</key>
             <string>gameplay.png</string>
         </dict>

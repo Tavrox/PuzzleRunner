@@ -19,11 +19,6 @@ public class LevelBrick : MonoBehaviour {
 	{
 		tag = "Wall";
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
 
 	public void giveInfos()
 	{

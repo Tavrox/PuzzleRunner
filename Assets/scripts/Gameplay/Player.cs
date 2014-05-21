@@ -26,6 +26,8 @@ public class Player : MonoBehaviour {
 	public DirList FacingDir;
 
 	public float speed = 5f;
+	public float sleepQty;
+	public float hungerQty;
 	public Vector3 vecMove;
 
 	public Vector3 mypos = Vector3.zero;
@@ -45,14 +47,25 @@ public class Player : MonoBehaviour {
 	private bool BlockedRight = false;
 	private GameObject gameSprite;
 
+	private Transform RayDL;
+	private Transform RayUL;
+	private Transform RayDR;
+	private Transform RayUR;
+
 	// Use this for initialization
 	public void Setup () 
 	{
 		coneParent = FETool.findWithinChildren(gameObject, "ParentCone");
+		gameSprite = FETool.findWithinChildren(gameObject, "Sprite");
+
+		RayDL = FETool.findWithinChildren(gameObject, "RayOrigin_DL").transform;
+		RayUL = FETool.findWithinChildren(gameObject, "RayOrigin_DR").transform;
+		RayDR = FETool.findWithinChildren(gameObject, "RayOrigin_UL").transform;
+		RayUR = FETool.findWithinChildren(gameObject, "RayOrigin_UR").transform;
+
 		coneCollider = coneParent.GetComponentInChildren<BoxCollider>();
 		coneRenderer = coneParent.GetComponentInChildren<LineRenderer>();
-		gameSprite = FETool.findWithinChildren(gameObject, "Sprite");
-		halfMyY = 0.5f;
+		halfMyY = 0.25f;
 	}
 	
 	// Update is called once per frame
@@ -130,60 +143,64 @@ public class Player : MonoBehaviour {
 	private void wallBlocker()
 	{
 		mypos = transform.position;
-		if (Physics.Raycast(mypos, Vector3.down, out hitInfo, halfMyY, wallMask))
+		if (Physics.Raycast(RayDL.position, Vector3.down, out hitInfo, halfMyY, wallMask) ||
+		    Physics.Raycast(RayDR.position, Vector3.down, out hitInfo, halfMyY, wallMask))
 		{
-			Debug.DrawLine (transform.position, hitInfo.point, Color.red);
+			Debug.DrawLine (RayDL.position, hitInfo.point, Color.blue);
+			Debug.DrawLine (RayDR.position, hitInfo.point, Color.blue);
 			blockDown();
 		}
-		if (Physics.Raycast(mypos, Vector3.left, out hitInfo, halfMyY, wallMask))
+		if (Physics.Raycast(RayUL.position, Vector3.left, out hitInfo, halfMyY, wallMask) ||
+		    Physics.Raycast(RayDL.position, Vector3.left, out hitInfo, halfMyY, wallMask))
 		{
-			Debug.DrawLine (transform.position, hitInfo.point, Color.red);
+			Debug.DrawLine (RayUL.position, hitInfo.point, Color.black);
+			Debug.DrawLine (RayDL.position, hitInfo.point, Color.black);
 			blockLeft();
 		}
-		if (Physics.Raycast(mypos, Vector3.up, out hitInfo, halfMyY, wallMask))
+		if (Physics.Raycast(RayUL.position, Vector3.up, out hitInfo, halfMyY, wallMask) ||
+		    Physics.Raycast(RayUR.position, Vector3.up, out hitInfo, halfMyY, wallMask))
 		{
-			Debug.DrawLine (transform.position, hitInfo.point, Color.red);
+			Debug.DrawLine (RayUL.position, hitInfo.point, Color.white);
+			Debug.DrawLine (RayUR.position, hitInfo.point, Color.white);
 			blockUp();
 		}
-		if (Physics.Raycast(mypos, Vector3.right, out hitInfo, halfMyY, wallMask))
+		if (Physics.Raycast(RayUR.position, Vector3.right, out hitInfo, halfMyY, wallMask) ||
+		    Physics.Raycast(RayDR.position, Vector3.right, out hitInfo, halfMyY, wallMask))
 		{
-			Debug.DrawLine (transform.position, hitInfo.point, Color.red);
+			Debug.DrawLine (RayUR.position, hitInfo.point, Color.red);
+			Debug.DrawLine (RayDR.position, hitInfo.point, Color.red);
 			blockRight();
 		}
 	}
 
 	private void blockDown()
 	{
-		if (MovingDir == DirList.Down)
+		if (MovingDir != DirList.Up)
 		{
-			vecMove.x = 0f;
 			vecMove.y = 0f;
 			BlockedDown = true;
 		}
 	}
 	private void blockLeft()
 	{
-		if (MovingDir == DirList.Left)
+		if (MovingDir != DirList.Right)
 		{
 			vecMove.x = 0f;
-			vecMove.y = 0f;
 			BlockedDown = true;
 		}
 	}
 	private void blockRight()
 	{
-		if (MovingDir == DirList.Right)
+		if (MovingDir != DirList.Left)
 		{
 			vecMove.x = 0f;
-			vecMove.y = 0f;
 			BlockedDown = true;
 		}
 	}
 	private void blockUp()
 	{
-		if (MovingDir == DirList.Up)
+		if (MovingDir != DirList.Down)
 		{
-			vecMove.x = 0f;
 			vecMove.y = 0f;
 			BlockedDown = true;
 		}

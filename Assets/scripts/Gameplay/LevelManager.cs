@@ -17,6 +17,7 @@ public class LevelManager : MonoBehaviour {
 	public Dracula Dracu;
 	public HoursManager Hours;
 	public List<GameObject> PaperSpots;
+	public List<GameObject> FoodSpots;
 
 	public int currH;
 	public int currS;
@@ -40,11 +41,25 @@ public class LevelManager : MonoBehaviour {
 		Dracu.Setup(this);
 
 		PaperSpots = new List<GameObject>();
-		PaperSpots.Add (FETool.findWithinChildren(gameObject, "Spots/PaperSpot/1"));
-		PaperSpots.Add (FETool.findWithinChildren(gameObject, "Spots/PaperSpot/2"));
-		PaperSpots.Add (FETool.findWithinChildren(gameObject, "Spots/PaperSpot/3"));
+		GameObject pSpot = FETool.findWithinChildren(gameObject, "Spots/PaperSpot");
+		Spot[] papSpot = pSpot.GetComponentsInChildren<Spot>();
+		foreach (Spot obj in papSpot)
+		{
+			obj.spotType = Spot.spotList.Paper;
+			PaperSpots.Add(obj.gameObject);
+		}
+
+		FoodSpots = new List<GameObject>();
+		GameObject fSpot = FETool.findWithinChildren(gameObject, "Spots/FoodSpot");
+		Spot[] fooSpot = fSpot.GetComponentsInChildren<Spot>();
+		foreach (Spot obj in fooSpot)
+		{
+			obj.spotType = Spot.spotList.Food;
+			FoodSpots.Add(obj.gameObject);
+		}
 
 		respawnPaper(PaperSpots);
+		spawnFood(FoodSpots);
 
 		thePop = GetComponentInChildren<PopUp>();
 		thePop.Setup();
@@ -53,6 +68,12 @@ public class LevelManager : MonoBehaviour {
 		MailmanState = MailManStateList.Away;
 
 //		InvokeRepeating("
+
+		Door[] Doors = GetComponentsInChildren<Door>();
+		foreach (Door _dr in Doors)
+		{
+			_dr.Setup(this);
+		}
 
 		GameEventManager.GameOver += GameOver;
 	}
@@ -83,8 +104,8 @@ public class LevelManager : MonoBehaviour {
 	{
 		int randId = Random.Range(0, _ppSpot.Count);
 		GameObject obj = Instantiate(Resources.Load("Objects/Letter")) as GameObject;
-		obj.transform.parent = _ppSpot[0].transform;
 		obj.transform.position = _ppSpot[randId].transform.position;
+		obj.transform.parent = _ppSpot[randId].transform;
 	}
 
 	public void spawnFood(List<GameObject> _fdSpot)
@@ -93,6 +114,7 @@ public class LevelManager : MonoBehaviour {
 		{
 			GameObject food = Instantiate(Resources.Load("Objects/FoodCrate")) as GameObject;
 			food.transform.position = obj.transform.position;
+			food.transform.parent = obj.transform;
 		}
 
 	}

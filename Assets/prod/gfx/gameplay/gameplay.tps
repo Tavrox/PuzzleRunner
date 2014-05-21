@@ -151,6 +151,9 @@
             <filename>door.png</filename>
             <filename>doorpost.png</filename>
             <filename>paper.png</filename>
+            <filename>food_crate.png</filename>
+            <filename>food_highlight.png</filename>
+            <filename>food.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
