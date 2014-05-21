@@ -59,7 +59,7 @@ namespace X_UniTMX
 					arraySize = TMEditor.CollidersLayerName.Length;
 
 				arraySize = EditorGUILayout.IntField("Colliders Layers Number", arraySize);
-				arraySize = 5;
+				arraySize = 1;
 
 				int i = 0;
 				if (collidersLayers.Count < arraySize)
@@ -95,14 +95,9 @@ namespace X_UniTMX
 					TMEditor.CollidersZDepth[i] = EditorGUILayout.FloatField("Collider " + i + " Z Depth", TMEditor.CollidersZDepth[i]);
 					TMEditor.CollidersIsInner[i] = EditorGUILayout.Toggle("Collider " + i + " Is Inner Collisions", TMEditor.CollidersIsInner[i]);
 					TMEditor.CollidersAddGround[i] = EditorGUILayout.Toggle("Collider " + i + " adds Ground", TMEditor.CollidersAddGround[i]);
-//					TMEditor.CollidersLayerName[i] = collidersLayers[i];
+					TMEditor.CollidersLayerName[i] = collidersLayers[i];
 				}
 
-				TMEditor.CollidersLayerName[0] = "Wall";
-				TMEditor.CollidersLayerName[1] = "Room_Mail";
-				TMEditor.CollidersLayerName[2] = "Room_Food";
-				TMEditor.CollidersLayerName[3] = "Room_Sleep";
-				TMEditor.CollidersLayerName[4] = "Floor";
 			}
 			EditorGUILayout.EndToggleGroup();
 			

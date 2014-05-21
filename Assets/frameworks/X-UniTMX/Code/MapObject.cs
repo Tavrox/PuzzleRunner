@@ -119,31 +119,33 @@ namespace X_UniTMX
                 Type = node.Attributes["type"].Value;
             }
 
-			Debug.Log(node.Attributes["type"].Value);
-
-			if (node.Attributes["type"].Value == "Wall")
+			if (node.Attributes["type"] != null)
 			{
-				brickType = LevelBrick.brickType.Wall;
-			}
-			if (node.Attributes["type"].Value == "Room_Mail")
-			{
-				brickType = LevelBrick.brickType.Room_Mail;
-			}
-			if (node.Attributes["type"].Value == "Room_Food")
-			{
-				brickType = LevelBrick.brickType.Room_Food;
-			}
-			if (node.Attributes["type"].Value == "Room_Paper")
-			{
-				brickType = LevelBrick.brickType.Room_Paper;
-			}
-			if (node.Attributes["type"].Value == "Room_Sleep")
-			{
-				brickType = LevelBrick.brickType.Room_Sleep;
-			}
-			if (node.Attributes["type"].Value == "Floor")
-			{
-				brickType = LevelBrick.brickType.Floor;
+				if (node.Attributes["type"].Value == "Wall")
+				{
+					brickType = LevelBrick.brickType.Wall;
+					Debug.Log("Build wall");
+				}
+				if (node.Attributes["type"].Value == "Room_Mail")
+				{
+					brickType = LevelBrick.brickType.Room_Mail;
+				}
+				if (node.Attributes["type"].Value == "Room_Food")
+				{
+					brickType = LevelBrick.brickType.Room_Food;
+				}
+				if (node.Attributes["type"].Value == "Room_Paper")
+				{
+					brickType = LevelBrick.brickType.Room_Paper;
+				}
+				if (node.Attributes["type"].Value == "Room_Sleep")
+				{
+					brickType = LevelBrick.brickType.Room_Sleep;
+				}
+				if (node.Attributes["type"].Value == "Floor")
+				{
+					brickType = LevelBrick.brickType.Floor;
+				}
 			}
 
             // values default to 0 if the attribute is missing from the node

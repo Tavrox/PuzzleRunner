@@ -117,6 +117,16 @@ public class Player : MonoBehaviour {
 		vecMove.y *= 0.1f;
 	}
 
+	public void giveFood()
+	{
+
+	}
+
+	public void giveLetter()
+	{
+		haveLetter = letterList.Have;
+	}
+
 	private void wallBlocker()
 	{
 		mypos = transform.position;

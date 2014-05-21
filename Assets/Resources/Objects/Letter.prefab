@@ -57,7 +57,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -5}
+  m_LocalPosition: {x: 0, y: 0, z: 15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400004}
@@ -69,8 +69,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100002}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: .710372627, y: .72769928, z: .0173261613}
+  m_LocalPosition: {x: 0, y: 0, z: -5}
+  m_LocalScale: {x: .478986442, y: .490668982, z: 1}
   m_Children: []
   m_Father: {fileID: 400004}
 --- !u!4 &400004
@@ -149,12 +149,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Sprite (id=-125982)
   _position: {x: 0, y: 0}
-  _size: {x: .710372627, y: .72769928}
+  _size: {x: .478986442, y: .490668982}
   _rotation: 0
   _pivot: 4
   _pivotPoint: {x: 0, y: 0}
   _registerInput: 0
-  _depth: 0
+  _depth: -5
   _collidable: 0
   _box2DPhysics: 0
   _physics: 0
@@ -172,8 +172,8 @@ MonoBehaviour:
     height: 0
   protoType: 
   baseName: 
-  oSize: {x: .379629642, y: .388888896}
-  imageSize: {x: 41, y: 42}
+  oSize: {x: .427083343, y: .4375}
+  imageSize: {x: .478986442, y: .490668982}
   _offset: {x: 0, y: 0}
   _baseOffset: {x: 0, y: 0}
   _flipHorizontal: 0

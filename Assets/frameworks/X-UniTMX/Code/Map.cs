@@ -192,7 +192,8 @@ namespace X_UniTMX
 			int i = 0;
 			for (i = 0; i < TileSets.Count; i++)
 			{
-				Material layerMat = new Material(Shader.Find("Unlit/Transparent"));
+//				Material layerMat = new Material(Shader.Find("Unlit/Transparent"));
+				Material layerMat = new Material(Shader.Find("Sprites/Diffuse"));
 				layerMat.mainTexture = TileSets[i].Texture;
 				materials.Add(layerMat);
 			}
@@ -235,7 +236,7 @@ namespace X_UniTMX
 					} while (Layers.Find(l => l.Name == layerName) != null);
 
 					// log a warning for the user to see
-					Debug.Log("Renaming layer \"" + layerContent.Name + "\" to \"" + layerName + "\" to make a unique name.");
+//					Debug.Log("Renaming layer \"" + layerContent.Name + "\" to \"" + layerName + "\" to make a unique name.");
 
 					// save that name
 					layerContent.Name = layerName;

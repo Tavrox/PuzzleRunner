@@ -45,7 +45,7 @@ public class TiledMapComponent : MonoBehaviour {
 	{
 		for (int i = 0; i < CollidersLayerName.Length; i++)
 		{
-			MapObjectLayer collisionLayer = (MapObjectLayer)tiledMap.GetLayer(CollidersLayerName[i]);
+			MapObjectLayer collisionLayer = (MapObjectLayer)tiledMap.GetLayer(CollidersLayerName[i]) as MapObjectLayer;
 			if (collisionLayer != null)
 			{
 				List<MapObject> colliders = collisionLayer.Objects;
@@ -60,6 +60,7 @@ public class TiledMapComponent : MonoBehaviour {
 						BoxCollider collidR = coll.GetComponent<BoxCollider>();
 						brk.brickDef = collider.brickType;
 						brk.giveInfos();
+						print (brk);
 						break;
 					}
 

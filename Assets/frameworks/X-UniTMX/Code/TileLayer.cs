@@ -74,7 +74,7 @@ namespace X_UniTMX
             XmlNode dataNode = node["data"];
             Data = new uint[Width * Height];
 			LayerDepth = layerDepth;
-			Debug.Log("Layer Depth: " + LayerDepth);
+//			Debug.Log("Layer Depth: " + LayerDepth);
             // figure out what encoding is being used, if any, and process
             // the data appropriately
             if (dataNode.Attributes["encoding"] != null)
@@ -413,7 +413,7 @@ namespace X_UniTMX
 			
 			LayerGameObject.transform.parent = map.Parent.transform;
 			LayerGameObject.transform.position = new Vector3(0, 0, this.LayerDepth);
-			Debug.Log(LayerGameObject.name + LayerGameObject.transform.position);
+//			Debug.Log(LayerGameObject.name + LayerGameObject.transform.position);
 			LayerGameObject.isStatic = true;
 		}
 	}
