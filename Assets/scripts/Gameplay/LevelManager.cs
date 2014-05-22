@@ -157,11 +157,13 @@ public class LevelManager : MonoBehaviour {
 		case HoursManager.DayEventList.DraculaEntering :
 		{
 			GameUI.dialogPop.giveInfos("Dracula is entering the game !", PopUp.CharList.Johnathan);
+			new OTTween(GameUI.dialogPop.OutPic, 1f).Tween("alpha", 1f);
 			break;
 		}
 		case HoursManager.DayEventList.DraculaLeaving :
 		{
 			GameUI.dialogPop.giveInfos("Dracula is leaving the house !", PopUp.CharList.Johnathan);
+			new OTTween(GameUI.dialogPop.OutPic, 1f).Tween("alpha", 0f);
 			break;
 		}
 		case HoursManager.DayEventList.FoodMan :

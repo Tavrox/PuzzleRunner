@@ -135,7 +135,10 @@ public class PopUp : MonoBehaviour {
 			new OTTween(BG, 0.5f).Tween("alpha", 0f);
 		}
 		linkText.makeFadeOut();
-		helpTxt.makeFadeOut();
+		if (helpTxt != null)
+		{
+			helpTxt.makeFadeOut();
+		}
 	}
 
 	public void Skip()

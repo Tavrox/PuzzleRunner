@@ -55,6 +55,9 @@ public class Player : MonoBehaviour {
 	private Transform RayDR;
 	private Transform RayUR;
 
+	public int foodState = 3;
+	public int sleepState = 3;
+
 	// Use this for initialization
 	public void Setup (LevelManager _lev) 
 	{

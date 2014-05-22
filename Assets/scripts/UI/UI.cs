@@ -10,7 +10,10 @@ public class UI : MonoBehaviour {
 
 	public OTSprite Paper;
 	public TextUI paperText;
-	
+	public OTSprite HandClock;
+	public OTSprite FoodState;
+	public OTSprite SleepState;
+
 	// Use this for initialization
 	public void Setup (LevelManager _lev) 
 	{
@@ -18,6 +21,11 @@ public class UI : MonoBehaviour {
 
 		NotifPop = FETool.findWithinChildren(gameObject ,"Ingame/Panels/NotifObj").GetComponent<PopUp>();
 		NotifPop.Setup();
+		NotifPop.Fade();
+	
+		HandClock = FETool.findWithinChildren(gameObject, "Ingame/Panels/Clock/Aiguille").GetComponentInChildren<OTSprite>();
+		FoodState = FETool.findWithinChildren(gameObject, "Ingame/Panels/PanFood/Back").GetComponentInChildren<OTSprite>();
+		SleepState = FETool.findWithinChildren(gameObject, "Ingame/Panels/PanSleep/Back").GetComponentInChildren<OTSprite>();
 
 		dialogPop = FETool.findWithinChildren(gameObject, "Ingame/Dialog").GetComponent<PopUp>();
 		dialogPop.Setup();
@@ -39,6 +47,7 @@ public class UI : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
+		HandClock.rotation = (360 / 24 ) * levMan.currH;
 		switch (levMan.plr.haveLetter)
 		{
 		case Player.letterList.DontHave :
@@ -67,6 +76,16 @@ public class UI : MonoBehaviour {
 			paperText.text = "Deliver Mailman";
 			break;
 		}
+		}
+
+		attributeStateSprite();
+	}
+
+	private void attributeStateSprite(int attribute, OTSprite _spr)
+	{
+		if (attribute == 0)
+		{
+			_spr.frameName = 
 		}
 	}
 }
