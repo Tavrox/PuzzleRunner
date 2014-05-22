@@ -22,6 +22,10 @@ public class Dracula : MonoBehaviour {
 	private Vector3 target;
 	private Vector3 direction;
 	public float speed = 20f;
+	
+	public float _diffX = 0f;
+	public float _diffY = 0f;
+	public float _angle = 0f;
 
 	public float threeSoldChasing = 20f;
 
@@ -47,6 +51,7 @@ public class Dracula : MonoBehaviour {
 			case StateList.Chasing :
 			{
 				Move(_plr.transform.position);
+				rotateTowardPlayer(_plr.transform.position, transform);
 				break;
 			}
 		}
@@ -88,6 +93,14 @@ public class Dracula : MonoBehaviour {
 		currWp = _wp.nextWP;
 		target = _wp.transform.position;
 		direction = Vector3.Normalize(target - pos);
+	}
+
+	private void rotateTowardPlayer(Vector3 targ ,Transform _trsf)
+	{
+		_diffX = targ.x - transform.position.x;
+		_diffY = transform.position.y - targ.y;
+		_angle = Mathf.Atan2( _diffX, _diffY) * Mathf.Rad2Deg;
+		_trsf.rotation = Quaternion.Euler(0f, 0f, _angle - 180);
 	}
 
 	private void checkForPlayer()

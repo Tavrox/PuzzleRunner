@@ -56,6 +56,7 @@ public class TiledMapComponent : MonoBehaviour {
 					case MapObjectType.Box:
 					{
 						coll = tiledMap.GenerateBoxCollider(collider, CollidersZDepth[i], CollidersWidth[i], CollidersAddGround[i]);
+						coll.transform.position = Vector3.zero;
 						LevelBrick brk = coll.gameObject.AddComponent<LevelBrick>();
 						BoxCollider collidR = coll.GetComponent<BoxCollider>();
 						brk.brickDef = collider.brickType;

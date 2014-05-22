@@ -457,6 +457,7 @@ namespace X_UniTMX
 			BoxCollider bx = boxCollider.AddComponent<BoxCollider>();
 			//boxCollider.transform.position.Set(obj.Bounds.x, obj.Bounds.y, zDepth);
 			boxCollider.transform.parent = this.Parent.transform;
+			boxCollider.transform.localPosition = Vector3.zero;
 
 			bx.center = new Vector3(obj.Bounds.center.x, -obj.Bounds.center.y, zDepth);
 			bx.size = new Vector3(obj.Bounds.width, obj.Bounds.height, colliderWidth);

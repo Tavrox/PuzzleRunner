@@ -5,45 +5,49 @@ public class HoursManager : MonoBehaviour {
 
 	public LevelManager _levMan;
 
-	public int mailManMin;
-	public int mailManMax;
+	public enum DayEventList
+	{
+		None,
+		MailMan,
+		FoodMan,
+		DraculaEntering,
+		DraculaLeaving
+	};
 
-	public int foodManMin;
-	public int foodManMax;
+	public int mailManHour;
+	public int foodManHour;
+	public int draculaLeavingHour;
+	public int draculaEnteringHour;
 
 	// Use this for initialization
 	public void Setup (LevelManager _lev) 
 	{
 		_levMan = _lev;
+		mailManHour = 5;
+		foodManHour = 20;
+		draculaLeavingHour = 30;
+		draculaEnteringHour = 50;
 	}
-	
-	// Update is called once per frame
-	void Update () 
+
+	public DayEventList findEvent(int _hour)
 	{
-
-		// MAIL MAN
-		if (_levMan.currH < 0 || _levMan.currH < 10)
+		DayEventList dvl = DayEventList.None;
+		if (_hour == mailManHour)
 		{
-			_levMan.triggerDayEvent(DayEvent.DayEventList.MailMan);
+			dvl = DayEventList.MailMan;
 		}
-
-		// DRACULA ENTERING
-		if (_levMan.currH < 0 || _levMan.currH < 10)
+		else if (_hour == foodManHour)
 		{
-			_levMan.triggerDayEvent(DayEvent.DayEventList.MailMan);
+			dvl = DayEventList.FoodMan;
 		}
-
-		// DRACULA LEAVING
-		if (_levMan.currH < 0 || _levMan.currH < 10)
+		else if (_hour == draculaLeavingHour)
 		{
-			_levMan.triggerDayEvent(DayEvent.DayEventList.MailMan);
+			dvl = DayEventList.DraculaLeaving;
 		}
-
-		// FOOD MAN
-		if (_levMan.currH < 0 || _levMan.currH < 10)
+		else if (_hour == draculaEnteringHour)
 		{
-			_levMan.triggerDayEvent(DayEvent.DayEventList.MailMan);
+			dvl = DayEventList.DraculaEntering;
 		}
-		
+		return dvl;
 	}
 }

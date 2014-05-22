@@ -18,12 +18,12 @@ public class LevelManager : MonoBehaviour {
 	public HoursManager Hours;
 	public List<GameObject> PaperSpots;
 	public List<GameObject> FoodSpots;
+	public Camera currCam;
 
 	public int currH;
-	public int currS;
+	public int currM;
 	public WaypointDirector pathDirector;
-
-	public PopUp thePop;
+	public UI GameUI;
 
 	// Use this for initialization
 	void Awake () 
@@ -61,13 +61,13 @@ public class LevelManager : MonoBehaviour {
 		respawnPaper(PaperSpots);
 		spawnFood(FoodSpots);
 
-		thePop = GetComponentInChildren<PopUp>();
-		thePop.Setup();
-		thePop.Fade();
 		
 		MailmanState = MailManStateList.Away;
+		currCam = FETool.findWithinChildren(gameObject, "Camera").GetComponent<Camera>();
+		GameUI = currCam.GetComponentInChildren<UI>();
+		GameUI.Setup(this);
 
-//		InvokeRepeating("
+//		InvokeRepeating("updateMinute", 0f, 0.01f);
 
 		Door[] Doors = GetComponentsInChildren<Door>();
 		foreach (Door _dr in Doors)
@@ -82,20 +82,48 @@ public class LevelManager : MonoBehaviour {
 	{
 
 	}
+
+	private void updateMinute()
+	{
+		if (currM == 59)
+		{
+			currH += 1;
+			currM = 0;
+		}
+		else
+		{
+			currM += 1;
+		}
+		string parseH = currH.ToString();
+		string parseM = currM.ToString();
+		if (currM < 10)
+		{
+			parseM = "0" + currM;
+		}
+		if (currH < 10)
+		{
+			parseH = "0" + currH;
+		}
+		GameUI.Clock.text = parseH + ":" + parseM;
+		triggerDayEvent(Hours.findEvent(currH));
+	}
 	
 	// Update is called once per frame
 	void Update () 
 	{
-		Camera.main.transform.position =  new Vector3( FETool.Round(plr.transform.position.x, 2), FETool.Round(plr.transform.position.y, 2), 0f);
+		currCam.transform.position =  new Vector3( FETool.Round(plr.transform.position.x, 2), FETool.Round(plr.transform.position.y, 2), -1000f);
 
 		if (Input.GetKey(KeyCode.A))
 		{
-			thePop.giveInfos("LOL", PopUp.CharList.Dracula);
-			thePop.Pop();
+			GameUI.dialogPop.giveInfos("LOL", PopUp.CharList.Dracula);
 		}
 		if (Input.GetKey(KeyCode.B))
 		{
-			thePop.giveInfos("TROLLA", PopUp.CharList.Johnathan);
+			GameUI.dialogPop.giveInfos("TROLLA", PopUp.CharList.Johnathan);
+		}
+		if (Input.GetKey(KeyCode.C))
+		{
+			GameUI.NotifPop.giveInfos("TROLLA");
 		}
 
 	}
@@ -119,39 +147,33 @@ public class LevelManager : MonoBehaviour {
 
 	}
 
-	public void triggerDayEvent(DayEvent.DayEventList _evt)
+	public void triggerDayEvent(HoursManager.DayEventList _evt)
 	{
 		switch (_evt)
 		{
-		case DayEvent.DayEventList.DraculaEntering :
+		case HoursManager.DayEventList.DraculaEntering :
 		{
-
+			GameUI.dialogPop.giveInfos("Dracula is entering the game !", PopUp.CharList.Johnathan);
 			break;
 		}
-		case DayEvent.DayEventList.DraculaLeaving :
+		case HoursManager.DayEventList.DraculaLeaving :
 		{
-			
+			GameUI.dialogPop.giveInfos("Dracula is leaving the house !", PopUp.CharList.Johnathan);
 			break;
 		}
-		case DayEvent.DayEventList.FoodMan :
+		case HoursManager.DayEventList.FoodMan :
 		{
-			// SAY FOOD HAS ARRIVED
-			// 
+			GameUI.dialogPop.giveInfos("Food Man has arrived !", PopUp.CharList.Johnathan);
 			break;
 		}
-		case DayEvent.DayEventList.MailMan :
+		case HoursManager.DayEventList.MailMan :
 		{
-			// SAY MAIL HAS ARRIVED
-			// LET PLAYER 
+			GameUI.dialogPop.giveInfos("Mail man has arrived !", PopUp.CharList.Johnathan);
+			GameUI.NotifPop.giveInfos("Mail man has arrived !", PopUp.CharList.Johnathan);
 			break;
 		}
 
 		}
 	}
 
-	public void triggerPopUp()
-	{
-		GameObject popup = Instantiate(Resources.Load("Objects/PopUp")) as GameObject;
-		PopUp pop = popup.GetComponent<PopUp>();
-	}
 }

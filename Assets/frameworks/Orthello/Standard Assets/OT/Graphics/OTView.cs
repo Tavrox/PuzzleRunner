@@ -628,8 +628,7 @@ public class OTView : MonoBehaviour
 						getRect = true;
 					}					
 				}
-			}	
-									
+			}				
 		}				
 		
         if (OT.world2D && !camera.orthographic)

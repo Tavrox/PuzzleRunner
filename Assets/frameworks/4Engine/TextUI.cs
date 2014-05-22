@@ -8,10 +8,10 @@ public class TextUI : MonoBehaviour
 	[HideInInspector] public Color initColor;
 
 	public string DIALOG_ID = "NONE";
-	public string text;
+	public string text = "Superb text";
 	public bool dontTranslate = false;
 	public bool hasBeenTranslated = false;
-	public Color color;
+	public Color color = Color.white;
 
 	public void Awake()
 	{

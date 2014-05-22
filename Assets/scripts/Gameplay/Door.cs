@@ -17,8 +17,8 @@ public class Door : MonoBehaviour {
 		Closed
 	};
 	public HandleDoor Handle;
-	[HideInInspector] public float closedAngle;
-	[HideInInspector] public float openAngle;
+	public float closedAngle;
+	public float openAngle;
 	public OTSprite blockSpr;
 	private LevelManager levMan;
 
@@ -58,6 +58,7 @@ public class Door : MonoBehaviour {
 
 	public void switchDoor()
 	{
+		print ("open switcvh");
 		switch (Handle)
 		{
 		case HandleDoor.Closed :
@@ -85,34 +86,34 @@ public class Door : MonoBehaviour {
 
 	void OnDrawGizmosSelected()
 	{
-//		switch (Pivot)
-//		{
-//		case PivotList.Left :
-//		{
-//			openAngle = 90f;
-//			closedAngle = 0f;
-//			break;
-//		}
-//		case PivotList.Right :
-//		{
-//			openAngle = 90f;
-//			closedAngle = 180f;
-//			break;
-//		}
-//		case PivotList.Up :
-//		{
-//			openAngle = 0f;
-//			closedAngle = 270f;
-//			break;
-//		}
-//		case PivotList.Down :
-//		{
-//			openAngle = 0f;
-//			closedAngle = 270f;
-//			break;
-//		}
-//		}
-//		transform.rotation = Quaternion.Euler(0f,0f, closedAngle);
+		switch (Pivot)
+		{
+		case PivotList.Left :
+		{
+			openAngle = 90f;
+			closedAngle = 0f;
+			break;
+		}
+		case PivotList.Right :
+		{
+			openAngle = 90f;
+			closedAngle = 180f;
+			break;
+		}
+		case PivotList.Up :
+		{
+			openAngle = 0f;
+			closedAngle = 270f;
+			break;
+		}
+		case PivotList.Down :
+		{
+			openAngle = 0f;
+			closedAngle = 270f;
+			break;
+		}
+		}
+		transform.rotation = Quaternion.Euler(0f,0f, closedAngle);
 
 	}
 }

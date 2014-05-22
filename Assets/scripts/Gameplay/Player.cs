@@ -76,10 +76,10 @@ public class Player : MonoBehaviour {
 		BlockedUp = false;
 		BlockedRight = false;
 
-		_target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+		_target = GameObject.Find("LevelManager/Camera").GetComponent<Camera>().ScreenToWorldPoint(Input.mousePosition);
 		moveInput();
-		rotateTowardMouse(coneParent.transform);
-		rotateTowardMouse(gameSprite.transform);
+		rotateTowardMouse(_target ,coneParent.transform);
+		rotateTowardMouse(_target , gameSprite.transform);
 		changeRenderer();
 		wallBlocker();
 		transform.position += vecMove * Time.deltaTime;
@@ -206,10 +206,10 @@ public class Player : MonoBehaviour {
 		}
 	}
 
-	private void rotateTowardMouse(Transform _trsf)
+	private void rotateTowardMouse(Vector3 targ ,Transform _trsf)
 	{
-		_diffX = _target.x - coneParent.transform.position.x;
-		_diffY = coneParent.transform.position.y - _target.y;
+		_diffX = targ.x - coneParent.transform.position.x;
+		_diffY = coneParent.transform.position.y - targ.y;
 		_angle = Mathf.Atan2( _diffX, _diffY) * Mathf.Rad2Deg;
 		_trsf.rotation = Quaternion.Euler(0f, 0f, _angle - 90);
 	}
