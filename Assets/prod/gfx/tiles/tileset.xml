@@ -290,7 +290,7 @@
                 <key>sourceSize</key>
                 <string>{120,120}</string>
             </dict>
-            <key>walls_fill_D.png</key>
+            <key>walls_T_D.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{755,255},{120,120}}</string>
@@ -303,7 +303,7 @@
                 <key>sourceSize</key>
                 <string>{120,120}</string>
             </dict>
-            <key>walls_fill_L.png</key>
+            <key>walls_T_L.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{880,255},{120,120}}</string>
@@ -316,7 +316,7 @@
                 <key>sourceSize</key>
                 <string>{120,120}</string>
             </dict>
-            <key>walls_fill_R.png</key>
+            <key>walls_T_R.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{5,380},{120,120}}</string>
@@ -329,7 +329,7 @@
                 <key>sourceSize</key>
                 <string>{120,120}</string>
             </dict>
-            <key>walls_fill_U.png</key>
+            <key>walls_T_U.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{130,380},{120,120}}</string>
@@ -342,7 +342,7 @@
                 <key>sourceSize</key>
                 <string>{120,120}</string>
             </dict>
-            <key>walls_fill_ang_00.png</key>
+            <key>walls_fill_D.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{255,380},{120,120}}</string>
@@ -355,7 +355,7 @@
                 <key>sourceSize</key>
                 <string>{120,120}</string>
             </dict>
-            <key>walls_fill_ang_01.png</key>
+            <key>walls_fill_L.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{380,380},{120,120}}</string>
@@ -368,7 +368,7 @@
                 <key>sourceSize</key>
                 <string>{120,120}</string>
             </dict>
-            <key>walls_fill_ang_02.png</key>
+            <key>walls_fill_R.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{505,380},{120,120}}</string>
@@ -381,7 +381,7 @@
                 <key>sourceSize</key>
                 <string>{120,120}</string>
             </dict>
-            <key>walls_fill_ang_03.png</key>
+            <key>walls_fill_U.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{630,380},{120,120}}</string>
@@ -394,7 +394,7 @@
                 <key>sourceSize</key>
                 <string>{120,120}</string>
             </dict>
-            <key>walls_fill_ang_04.png</key>
+            <key>walls_fill_ang_00.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{755,380},{120,120}}</string>
@@ -407,7 +407,7 @@
                 <key>sourceSize</key>
                 <string>{120,120}</string>
             </dict>
-            <key>walls_fill_ang_05.png</key>
+            <key>walls_fill_ang_01.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{880,380},{120,120}}</string>
@@ -420,7 +420,7 @@
                 <key>sourceSize</key>
                 <string>{120,120}</string>
             </dict>
-            <key>walls_fill_ang_06.png</key>
+            <key>walls_fill_ang_02.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{5,505},{120,120}}</string>
@@ -433,7 +433,7 @@
                 <key>sourceSize</key>
                 <string>{120,120}</string>
             </dict>
-            <key>walls_fill_ang_07.png</key>
+            <key>walls_fill_ang_03.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{130,505},{120,120}}</string>
@@ -446,7 +446,7 @@
                 <key>sourceSize</key>
                 <string>{120,120}</string>
             </dict>
-            <key>wood_floor_01.png</key>
+            <key>walls_fill_ang_04.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{255,505},{120,120}}</string>
@@ -459,7 +459,7 @@
                 <key>sourceSize</key>
                 <string>{120,120}</string>
             </dict>
-            <key>wood_floor_02.png</key>
+            <key>walls_fill_ang_05.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{380,505},{120,120}}</string>
@@ -472,7 +472,7 @@
                 <key>sourceSize</key>
                 <string>{120,120}</string>
             </dict>
-            <key>wood_floor_03.png</key>
+            <key>walls_fill_ang_06.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{505,505},{120,120}}</string>
@@ -485,7 +485,7 @@
                 <key>sourceSize</key>
                 <string>{120,120}</string>
             </dict>
-            <key>wood_floor_04.png</key>
+            <key>walls_fill_ang_07.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{630,505},{120,120}}</string>
@@ -498,7 +498,7 @@
                 <key>sourceSize</key>
                 <string>{120,120}</string>
             </dict>
-            <key>wood_floor_05.png</key>
+            <key>wood_floor_01.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{755,505},{120,120}}</string>
@@ -511,7 +511,7 @@
                 <key>sourceSize</key>
                 <string>{120,120}</string>
             </dict>
-            <key>wood_floor_06.png</key>
+            <key>wood_floor_02.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{880,505},{120,120}}</string>
@@ -524,7 +524,7 @@
                 <key>sourceSize</key>
                 <string>{120,120}</string>
             </dict>
-            <key>wood_floor_07.png</key>
+            <key>wood_floor_03.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{5,630},{120,120}}</string>
@@ -537,10 +537,62 @@
                 <key>sourceSize</key>
                 <string>{120,120}</string>
             </dict>
-            <key>wood_floor_08.png</key>
+            <key>wood_floor_04.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{130,630},{120,120}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{120,120}}</string>
+                <key>sourceSize</key>
+                <string>{120,120}</string>
+            </dict>
+            <key>wood_floor_05.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{255,630},{120,120}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{120,120}}</string>
+                <key>sourceSize</key>
+                <string>{120,120}</string>
+            </dict>
+            <key>wood_floor_06.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{380,630},{120,120}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{120,120}}</string>
+                <key>sourceSize</key>
+                <string>{120,120}</string>
+            </dict>
+            <key>wood_floor_07.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{505,630},{120,120}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{120,120}}</string>
+                <key>sourceSize</key>
+                <string>{120,120}</string>
+            </dict>
+            <key>wood_floor_08.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{630,630},{120,120}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -560,7 +612,7 @@
             <key>size</key>
             <string>{1024,1024}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:783820003e10d45f1b8cca38a60a4679:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:b710e94a72d6b268ca19bbccfd4b3961:1/1$</string>
             <key>textureFileName</key>
             <string>tileset.png</string>
         </dict>

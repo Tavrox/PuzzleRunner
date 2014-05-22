@@ -76,7 +76,7 @@
             <key>sizeConstraints</key>
             <enum type="AlgorithmSettings::SizeConstraints">POT</enum>
             <key>forceSquared</key>
-            <false/>
+            <true/>
             <key>forceWordAligned</key>
             <false/>
             <key>maxRects</key>
@@ -178,6 +178,22 @@
             <filename>wall_U_2.png</filename>
             <filename>wall_UL_ang.png</filename>
             <filename>wall_UR_ang.png</filename>
+            <filename>walls_fill_ang_00.png</filename>
+            <filename>walls_fill_ang_01.png</filename>
+            <filename>walls_fill_ang_02.png</filename>
+            <filename>walls_fill_ang_03.png</filename>
+            <filename>walls_fill_ang_04.png</filename>
+            <filename>walls_fill_ang_05.png</filename>
+            <filename>walls_fill_ang_06.png</filename>
+            <filename>walls_fill_ang_07.png</filename>
+            <filename>walls_fill_D.png</filename>
+            <filename>walls_fill_L.png</filename>
+            <filename>walls_fill_R.png</filename>
+            <filename>walls_fill_U.png</filename>
+            <filename>walls_T_D.png</filename>
+            <filename>walls_T_L.png</filename>
+            <filename>walls_T_R.png</filename>
+            <filename>walls_T_U.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

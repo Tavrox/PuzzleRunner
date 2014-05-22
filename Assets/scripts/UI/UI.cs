@@ -78,14 +78,26 @@ public class UI : MonoBehaviour {
 		}
 		}
 
-		attributeStateSprite();
+		attributeStateSprite(levMan.plr.foodState, FoodState);
 	}
 
 	private void attributeStateSprite(int attribute, OTSprite _spr)
 	{
 		if (attribute == 0)
 		{
-			_spr.frameName = 
+			_spr.frameName = "bar_00";
+		}
+		else if (attribute == 1)
+		{
+			_spr.frameName = "bar_01";
+		}
+		else if (attribute == 2)
+		{
+			_spr.frameName = "bar_02";
+		}
+		else if (attribute == 3)
+		{
+			_spr.frameName = "bar_03";
 		}
 	}
 }
