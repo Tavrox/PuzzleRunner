@@ -6,11 +6,14 @@ public class Player : MonoBehaviour {
 	public GameObject coneParent;
 	public BoxCollider coneCollider;
 	public LineRenderer coneRenderer;
+	public LevelManager levMan;
+
 
 	public enum letterList
 	{
 		DontHave,
 		Have,
+		IsWriting,
 		HaveWritten
 	};
 	public letterList haveLetter;
@@ -53,10 +56,11 @@ public class Player : MonoBehaviour {
 	private Transform RayUR;
 
 	// Use this for initialization
-	public void Setup () 
+	public void Setup (LevelManager _lev) 
 	{
 		coneParent = FETool.findWithinChildren(gameObject, "ParentCone");
 		gameSprite = FETool.findWithinChildren(gameObject, "Sprite");
+		levMan = _lev;
 
 		RayDL = FETool.findWithinChildren(gameObject, "RayOrigin_DL").transform;
 		RayUL = FETool.findWithinChildren(gameObject, "RayOrigin_DR").transform;
@@ -82,7 +86,17 @@ public class Player : MonoBehaviour {
 		rotateTowardMouse(_target , gameSprite.transform);
 		changeRenderer();
 		wallBlocker();
+		writePaper();
 		transform.position += vecMove * Time.deltaTime;
+	}
+
+	private void writePaper()
+	{
+		if (Input.GetKey(KeyCode.R))
+		{
+			haveLetter = letterList.IsWriting;
+			levMan.writtenPaper += 0.1f;
+		}
 	}
 
 	private void moveInput()

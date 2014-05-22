@@ -24,12 +24,14 @@ public class LevelManager : MonoBehaviour {
 	public int currM;
 	public WaypointDirector pathDirector;
 	public UI GameUI;
+	public float writtenPaper;
+	public int realWrittenPaper;
 
 	// Use this for initialization
 	void Awake () 
 	{
 		plr = GetComponentInChildren<Player>();
-		plr.Setup();
+		plr.Setup(this);
 
 		Hours = gameObject.AddComponent<HoursManager>();
 		Hours.Setup(this);
@@ -112,6 +114,7 @@ public class LevelManager : MonoBehaviour {
 	void Update () 
 	{
 		currCam.transform.position =  new Vector3( FETool.Round(plr.transform.position.x, 2), FETool.Round(plr.transform.position.y, 2), -1000f);
+		realWrittenPaper = Mathf.RoundToInt(writtenPaper);
 
 		if (Input.GetKey(KeyCode.A))
 		{

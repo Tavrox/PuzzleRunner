@@ -35,14 +35,14 @@ public class TextUI : MonoBehaviour
 		_mesh.color = color;
 	}
 
-	public void makeFadeOut()
+	public void makeFadeOut(float _dur = 0.5f)
 	{
-		new OTTween(this, 0.4f).Tween("color", Color.clear);
+		new OTTween(this, _dur).Tween("color", Color.clear);
 	}
 
-	public void makeFadeIn()
+	public void makeFadeIn(float _dur = 0.5f)
 	{
-		new OTTween(this, 0.4f).Tween("color", initColor);
+		new OTTween(this, _dur).Tween("color", initColor);
 	}
 
 	public void Format()

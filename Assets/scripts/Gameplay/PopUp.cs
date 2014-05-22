@@ -97,36 +97,32 @@ public class PopUp : MonoBehaviour {
 
 	public void PopNotif()
 	{		
-		print ("oklol");
 		new OTTween(BG, 0.5f).Tween("alpha", 1f);
-		new OTTween(linkText, 0.5f).Tween("color", Color.red);
+		linkText.makeFadeIn();
 		StartCoroutine("FadeAway");
 	}
 
 	IEnumerator FadeAway()
 	{
-		print ("troll");
+		yield return new WaitForSeconds(3f);
 		new OTTween(BG, 1f).Tween("alpha", 0f);
-		yield return new WaitForSeconds(1f);
-		new OTTween(BG, 1f).Tween("alpha", 0f);
-		BG.material.color = Color.clear;
+		linkText.makeFadeOut(0.5f);
 	}
 
 	public void PopDialog()
 	{
-		new OTTween(helpTxt, 0.5f).Tween("color", Color.white);
 		switch (Owner)
 		{
 			case CharList.Dracula :
 			{
-				new OTTween(linkText, 0.5f).Tween("color", Color.red);
-				break;
+			new OTTween(linkText, 0.5f).Tween("color", Color.red);
+			break;
 			}
 				
 			case CharList.Johnathan :
 			{
-				new OTTween(linkText, 0.5f).Tween("color", Color.red);
-				break;
+			linkText.makeFadeIn();
+			break;
 			}
 		}
 		InvokeRepeating("checkForInput", 2f, 0.1f);
@@ -138,8 +134,8 @@ public class PopUp : MonoBehaviour {
 		{
 			new OTTween(BG, 0.5f).Tween("alpha", 0f);
 		}
-		new OTTween(linkText, 0.5f).Tween("color", Color.clear);
-		new OTTween(helpTxt, 0.5f).Tween("color", Color.clear);
+		linkText.makeFadeOut();
+		helpTxt.makeFadeOut();
 	}
 
 	public void Skip()
