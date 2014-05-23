@@ -11,6 +11,7 @@ public class Waypoint : MonoBehaviour {
 		GoToAndStop
 	};
 	public TypeList WPType;
+	public float distWP;
 	[HideInInspector] public int id;
 	[HideInInspector] public bool activated = true;
 	public Waypoint nextWP;

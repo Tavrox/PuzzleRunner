@@ -29,34 +29,39 @@ public class Door : MonoBehaviour {
 		levMan = _lev;
 		blocker = transform.parent.GetComponentInChildren<DoorBlock>();
 		this.blockSpr = FETool.findWithinChildren(this.gameObject, "Block").GetComponentInChildren<OTSprite>();
+		getRotation();
+		transform.rotation = Quaternion.Euler(0f,0f, closedAngle);
+	}
+
+	private void getRotation()
+	{
 		switch (Pivot)
 		{
-			case PivotList.Left :
-			{
-				openAngle = 90f;
-				closedAngle = 0f;
-				break;
-			}
-			case PivotList.Right :
-			{
-				openAngle = 90f;
-				closedAngle = 180f;
-				break;
-			}
-			case PivotList.Up :
-			{
-				openAngle = 0f;
-				closedAngle = 270f;
-				break;
-			}
-			case PivotList.Down :
-			{
-				openAngle = 0f;
-				closedAngle = 270f;
-				break;
-			}
+		case PivotList.Right :
+		{
+			openAngle = 90f;
+			closedAngle = 0f;
+			break;
 		}
-		transform.rotation = Quaternion.Euler(0f,0f, closedAngle);
+		case PivotList.Left :
+		{
+			openAngle = 90f;
+			closedAngle = 180f;
+			break;
+		}
+		case PivotList.Up :
+		{
+			openAngle = 0f;
+			closedAngle = 270f;
+			break;
+		}
+		case PivotList.Down :
+		{
+			openAngle = 0f;
+			closedAngle = 270f;
+			break;
+		}
+		}
 	}
 
 	public void switchDoor()
@@ -68,6 +73,7 @@ public class Door : MonoBehaviour {
 		{
 			new OTTween(blockSpr , levMan.plr.doorSpeed , OTEasing.CircIn).Tween("rotation" , openAngle);
 			Handle = HandleDoor.Open;
+//			blocker.gameObject.layer = LayerMask.NameToLayer("Default");
 			break;
 		}
 		case HandleDoor.Open :
@@ -113,33 +119,7 @@ public class Door : MonoBehaviour {
 
 	void OnDrawGizmosSelected()
 	{
-		switch (Pivot)
-		{
-		case PivotList.Left :
-		{
-			openAngle = 90f;
-			closedAngle = 0f;
-			break;
-		}
-		case PivotList.Right :
-		{
-			openAngle = 90f;
-			closedAngle = 180f;
-			break;
-		}
-		case PivotList.Up :
-		{
-			openAngle = 0f;
-			closedAngle = 270f;
-			break;
-		}
-		case PivotList.Down :
-		{
-			openAngle = 0f;
-			closedAngle = 270f;
-			break;
-		}
-		}
+		getRotation();
 		transform.rotation = Quaternion.Euler(0f,0f, closedAngle);
 
 	}
