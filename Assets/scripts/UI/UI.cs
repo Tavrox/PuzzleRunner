@@ -14,7 +14,22 @@ public class UI : MonoBehaviour {
 	public OTSprite FoodState;
 	public OTSprite SleepState;
 	public OTSprite WillBack;
+	public OTSprite Controls;
 	public TextUI WillBackTxt;
+
+	public enum menuTypes
+	{
+		Ingame,
+		Start,
+		Victory,
+		Title, 
+		Death
+	};
+	public menuTypes Menu;
+
+	public GameObject VictoryGO;
+	public GameObject DeathGO;
+	public GameObject StartGO;
 
 	public OTSprite DarkBG;
 
@@ -30,11 +45,18 @@ public class UI : MonoBehaviour {
 		HandClock = FETool.findWithinChildren(gameObject, "Ingame/Panels/Clock/Aiguille").GetComponentInChildren<OTSprite>();
 		FoodState = FETool.findWithinChildren(gameObject, "Ingame/Panels/PanFood/Bar").GetComponentInChildren<OTSprite>();
 		SleepState = FETool.findWithinChildren(gameObject, "Ingame/Panels/PanSleep/Bar").GetComponentInChildren<OTSprite>();
+		Controls = FETool.findWithinChildren(gameObject, "Ingame/controls").GetComponent<OTSprite>();
 
 		dialogPop = FETool.findWithinChildren(gameObject, "Ingame/Dialog").GetComponent<PopUp>();
 		WillBack = FETool.findWithinChildren(gameObject, "Ingame/Dialog/WillBeBack").GetComponentInChildren<OTSprite>();
 		WillBackTxt = FETool.findWithinChildren(gameObject, "Ingame/Dialog/WillBeBack").GetComponentInChildren<TextUI>();
 		dialogPop.Setup();
+
+		VictoryGO = FETool.findWithinChildren(gameObject, "Ingame/Victory");
+		DeathGO = FETool.findWithinChildren(gameObject, "Ingame/Death");
+		StartGO = FETool.findWithinChildren(gameObject, "Ingame/Start");
+
+		StartCoroutine("fadeControls");
 //		dialogPop.Fade();
 
 		Paper = FETool.findWithinChildren(gameObject, "Ingame/Paper/SeekPaper").GetComponentInChildren<OTSprite>();
@@ -49,6 +71,36 @@ public class UI : MonoBehaviour {
 		GameEventManager.EndGame += EndGame;
 	}
 
+	public void FadeTextsAndSprite(GameObject _targ)
+	{
+		if (_targ.GetComponentsInChildren<OTSprite>() != null)
+		{
+			foreach (OTSprite _spr in _targ.GetComponentsInChildren<OTSprite>())
+			{
+				_spr.alpha = 1f;
+			}
+		}
+		if (_targ.GetComponentsInChildren<TextUI>() != null)
+		{
+			foreach (TextUI _txt in _targ.GetComponentsInChildren<TextUI>())
+			{
+				_txt.makeFadeIn();
+			}
+		}
+	}
+
+	public void FadeOutTextsAndSprite(GameObject _targ)
+	{
+		foreach (OTSprite _spr in _targ.GetComponentsInChildren<OTSprite>())
+		{
+			_spr.alpha = 0f;
+		}
+		foreach (TextUI _txt in _targ.GetComponentsInChildren<TextUI>())
+		{
+			_txt.makeFadeOut();
+		}
+	}
+
 	
 	public void triggerPopUp()
 	{
@@ -56,10 +108,17 @@ public class UI : MonoBehaviour {
 		PopUp pop = popup.GetComponent<PopUp>();
 	}
 	
+	IEnumerator fadeControls()
+	{
+		yield return new WaitForSeconds(30f);
+		Controls.alpha = 0f;
+	}
+
 	// Update is called once per frame
 	void Update () 
 	{
-		HandClock.rotation = ((360 / 24 ) * levMan.currH) -1;
+		HandClock.rotation = 360 - (24* levMan.currH);
+
 		switch (levMan.plr.haveLetter)
 		{
 		case Player.letterList.DontHave :
@@ -96,25 +155,36 @@ public class UI : MonoBehaviour {
 
 	private void DisplayDeathScreen()
 	{
+		FadeTextsAndSprite(DeathGO);
 		new OTTween(DarkBG, 1f).Tween("alpha", 1f);
 	}
 	private void DisplayWinScreen()
 	{
+		FadeTextsAndSprite(VictoryGO);
 		new OTTween(DarkBG, 1f).Tween("alpha", 1f);
 	}
 
-	private void StartScreen()
+	private void DisplayStartScreen()
 	{
+		FadeTextsAndSprite(StartGO);
 		new OTTween(DarkBG, 1f).Tween("alpha", 1f);
 	}
 
 	public void fadeDeathScreen()
 	{
+		FadeOutTextsAndSprite(DeathGO);
 		new OTTween(DarkBG, 1f).Tween("alpha", 0f);
 	}
 
 	public void fadeStartScreen()
 	{
+		FadeOutTextsAndSprite(StartGO);
+		new OTTween(DarkBG, 1f).Tween("alpha", 0f);
+	}
+	
+	public void fadeVictoryScreen()
+	{
+		FadeOutTextsAndSprite(VictoryGO);
 		new OTTween(DarkBG, 1f).Tween("alpha", 0f);
 	}
 
@@ -140,16 +210,30 @@ public class UI : MonoBehaviour {
 
 	private void GameStart()
 	{
-		StartScreen();
+		Menu = menuTypes.Title;
+		DisplayStartScreen();
+		FadeOutTextsAndSprite(VictoryGO);
 	}
 	private void GameOver()
 	{
+		Menu = menuTypes.Death;
 		MasterAudio.PlaySound("death");
 		StartCoroutine("sayDied");
 	}
 	private void EndGame()
 	{
+		Menu = menuTypes.Victory;
 		StartCoroutine("WinPlz");
+//		FadeTextsAndSprite(
+	}
+	private void Respawn()
+	{
+		Menu = menuTypes.Ingame;
+		MasterAudio.FadeAllPlaylistsToVolume(1f, 3f);
+		fadeDeathScreen();
+		fadeStartScreen();
+		FadeOutTextsAndSprite(VictoryGO);
+		//		fadeScreen();
 	}
 
 	IEnumerator WinPlz()
@@ -158,7 +242,6 @@ public class UI : MonoBehaviour {
 		yield return new WaitForSeconds(3f);
 		MasterAudio.PlaySound("win");
 		DisplayWinScreen();
-
 	}
 
 	IEnumerator sayDied()
@@ -169,10 +252,5 @@ public class UI : MonoBehaviour {
 		DisplayDeathScreen();
 	}
 
-	private void Respawn()
-	{
-		MasterAudio.FadeAllPlaylistsToVolume(1f, 3f);
-		fadeDeathScreen();
-		fadeStartScreen();
-	}
+
 }

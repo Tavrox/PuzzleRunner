@@ -30,10 +30,49 @@
                 <key>sourceSize</key>
                 <string>{10,20}</string>
             </dict>
+            <key>dracula_spawn_00.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{142,5},{90,115}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{90,115}}</string>
+                <key>sourceSize</key>
+                <string>{90,115}</string>
+            </dict>
+            <key>dracula_spawn_01.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{5,125},{90,115}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{90,115}}</string>
+                <key>sourceSize</key>
+                <string>{90,115}</string>
+            </dict>
+            <key>dracula_spawn_02.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{100,125},{90,115}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{90,115}}</string>
+                <key>sourceSize</key>
+                <string>{90,115}</string>
+            </dict>
             <key>food.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{142,5},{96,96}}</string>
+                <string>{{5,245},{96,96}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -46,7 +85,7 @@
             <key>food_crate.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{5,106},{96,96}}</string>
+                <string>{{106,245},{96,96}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -59,7 +98,7 @@
             <key>food_highlight.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{106,106},{96,96}}</string>
+                <string>{{5,346},{96,96}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -72,7 +111,7 @@
             <key>paper.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{207,106},{41,42}}</string>
+                <string>{{106,346},{41,42}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -90,9 +129,9 @@
             <key>realTextureFileName</key>
             <string>gameplay.png</string>
             <key>size</key>
-            <string>{256,256}</string>
+            <string>{256,512}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:f3e499b5d3d77c927cc8d64f47c9c52c:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:46cbd797b7b330b773fbd0d8944d8468:1/1$</string>
             <key>textureFileName</key>
             <string>gameplay.png</string>
         </dict>

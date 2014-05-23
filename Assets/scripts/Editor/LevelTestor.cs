@@ -56,7 +56,7 @@ public class LevelTestor : Editor
 		{
 			GameEventManager.TriggerGameOver("test");
 		}
-		if (GUILayout.Button("GameOver"))
+		if (GUILayout.Button("Victory"))
 		{
 			GameEventManager.TriggerEndGame();
 		}

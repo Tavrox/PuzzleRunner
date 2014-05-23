@@ -49,6 +49,9 @@ public class Dracula : MonoBehaviour {
 	private bool BlockedLeft = false;
 	private bool BlockedRight = false;
 	protected int wallMask = 1 << 8;
+	public OTAnimatingSprite spr;
+	public OTAnimatingSprite pouf;
+
 	
 	public float _diffX = 0f;
 	public float _diffY = 0f;
@@ -62,6 +65,8 @@ public class Dracula : MonoBehaviour {
 	{
 		_levman = _lev;
 		_plr = _levman.plr;
+		spr = FETool.findWithinChildren(gameObject, "Sprite").GetComponentInChildren<OTAnimatingSprite>();
+		pouf = FETool.findWithinChildren(gameObject, "Pouf").GetComponentInChildren<OTAnimatingSprite>();
 		giveWPM();
 		
 		RayDL = FETool.findWithinChildren(gameObject, "RayOrigin_DL").transform;
@@ -179,6 +184,9 @@ public class Dracula : MonoBehaviour {
 
 	private void giveWPM()
 	{
+		pouf.alpha = 1f;
+		pouf.PlayOnce("pouf");
+		new OTTween(pouf, 2f).Tween("alpha", 0f);
 		currWPM = _levman.pathDirector.pickRandomWPM();
 		currWp = currWPM.pickRandomWP();
 		transform.position = currWp.transform.position;

@@ -34,12 +34,15 @@ public class LevelManager : MonoBehaviour {
 	public int currH;
 	public int currM;
 	public int saveDay;
+	public string parseH;
+	public string parseM;
 	public int remainingDay = 5;
 	public WaypointDirector pathDirector;
 	public UI GameUI;
 	public float writtenPaper;
 	public int realWrittenPaper;
 	public bool hourChecked = false;
+	private bool delaySleep;
 
 	// Use this for initialization
 	void Awake () 
@@ -123,37 +126,57 @@ public class LevelManager : MonoBehaviour {
 
 	public void doSleep(Bed.hourList _hr)
 	{
-		switch (_hr)
+		if (delaySleep == false)
 		{
-		case Bed.hourList.Three :
-		{
-			currH += 1;
-			checkHour();
-			currH += 1;
-			checkHour();
-			currH += 1;
-			checkHour();
-			break;
-		}
-		case Bed.hourList.Six :
-		{
-			currH += 1;
-			checkHour();
-			currH += 1;
-			checkHour();
-			currH += 1;
-			checkHour();
+			delaySleep = true;
+			plr.foodState -= 1;
+			switch (_hr)
+			{
+			case Bed.hourList.Three :
+			{
+				currH += 1;
+				checkHour();
+				hourChecked = false;
+				currH += 1;
+				checkHour();
+				hourChecked = false;
+				currH += 1;
+				checkHour();
+				hourChecked = false;
+				break;
+			}
+			case Bed.hourList.Six :
+			{
+				currH += 1;
+				checkHour();
+				hourChecked = false;
+				currH += 1;
+				checkHour();
+				hourChecked = false;
+				currH += 1;
+				checkHour();
+				hourChecked = false;
 
-			currH += 1;
-			checkHour();
-			currH += 1;
-			checkHour();
-			currH += 1;
-			checkHour();
-			break;
-		}
+				currH += 1;
+				checkHour();
+				hourChecked = false;
+				currH += 1;
+				checkHour();
+				hourChecked = false;
+				currH += 1;
+				checkHour();
+				hourChecked = false;
+				break;
+			}
+			}
+			StartCoroutine("delayedSleep");
 		}
 
+	}
+	IEnumerator delayedSleep()
+	{
+		yield return new WaitForSeconds(3f);
+		delaySleep = false;
 	}
 
 	private void updateMinute()
@@ -168,17 +191,13 @@ public class LevelManager : MonoBehaviour {
 		{
 			currM += 1;
 		}
-		string parseH = currH.ToString();
-		string parseM = currM.ToString();
+		parseH = currH.ToString();
+		parseM = currM.ToString();
 		if (currM < 10)
 		{
 			parseM = "0" + currM;
 		}
 		checkHour();
-		if (currH < 10)
-		{
-			parseH = "0" + currH;
-		}
 		GameUI.Clock.text = parseH + ":" + parseM;
 	}
 	public void checkForDifficulty()
@@ -189,7 +208,10 @@ public class LevelManager : MonoBehaviour {
 	{
 		if (hourChecked == false)
 		{
-			print ("check");
+			if (currH < 10)
+			{
+				parseH = "0" + currH;
+			}
 			if (currH == 24)
 			{
 				MasterAudio.PlaySound("clock_bell");
@@ -288,23 +310,21 @@ public class LevelManager : MonoBehaviour {
 		{
 		case HoursManager.DayEventList.DraculaEntering :
 		{
-			GameUI.WillBack.alpha = 0f;
-			GameUI.WillBackTxt.makeFadeIn();
+			GameUI.WillBackTxt.makeFadeOut();
 			MasterAudio.PlaySound("dracula_back");
 			GameUI.NotifPop.giveInfos("Dracula is back\n from hunting");
 			GameUI.dialogPop.giveInfos("Dracula is entering the game !");
-			new OTTween(GameUI.dialogPop.OutPic, 1f).Tween("alpha", 1f);
+			new OTTween(GameUI.dialogPop.OutPic, 1f).Tween("alpha", 0f);
 			break;
 		}
 		case HoursManager.DayEventList.DraculaLeaving :
 		{
 			InvokeRepeating("laughPlz", 20f, 20f);
-			GameUI.WillBack.alpha = 1f;
-			GameUI.WillBackTxt.makeFadeOut();
+			GameUI.WillBackTxt.makeFadeIn();
 			MasterAudio.PlaySound("dacrula_out");
 			GameUI.NotifPop.giveInfos("Dracula is gone hunting\n outside the house");
 			GameUI.dialogPop.giveInfos("Dracula is leaving the house !");
-			new OTTween(GameUI.dialogPop.OutPic, 1f).Tween("alpha", 0f);
+			new OTTween(GameUI.dialogPop.OutPic, 1f).Tween("alpha", 1f);
 			break;
 		}
 		case HoursManager.DayEventList.FoodMan :

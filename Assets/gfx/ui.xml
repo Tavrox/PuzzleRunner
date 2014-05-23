@@ -108,10 +108,23 @@
                 <key>sourceSize</key>
                 <string>{141,142}</string>
             </dict>
+            <key>controls.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{5,306},{753,40}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{753,40}}</string>
+                <key>sourceSize</key>
+                <string>{753,40}</string>
+            </dict>
             <key>dial_bulle.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{451,159},{491,149}}</string>
+                <string>{{5,351},{491,149}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -124,7 +137,7 @@
             <key>look_for_paper.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{5,313},{160,149}}</string>
+                <string>{{501,351},{160,149}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -137,7 +150,7 @@
             <key>notification.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{170,313},{176,110}}</string>
+                <string>{{666,351},{176,110}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -150,7 +163,7 @@
             <key>pan_bars.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{351,313},{222,149}}</string>
+                <string>{{5,505},{222,149}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -163,7 +176,7 @@
             <key>pan_food_bar.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{578,313},{221,62}}</string>
+                <string>{{232,505},{221,62}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -176,7 +189,7 @@
             <key>pan_sleep_bar.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{5,467},{221,62}}</string>
+                <string>{{458,505},{221,62}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -189,7 +202,7 @@
             <key>paper_found.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{231,467},{160,149}}</string>
+                <string>{{684,505},{160,149}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -202,7 +215,7 @@
             <key>pointer.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{396,467},{19,43}}</string>
+                <string>{{849,505},{19,43}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -215,7 +228,7 @@
             <key>portrait_dracula.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{420,467},{149,149}}</string>
+                <string>{{5,659},{149,149}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -228,7 +241,7 @@
             <key>portrait_johnathan.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{574,467},{149,149}}</string>
+                <string>{{159,659},{149,149}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -238,10 +251,62 @@
                 <key>sourceSize</key>
                 <string>{149,149}</string>
             </dict>
+            <key>sleep_3h.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{313,659},{129,44}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{129,44}}</string>
+                <key>sourceSize</key>
+                <string>{129,44}</string>
+            </dict>
+            <key>sleep_3h_highlight.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{447,659},{129,44}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{129,44}}</string>
+                <key>sourceSize</key>
+                <string>{129,44}</string>
+            </dict>
+            <key>sleep_6h.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{581,659},{129,44}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{129,44}}</string>
+                <key>sourceSize</key>
+                <string>{129,44}</string>
+            </dict>
+            <key>sleep_6h_highlight.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{715,659},{129,44}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{129,44}}</string>
+                <key>sourceSize</key>
+                <string>{129,44}</string>
+            </dict>
             <key>xbl.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{728,467},{21,11}}</string>
+                <string>{{849,659},{21,11}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -261,7 +326,7 @@
             <key>size</key>
             <string>{1024,1024}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:f417ac3b4fce53607150e62f8135da5d:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:aa7981779055a5f8bad7e5a34241fe18:1/1$</string>
             <key>textureFileName</key>
             <string>ui.png</string>
         </dict>
