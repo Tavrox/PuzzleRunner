@@ -251,10 +251,23 @@
                 <key>sourceSize</key>
                 <string>{149,149}</string>
             </dict>
+            <key>portrait_mailman.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{313,659},{148,149}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{148,149}}</string>
+                <key>sourceSize</key>
+                <string>{148,149}</string>
+            </dict>
             <key>sleep_3h.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{313,659},{129,44}}</string>
+                <string>{{466,659},{129,44}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -267,7 +280,7 @@
             <key>sleep_3h_highlight.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{447,659},{129,44}}</string>
+                <string>{{600,659},{129,44}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -280,7 +293,7 @@
             <key>sleep_6h.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{581,659},{129,44}}</string>
+                <string>{{734,659},{129,44}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -293,7 +306,7 @@
             <key>sleep_6h_highlight.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{715,659},{129,44}}</string>
+                <string>{{868,659},{129,44}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -306,7 +319,7 @@
             <key>xbl.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{849,659},{21,11}}</string>
+                <string>{{5,813},{21,11}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -326,7 +339,7 @@
             <key>size</key>
             <string>{1024,1024}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:aa7981779055a5f8bad7e5a34241fe18:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:807158d2fabde524bc5ffdc2a5acec50:1/1$</string>
             <key>textureFileName</key>
             <string>ui.png</string>
         </dict>

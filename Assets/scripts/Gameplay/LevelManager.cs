@@ -338,14 +338,14 @@ public class LevelManager : MonoBehaviour {
 		{
 			MailmanState = MailManStateList.HasArrived;
 			MasterAudio.PlaySound("door_bell");
-			GameUI.dialogPop.giveInfos("The mail man is waiting\n for me, I should hurry");
+			GameUI.dialogPop.giveInfos("The mail man is waiting\n for me, I should hurry", PopUp.CharList.MailMan);
 			GameUI.NotifPop.giveInfos("The mail man\n has arrived");
 			break;
 		}
 		case HoursManager.DayEventList.MailManOut :
 		{
 			MailmanState = MailManStateList.Away;
-			GameUI.dialogPop.giveInfos("The mail man is gone now.");
+			GameUI.dialogPop.giveInfos("The mail man is gone now.", PopUp.CharList.Johnathan);
 			GameUI.NotifPop.giveInfos("The mail man\n is leaving");
 			break;
 		}

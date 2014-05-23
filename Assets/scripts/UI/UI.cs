@@ -220,25 +220,25 @@ public class UI : MonoBehaviour {
 		Menu = menuTypes.Death;
 		MasterAudio.PlaySound("death");
 		StartCoroutine("sayDied");
-		MasterAudio.StopAllOfSound("dracula_out");
-		MasterAudio.StopAllOfSound("door_bell");
-		MasterAudio.StopAllOfSound("dracula_back");
-		MasterAudio.StopAllOfSound("hungry_1");
-		MasterAudio.StopAllOfSound("hungry_2");
-		MasterAudio.StopAllOfSound("yawn1");
-		MasterAudio.StopAllOfSound("yawn2");
+//		MasterAudio.StopAllOfSound("dracula_out");
+//		MasterAudio.StopAllOfSound("door_bell");
+//		MasterAudio.StopAllOfSound("dracula_back");
+//		MasterAudio.StopAllOfSound("hungry_1");
+//		MasterAudio.StopAllOfSound("hungry_2");
+//		MasterAudio.StopAllOfSound("yawn1");
+//		MasterAudio.StopAllOfSound("yawn2");
 	}
 	private void EndGame()
 	{
 		Menu = menuTypes.Victory;
 		StartCoroutine("WinPlz");
-		MasterAudio.StopAllOfSound("dracula_out");
-		MasterAudio.StopAllOfSound("door_bell");
-		MasterAudio.StopAllOfSound("dracula_back");
-		MasterAudio.StopAllOfSound("hungry_1");
-		MasterAudio.StopAllOfSound("hungry_2");
-		MasterAudio.StopAllOfSound("yawn1");
-		MasterAudio.StopAllOfSound("yawn2");
+//		MasterAudio.StopAllOfSound("dracula_out");
+//		MasterAudio.StopAllOfSound("door_bell");
+//		MasterAudio.StopAllOfSound("dracula_back");
+//		MasterAudio.StopAllOfSound("hungry_1");
+//		MasterAudio.StopAllOfSound("hungry_2");
+//		MasterAudio.StopAllOfSound("yawn1");
+//		MasterAudio.StopAllOfSound("yawn2");
 //		FadeTextsAndSprite(
 	}
 	private void Respawn()

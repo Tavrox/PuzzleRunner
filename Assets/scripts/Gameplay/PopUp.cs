@@ -10,7 +10,8 @@ public class PopUp : MonoBehaviour {
 	{
 		None,
 		Dracula,
-		Johnathan
+		Johnathan,
+		MailMan
 	};
 	public enum PopTypeList
 	{
@@ -115,14 +116,24 @@ public class PopUp : MonoBehaviour {
 		{
 			case CharList.Dracula :
 			{
-			linkText.makeFadeIn();
-			break;
+				linkText.makeFadeIn();
+				BG.transform.parent.transform.localScale = new Vector3(1f, 1f, 1f);
+				break;
 			}
 				
 			case CharList.Johnathan :
 			{
-			linkText.makeFadeIn();
-			break;
+				linkText.makeFadeIn();
+				BG.transform.parent.transform.localScale = new Vector3(1f, 1f, 1f);
+				break;
+			}
+
+			case CharList.MailMan :
+			{
+				linkText.makeFadeIn();
+				linkText.color = Color.blue;
+				BG.transform.parent.transform.localScale = new Vector3(-1f, 1f, 1f);
+				break;
 			}
 		}
 		InvokeRepeating("checkForInput", 2f, 0.1f);
