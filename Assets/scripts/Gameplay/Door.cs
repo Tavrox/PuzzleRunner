@@ -17,6 +17,7 @@ public class Door : MonoBehaviour {
 		Closed
 	};
 	public HandleDoor Handle;
+	public DoorBlock blocker;
 	public float closedAngle;
 	public float openAngle;
 	public OTSprite blockSpr;
@@ -26,6 +27,7 @@ public class Door : MonoBehaviour {
 	public void Setup (LevelManager _lev) 
 	{
 		levMan = _lev;
+		blocker = transform.parent.GetComponentInChildren<DoorBlock>();
 		this.blockSpr = FETool.findWithinChildren(this.gameObject, "Block").GetComponentInChildren<OTSprite>();
 		switch (Pivot)
 		{
@@ -54,6 +56,7 @@ public class Door : MonoBehaviour {
 				break;
 			}
 		}
+		transform.rotation = Quaternion.Euler(0f,0f, closedAngle);
 	}
 
 	public void switchDoor()
@@ -76,10 +79,34 @@ public class Door : MonoBehaviour {
 		}
 	}
 
+	public void Update()
+	{
+		switch (Handle)
+		{
+		case HandleDoor.Closed :
+		{
+			blocker.gameObject.layer = LayerMask.NameToLayer("Wall");
+			break;
+		}
+		case HandleDoor.Open :
+		{
+			blocker.gameObject.layer = LayerMask.NameToLayer("Default");
+			break;
+		}
+		}
+
+	}
+
 	void OnTriggerStay(Collider _oth)
 	{
 		if (_oth.CompareTag("Player") && Input.GetKeyDown(KeyCode.Return))
 	    {
+			this.switchDoor();
+		}
+
+		if (_oth.CompareTag("Dracula") == true)
+		{
+			this.Handle = HandleDoor.Closed;
 			this.switchDoor();
 		}
 	}

@@ -17,6 +17,12 @@ public class Player : MonoBehaviour {
 		HaveWritten
 	};
 	public letterList haveLetter;
+	public enum healthState
+	{
+		Alive,
+		Dead,
+		Cutscene
+	}
 
 	public enum DirList
 	{
@@ -57,6 +63,8 @@ public class Player : MonoBehaviour {
 
 	public int foodState = 3;
 	public int sleepState = 3;
+	public float doorSpeed;
+	public float modifSpeed;
 
 	// Use this for initialization
 	public void Setup (LevelManager _lev) 
@@ -72,6 +80,8 @@ public class Player : MonoBehaviour {
 
 		coneCollider = coneParent.GetComponentInChildren<BoxCollider>();
 		coneRenderer = coneParent.GetComponentInChildren<LineRenderer>();
+		InvokeRepeating("consumeFood", 0f, 15f);
+		InvokeRepeating("consumeSleep", 0f, 15f);
 		halfMyY = 0.25f;
 	}
 	
@@ -85,12 +95,22 @@ public class Player : MonoBehaviour {
 
 		_target = GameObject.Find("LevelManager/Camera").GetComponent<Camera>().ScreenToWorldPoint(Input.mousePosition);
 		moveInput();
-		rotateTowardMouse(_target ,coneParent.transform);
-		rotateTowardMouse(_target , gameSprite.transform);
+		rotateTowardMouse(_target , transform);
 		changeRenderer();
 		wallBlocker();
 		writePaper();
+		checkForStats();
+
 		transform.position += vecMove * Time.deltaTime;
+	}
+
+	private void consumeFood()
+	{
+		foodState -= 1;
+	}
+	private void consumeSleep()
+	{
+		sleepState -= 1;
 	}
 
 	private void writePaper()
@@ -99,6 +119,40 @@ public class Player : MonoBehaviour {
 		{
 			haveLetter = letterList.IsWriting;
 			levMan.writtenPaper += 0.1f;
+		}
+	}
+
+	private void checkForStats()
+	{
+		if (foodState == 1)
+		{
+			modifSpeed = 0.5f;
+		}
+		else if (foodState == 2)
+		{
+			modifSpeed = 0.75f;
+		}
+		else if (foodState == 3)
+		{
+			modifSpeed = 1f;
+		}
+
+		if (sleepState == 1)
+		{
+			doorSpeed = 2f;
+		}
+		else if (sleepState == 2)
+		{
+			doorSpeed = 1f;
+		}
+		else if (sleepState == 3)
+		{
+			doorSpeed = 0.5f;
+		}
+
+		if ( foodState == 0 || sleepState == 0)
+		{
+			GameEventManager.TriggerGameOver("Food or Sleep");
 		}
 	}
 
@@ -149,7 +203,18 @@ public class Player : MonoBehaviour {
 
 	public void giveFood()
 	{
+		if (foodState < 3)
+		{
+			foodState += 1;
+		}
+	}
 
+	public void giveSleep()
+	{
+		if (sleepState < 3)
+		{
+			sleepState += 1;
+		}
 	}
 
 	public void giveLetter()

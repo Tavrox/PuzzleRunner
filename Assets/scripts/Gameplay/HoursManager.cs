@@ -8,13 +8,15 @@ public class HoursManager : MonoBehaviour {
 	public enum DayEventList
 	{
 		None,
-		MailMan,
+		MailManIn,
+		MailManOut,
 		FoodMan,
 		DraculaEntering,
 		DraculaLeaving
 	};
 
-	public int mailManHour;
+	public int mailManHourIn;
+	public int mailManHourOut;
 	public int foodManHour;
 	public int draculaLeavingHour;
 	public int draculaEnteringHour;
@@ -23,18 +25,19 @@ public class HoursManager : MonoBehaviour {
 	public void Setup (LevelManager _lev) 
 	{
 		_levMan = _lev;
-		mailManHour = 5;
-		foodManHour = 20;
-		draculaLeavingHour = 30;
-		draculaEnteringHour = 50;
+		mailManHourIn = 8;
+		mailManHourOut = 12;
+		foodManHour = 15;
+		draculaLeavingHour = 18;
+		draculaEnteringHour = 6;
 	}
 
 	public DayEventList findEvent(int _hour)
 	{
 		DayEventList dvl = DayEventList.None;
-		if (_hour == mailManHour)
+		if (_hour == mailManHourIn)
 		{
-			dvl = DayEventList.MailMan;
+			dvl = DayEventList.MailManIn;
 		}
 		else if (_hour == foodManHour)
 		{
@@ -47,6 +50,10 @@ public class HoursManager : MonoBehaviour {
 		else if (_hour == draculaEnteringHour)
 		{
 			dvl = DayEventList.DraculaEntering;
+		}
+		else if (_hour == mailManHourOut)
+		{
+			dvl = DayEventList.MailManOut;
 		}
 		return dvl;
 	}

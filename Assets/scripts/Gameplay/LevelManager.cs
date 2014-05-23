@@ -156,25 +156,37 @@ public class LevelManager : MonoBehaviour {
 		{
 		case HoursManager.DayEventList.DraculaEntering :
 		{
+			GameUI.NotifPop.giveInfos("Dracula is back from hunting");
 			GameUI.dialogPop.giveInfos("Dracula is entering the game !", PopUp.CharList.Johnathan);
 			new OTTween(GameUI.dialogPop.OutPic, 1f).Tween("alpha", 1f);
 			break;
 		}
 		case HoursManager.DayEventList.DraculaLeaving :
 		{
+			GameUI.NotifPop.giveInfos("Dracula is gone hunting outside the house");
 			GameUI.dialogPop.giveInfos("Dracula is leaving the house !", PopUp.CharList.Johnathan);
 			new OTTween(GameUI.dialogPop.OutPic, 1f).Tween("alpha", 0f);
 			break;
 		}
 		case HoursManager.DayEventList.FoodMan :
 		{
-			GameUI.dialogPop.giveInfos("Food Man has arrived !", PopUp.CharList.Johnathan);
+			spawnFood(FoodSpots);
+			GameUI.NotifPop.giveInfos("The Carrier has resplenished food stocks");
+			GameUI.dialogPop.giveInfos("I can now eat in the house's kitchens", PopUp.CharList.Johnathan);
 			break;
 		}
-		case HoursManager.DayEventList.MailMan :
+		case HoursManager.DayEventList.MailManIn :
 		{
-			GameUI.dialogPop.giveInfos("Mail man has arrived !", PopUp.CharList.Johnathan);
-			GameUI.NotifPop.giveInfos("Mail man has arrived !", PopUp.CharList.Johnathan);
+			MailmanState = MailManStateList.HasArrived;
+			GameUI.dialogPop.giveInfos("The mail man is waiting for me, I should hurry", PopUp.CharList.Johnathan);
+			GameUI.NotifPop.giveInfos("The mail man has arrived");
+			break;
+		}
+		case HoursManager.DayEventList.MailManOut :
+		{
+			MailmanState = MailManStateList.Away;
+			GameUI.dialogPop.giveInfos("The mail man is gone now.", PopUp.CharList.Johnathan);
+			GameUI.NotifPop.giveInfos("The mail man is leaving");
 			break;
 		}
 

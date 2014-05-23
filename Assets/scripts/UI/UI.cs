@@ -24,8 +24,8 @@ public class UI : MonoBehaviour {
 		NotifPop.Fade();
 	
 		HandClock = FETool.findWithinChildren(gameObject, "Ingame/Panels/Clock/Aiguille").GetComponentInChildren<OTSprite>();
-		FoodState = FETool.findWithinChildren(gameObject, "Ingame/Panels/PanFood/Back").GetComponentInChildren<OTSprite>();
-		SleepState = FETool.findWithinChildren(gameObject, "Ingame/Panels/PanSleep/Back").GetComponentInChildren<OTSprite>();
+		FoodState = FETool.findWithinChildren(gameObject, "Ingame/Panels/PanFood/Bar").GetComponentInChildren<OTSprite>();
+		SleepState = FETool.findWithinChildren(gameObject, "Ingame/Panels/PanSleep/Bar").GetComponentInChildren<OTSprite>();
 
 		dialogPop = FETool.findWithinChildren(gameObject, "Ingame/Dialog").GetComponent<PopUp>();
 		dialogPop.Setup();
@@ -47,7 +47,7 @@ public class UI : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
-		HandClock.rotation = (360 / 24 ) * levMan.currH;
+		HandClock.rotation = ((360 / 24 ) * levMan.currH) -1;
 		switch (levMan.plr.haveLetter)
 		{
 		case Player.letterList.DontHave :
@@ -79,6 +79,7 @@ public class UI : MonoBehaviour {
 		}
 
 		attributeStateSprite(levMan.plr.foodState, FoodState);
+		attributeStateSprite(levMan.plr.sleepState, SleepState);
 	}
 
 	private void attributeStateSprite(int attribute, OTSprite _spr)
