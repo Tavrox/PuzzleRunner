@@ -7,7 +7,6 @@ public class DetectionCollider : MonoBehaviour {
 	{
 		if (_oth.CompareTag("Player") == true)
 		{
-			print (_oth);
 			transform.parent.GetComponent<Dracula>().State = Dracula.StateList.Chasing;
 		}
 	}

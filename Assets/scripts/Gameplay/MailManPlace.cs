@@ -20,7 +20,7 @@ public class MailManPlace : MonoBehaviour {
 
 	void OnTriggerEnter (Collider _oth)
 	{
-		if (CompareTag("Player") == true && levMan.plr.haveLetter == Player.letterList.HaveWritten)
+		if (_oth.CompareTag("Player") == true && levMan.plr.haveLetter == Player.letterList.HaveWritten)
 		{
 			levMan.triggerDayEvent(HoursManager.DayEventList.LetterSent);
 		}

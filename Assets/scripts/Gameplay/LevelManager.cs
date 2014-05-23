@@ -79,6 +79,8 @@ public class LevelManager : MonoBehaviour {
 		GameUI = currCam.GetComponentInChildren<UI>();
 		GameUI.Setup(this);
 
+		GetComponentInChildren<MailManPlace>().Setup(this);
+
 //		InvokeRepeating("updateMinute", 0f, 0.01f);
 
 		Door[] Doors = GetComponentsInChildren<Door>();
@@ -178,14 +180,16 @@ public class LevelManager : MonoBehaviour {
 		{
 		case HoursManager.DayEventList.DraculaEntering :
 		{
-			GameUI.NotifPop.giveInfos("Dracula is back from hunting");
+			MasterAudio.PlaySound("dracula_back");
+			GameUI.NotifPop.giveInfos("Dracula is back\n from hunting");
 			GameUI.dialogPop.giveInfos("Dracula is entering the game !");
 			new OTTween(GameUI.dialogPop.OutPic, 1f).Tween("alpha", 1f);
 			break;
 		}
 		case HoursManager.DayEventList.DraculaLeaving :
 		{
-			GameUI.NotifPop.giveInfos("Dracula is gone hunting outside the house");
+			MasterAudio.PlaySound("dracula_out");
+			GameUI.NotifPop.giveInfos("Dracula is gone hunting\n outside the house");
 			GameUI.dialogPop.giveInfos("Dracula is leaving the house !");
 			new OTTween(GameUI.dialogPop.OutPic, 1f).Tween("alpha", 0f);
 			break;
@@ -193,14 +197,15 @@ public class LevelManager : MonoBehaviour {
 		case HoursManager.DayEventList.FoodMan :
 		{
 			spawnFood(FoodSpots);
-			GameUI.NotifPop.giveInfos("The Carrier has resplenished food stocks");
+			MasterAudio.PlaySound("eating_bell");
+			GameUI.NotifPop.giveInfos("The Carrier has\n resplenished food stocks");
 			GameUI.dialogPop.giveInfos("I can now eat in the house's kitchens");
 			break;
 		}
 		case HoursManager.DayEventList.MailManIn :
 		{
 			MailmanState = MailManStateList.HasArrived;
-			GameUI.dialogPop.giveInfos("The mail man is waiting for me, I should hurry");
+			GameUI.dialogPop.giveInfos("The mail man is waiting\n for me, I should hurry");
 			GameUI.NotifPop.giveInfos("The mail man has arrived");
 			break;
 		}
@@ -214,8 +219,8 @@ public class LevelManager : MonoBehaviour {
 		case HoursManager.DayEventList.LetterSent :
 		{
 			MailmanState = MailManStateList.Away;
-			GameUI.dialogPop.giveInfos("I've asked Mina for some rescue \n I hope they'll arrive soon.");
-			GameUI.NotifPop.giveInfos("The mail man is leaving with the letter");
+			GameUI.dialogPop.giveInfos("I've asked Mina for some rescue \n against Dracula. I hope they'll\n arrive soon.");
+			GameUI.NotifPop.giveInfos("The mail man\n is leaving\n with the letter");
 			break;
 		}
 

@@ -52,7 +52,8 @@ public class Dracula : MonoBehaviour {
 	public float _diffY = 0f;
 	public float _angle = 0f;
 
-	public float threeSoldChasing = 20f;
+	public float threeSoldChasingMin = 10f;
+	public float threeSoldChasingMax = 5f;
 
 	// Use this for initialization
 	public void Setup (LevelManager _lev) 
@@ -99,7 +100,6 @@ public class Dracula : MonoBehaviour {
 		{
 			Debug.DrawLine (RayDL.position, hitInfo.point, Color.blue);
 			Debug.DrawLine (RayDR.position, hitInfo.point, Color.blue);
-			print (hitInfo.transform.gameObject.name);
 			blockDown();
 		}
 		if (Physics.Raycast(RayUL.position, Vector3.left, out hitInfo, halfMyY, wallMask) ||
@@ -107,7 +107,6 @@ public class Dracula : MonoBehaviour {
 		{
 			Debug.DrawLine (RayUL.position, hitInfo.point, Color.black);
 			Debug.DrawLine (RayDL.position, hitInfo.point, Color.black);
-			print (hitInfo.transform.gameObject.name);
 			blockLeft();
 		}
 		if (Physics.Raycast(RayUL.position, Vector3.up, out hitInfo, halfMyY, wallMask) ||
@@ -115,7 +114,6 @@ public class Dracula : MonoBehaviour {
 		{
 			Debug.DrawLine (RayUL.position, hitInfo.point, Color.white);
 			Debug.DrawLine (RayUR.position, hitInfo.point, Color.white);
-			print (hitInfo.transform.gameObject.name);
 			blockUp();
 		}
 		if (Physics.Raycast(RayUR.position, Vector3.right, out hitInfo, halfMyY, wallMask) ||
@@ -123,7 +121,6 @@ public class Dracula : MonoBehaviour {
 		{
 			Debug.DrawLine (RayUR.position, hitInfo.point, Color.red);
 			Debug.DrawLine (RayDR.position, hitInfo.point, Color.red);
-			print (hitInfo.transform.gameObject.name);
 			blockRight();
 		}
 	}
@@ -196,7 +193,6 @@ public class Dracula : MonoBehaviour {
 	{
 		if (MovingDir != DirList.Up)
 		{
-			print ("blcoked");
 			vecMove.y = 0f;
 			BlockedDown = true;
 		}
@@ -205,7 +201,6 @@ public class Dracula : MonoBehaviour {
 	{
 		if (MovingDir != DirList.Right)
 		{
-			print ("blcoked");
 			vecMove.x = 0f;
 			BlockedDown = true;
 		}
@@ -231,15 +226,11 @@ public class Dracula : MonoBehaviour {
 
 	private void checkForPlayer()
 	{
-//		distToPlayer = Vector3.Distance(transform.position, _plr.transform.position);
-//		if (distToPlayer < threeSoldChasing)
-//		{
-//			State = StateList.Chasing;
-//		}
-//		else
-//		{
-//			State = StateList.Patrolling;
-//		}
+		distToPlayer = Vector3.Distance(transform.position, _plr.transform.position);
+		if (distToPlayer < threeSoldChasingMax && distToPlayer > threeSoldChasingMin)
+		{
+			MasterAudio.PlaySound("laughs");
+		}
 	}
 
 
