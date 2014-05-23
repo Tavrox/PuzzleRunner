@@ -3,10 +3,13 @@ using System.Collections;
 
 public class Letter : MonoBehaviour 
 {
+	public bool Picked = false;
+
 	void OnTriggerEnter(Collider _oth)
 	{
-		if (_oth.CompareTag("Player"))
+		if (_oth.CompareTag("Player") && Picked == false)
 		{
+			Picked = true;
 			_oth.GetComponent<Player>().giveLetter();
 			MasterAudio.PlaySound("paper_drop");
 			GameObject.Find("LevelManager").GetComponent<LevelManager>().GameUI.NotifPop.giveInfos("I can now write\n a letter");

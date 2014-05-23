@@ -73,6 +73,7 @@ public class Dracula : MonoBehaviour {
 		GameEventManager.GameOver += GameOver;
 		GameEventManager.Respawn += Respawn;
 		GameEventManager.GameStart += GameStart;
+		GameEventManager.EndGame += EndGame;
 	}
 	
 	// Update is called once per frame
@@ -230,7 +231,6 @@ public class Dracula : MonoBehaviour {
 	{
 		if (MovingDir != DirList.Left)
 		{
-			print ("blcoked");
 			vecMove.x = 0f;
 			BlockedDown = true;
 		}
@@ -239,7 +239,6 @@ public class Dracula : MonoBehaviour {
 	{
 		if (MovingDir != DirList.Down)
 		{
-			print ("blcoked");
 			vecMove.y = 0f;
 			BlockedDown = true;
 		}
@@ -255,7 +254,7 @@ public class Dracula : MonoBehaviour {
 	}
 	private void Respawn()
 	{
-		giveWPM();
+		InvokeRepeating("giveWPM", 15f, 30f);
 	}
 	
 	private void GameStart()
@@ -265,8 +264,11 @@ public class Dracula : MonoBehaviour {
 	
 	private void GameOver()
 	{
-//		giveWPM();
+		CancelInvoke("giveWPM");
 	}
-
+	private void EndGame()
+	{
+		
+	}
 
 }

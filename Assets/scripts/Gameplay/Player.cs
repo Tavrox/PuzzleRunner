@@ -22,7 +22,7 @@ public class Player : MonoBehaviour {
 	{
 		Alive,
 		Dead,
-		Cutscene
+		Paper
 	};
 	public healthState Health;
 
@@ -88,7 +88,7 @@ public class Player : MonoBehaviour {
 		coneCollider = coneParent.GetComponentInChildren<BoxCollider>();
 		coneRenderer = coneParent.GetComponentInChildren<LineRenderer>();
 		InvokeRepeating("consumeFood", 30f, 30f);
-		InvokeRepeating("consumeSleep", 30f, 30f);
+		InvokeRepeating("consumeSleep", 30f, 60f);
 		halfMyY = 0.25f;
 
 		
@@ -115,7 +115,15 @@ public class Player : MonoBehaviour {
 			vecMove = Vector3.zero;
 			speed = 0f;
 			break;
-
+		}
+		case healthState.Paper :
+		{
+			PlayAnim("static");
+			vecMove = Vector3.zero;
+			speed = 0f;
+			writePaper();
+			rotateTowardMouse(_target , transform);
+			break;
 		}
 		case healthState.Alive:
 		{
@@ -159,17 +167,27 @@ public class Player : MonoBehaviour {
 
 	private void writePaper()
 	{
-		if (Input.GetKey(KeyCode.E) && (haveLetter == letterList.Have || haveLetter == letterList.IsWriting))
+		if (haveLetter != letterList.HaveWritten)
 		{
-			MasterAudio.PlaySound("paper_in");
-			MasterAudio.PlaySound("writting");
-			haveLetter = letterList.IsWriting;
-			levMan.writtenPaper += 0.1f;
+			if (Input.GetKey(KeyCode.E) && (haveLetter == letterList.Have || haveLetter == letterList.IsWriting))
+			{
+				Health = healthState.Paper;
+				MasterAudio.PlaySound("paper_in");
+				MasterAudio.PlaySound("writting");
+				haveLetter = letterList.IsWriting;
+				levMan.writtenPaper += 0.1f;
+			}
+			else if (Input.GetKeyUp(KeyCode.E) && (haveLetter == letterList.Have || haveLetter == letterList.IsWriting))
+			{
+				Health = healthState.Alive;
+				MasterAudio.StopAllOfSound("writting");
+				MasterAudio.PlaySound("paper_out");
+			}
 		}
-		else if (Input.GetKeyUp(KeyCode.E) && (haveLetter == letterList.Have || haveLetter == letterList.IsWriting))
+		if (levMan.writtenPaper > 100)
 		{
-			MasterAudio.StopAllOfSound("writting");
-			MasterAudio.PlaySound("paper_out");
+			Health = healthState.Alive;
+			haveLetter = letterList.HaveWritten;
 		}
 	}
 
@@ -218,49 +236,49 @@ public class Player : MonoBehaviour {
 
 	private void moveInput()
 	{
-		if (Input.GetKey(KeyCode.LeftArrow))
+		if (Input.GetKey(KeyCode.Q))
 		{
 			PlayAnim("walk");
 			vecMove.x -= speed;
 			MovingDir = DirList.Left;
 		}
-		else if (Input.GetKeyUp(KeyCode.LeftArrow))
+		else if (Input.GetKeyUp(KeyCode.Q))
 		{
 			PlayAnim("static");
 			vecMove.x -= 5f;
 		}
 		
-		if (Input.GetKey(KeyCode.DownArrow))
+		if (Input.GetKey(KeyCode.S))
 		{
 			PlayAnim("walk");
 			vecMove.y -= speed;
 			MovingDir = DirList.Down;
 		}
-		else if (Input.GetKeyUp(KeyCode.DownArrow))
+		else if (Input.GetKeyUp(KeyCode.S))
 		{
 			PlayAnim("static");
 			vecMove.y += 5f;
 		}
 		
-		if (Input.GetKey(KeyCode.UpArrow))
+		if (Input.GetKey(KeyCode.Z))
 		{
 			PlayAnim("walk");
 			vecMove.y += speed;
 			MovingDir = DirList.Up;
 		}
-		else if (Input.GetKeyUp(KeyCode.UpArrow))
+		else if (Input.GetKeyUp(KeyCode.Z))
 		{
 			PlayAnim("static");
 			vecMove.y += 5f;
 		}
 		
-		if (Input.GetKey(KeyCode.RightArrow))
+		if (Input.GetKey(KeyCode.D))
 		{
 			PlayAnim("walk");
 			vecMove.x += speed;
 			MovingDir = DirList.Right;
 		}
-		else if (Input.GetKeyUp(KeyCode.RightArrow))
+		else if (Input.GetKeyUp(KeyCode.D))
 		{
 			PlayAnim("static");
 			vecMove.x += 5f;

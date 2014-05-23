@@ -115,7 +115,7 @@ public class PopUp : MonoBehaviour {
 		{
 			case CharList.Dracula :
 			{
-			new OTTween(linkText, 0.5f).Tween("color", Color.red);
+			linkText.makeFadeIn();
 			break;
 			}
 				

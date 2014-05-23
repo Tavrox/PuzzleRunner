@@ -13,6 +13,8 @@ public class UI : MonoBehaviour {
 	public OTSprite HandClock;
 	public OTSprite FoodState;
 	public OTSprite SleepState;
+	public OTSprite WillBack;
+	public TextUI WillBackTxt;
 
 	public OTSprite DarkBG;
 
@@ -30,6 +32,8 @@ public class UI : MonoBehaviour {
 		SleepState = FETool.findWithinChildren(gameObject, "Ingame/Panels/PanSleep/Bar").GetComponentInChildren<OTSprite>();
 
 		dialogPop = FETool.findWithinChildren(gameObject, "Ingame/Dialog").GetComponent<PopUp>();
+		WillBack = FETool.findWithinChildren(gameObject, "Ingame/Dialog/WillBeBack").GetComponentInChildren<OTSprite>();
+		WillBackTxt = FETool.findWithinChildren(gameObject, "Ingame/Dialog/WillBeBack").GetComponentInChildren<TextUI>();
 		dialogPop.Setup();
 //		dialogPop.Fade();
 
@@ -42,6 +46,7 @@ public class UI : MonoBehaviour {
 		GameEventManager.GameOver += GameOver;
 		GameEventManager.Respawn += Respawn;
 		GameEventManager.GameStart += GameStart;
+		GameEventManager.EndGame += EndGame;
 	}
 
 	
@@ -93,6 +98,10 @@ public class UI : MonoBehaviour {
 	{
 		new OTTween(DarkBG, 1f).Tween("alpha", 1f);
 	}
+	private void DisplayWinScreen()
+	{
+		new OTTween(DarkBG, 1f).Tween("alpha", 1f);
+	}
 
 	private void StartScreen()
 	{
@@ -135,11 +144,34 @@ public class UI : MonoBehaviour {
 	}
 	private void GameOver()
 	{
-		print ("dead");
+		MasterAudio.PlaySound("death");
+		StartCoroutine("sayDied");
+	}
+	private void EndGame()
+	{
+		StartCoroutine("WinPlz");
+	}
+
+	IEnumerator WinPlz()
+	{
+		MasterAudio.FadeAllPlaylistsToVolume(0f, 3f);
+		yield return new WaitForSeconds(3f);
+		MasterAudio.PlaySound("win");
+		DisplayWinScreen();
+
+	}
+
+	IEnumerator sayDied()
+	{
+		MasterAudio.FadeAllPlaylistsToVolume(0f, 3f);
+		yield return new WaitForSeconds(3f);
+		MasterAudio.PlaySound("game_over");
 		DisplayDeathScreen();
 	}
+
 	private void Respawn()
 	{
+		MasterAudio.FadeAllPlaylistsToVolume(1f, 3f);
 		fadeDeathScreen();
 		fadeStartScreen();
 	}

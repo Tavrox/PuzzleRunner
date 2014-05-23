@@ -33,6 +33,8 @@ public class LevelManager : MonoBehaviour {
 	public int currD;
 	public int currH;
 	public int currM;
+	public int saveDay;
+	public int remainingDay = 5;
 	public WaypointDirector pathDirector;
 	public UI GameUI;
 	public float writtenPaper;
@@ -99,6 +101,12 @@ public class LevelManager : MonoBehaviour {
 		GameEventManager.GameOver += GameOver;
 		GameEventManager.Respawn += Respawn;
 		GameEventManager.GameStart += GameStart;
+		GameEventManager.EndGame += EndGame;
+
+		MasterAudio.PlaySound("ambiance");
+
+//		GameEventManager.TriggerGameStart();
+		GameEventManager.TriggerRespawn("init");
 	}
 	
 	// Update is called once per frame
@@ -106,20 +114,59 @@ public class LevelManager : MonoBehaviour {
 	{
 		currCam.transform.position =  new Vector3( FETool.Round(plr.transform.position.x, 2), FETool.Round(plr.transform.position.y, 2) - 0.8f, -1000f);
 		realWrittenPaper = Mathf.RoundToInt(writtenPaper);
+		if (currD == saveDay)
+		{
+			GameEventManager.TriggerEndGame();
+		}
 
-		if (Input.GetKey(KeyCode.A))
-		{
-			GameUI.dialogPop.giveInfos("LOL", PopUp.CharList.Dracula);
-		}
-		if (Input.GetKey(KeyCode.B))
-		{
-			GameUI.dialogPop.giveInfos("TROLLA", PopUp.CharList.Johnathan);
-		}
-		if (Input.GetKey(KeyCode.C))
-		{
-			GameUI.NotifPop.giveInfos("TROLLA");
-		}
+//		if (Input.GetKey(KeyCode.A))
+//		{
+//			GameUI.dialogPop.giveInfos("LOL", PopUp.CharList.Dracula);
+//		}
+//		if (Input.GetKey(KeyCode.B))
+//		{
+//			GameUI.dialogPop.giveInfos("TROLLA", PopUp.CharList.Johnathan);
+//		}
+//		if (Input.GetKey(KeyCode.C))
+//		{
+//			GameUI.NotifPop.giveInfos("TROLLA");
+//		}
 		checkForDifficulty();
+	}
+
+	public void doSleep(Bed.hourList _hr)
+	{
+		switch (_hr)
+		{
+		case Bed.hourList.Three :
+		{
+			currH += 1;
+			checkHour();
+			currH += 1;
+			checkHour();
+			currH += 1;
+			checkHour();
+			break;
+		}
+		case Bed.hourList.Six :
+		{
+			currH += 1;
+			checkHour();
+			currH += 1;
+			checkHour();
+			currH += 1;
+			checkHour();
+
+			currH += 1;
+			checkHour();
+			currH += 1;
+			checkHour();
+			currH += 1;
+			checkHour();
+			break;
+		}
+		}
+
 	}
 
 	private void updateMinute()
@@ -139,20 +186,31 @@ public class LevelManager : MonoBehaviour {
 		{
 			parseM = "0" + currM;
 		}
+
+		checkHour();
 		if (currH < 10)
 		{
 			parseH = "0" + currH;
 		}
+		GameUI.Clock.text = parseH + ":" + parseM;
+	}
+	public void checkForDifficulty()
+	{
+
+	}
+	public void checkHour()
+	{
+
 		if (currH == 24)
 		{
 			MasterAudio.PlaySound("clock_bell");
 			currH = 1;
 			currD += 1;
 		}
-
+		
 		if (currH > 6 && currH < 18)
 		{
-//			Hours.currentTime = HoursManager.DayTime.Day;
+			//			Hours.currentTime = HoursManager.DayTime.Day;
 			GameObject[] objLights = GameObject.FindGameObjectsWithTag("Lights");
 			foreach (GameObject obj in objLights)
 			{
@@ -168,13 +226,9 @@ public class LevelManager : MonoBehaviour {
 				obj.GetComponent<Light>().color = new Color(40f, 44f, 121f);
 			}
 		}
-		GameUI.Clock.text = parseH + ":" + parseM;
 		triggerDayEvent(Hours.findEvent(currH));
 	}
-	public void checkForDifficulty()
-	{
 
-	}
 	public void testLights(HoursManager.DayTime _time)
 	{
 
@@ -205,8 +259,10 @@ public class LevelManager : MonoBehaviour {
 
 	public void respawnPaper(List<GameObject> _ppSpot)
 	{
+		print ("spawn!");
 		int randId = Random.Range(0, _ppSpot.Count);
 		GameObject obj = Instantiate(Resources.Load("Objects/Letter")) as GameObject;
+		obj.GetComponent<Letter>().Picked = false;
 		obj.transform.position = _ppSpot[randId].transform.position;
 		obj.transform.parent = _ppSpot[randId].transform;
 	}
@@ -237,6 +293,8 @@ public class LevelManager : MonoBehaviour {
 		{
 		case HoursManager.DayEventList.DraculaEntering :
 		{
+			GameUI.WillBack.alpha = 0f;
+			GameUI.WillBackTxt.makeFadeIn();
 			MasterAudio.PlaySound("dracula_back");
 			GameUI.NotifPop.giveInfos("Dracula is back\n from hunting");
 			GameUI.dialogPop.giveInfos("Dracula is entering the game !");
@@ -245,6 +303,8 @@ public class LevelManager : MonoBehaviour {
 		}
 		case HoursManager.DayEventList.DraculaLeaving :
 		{
+			GameUI.WillBack.alpha = 1f;
+			GameUI.WillBackTxt.makeFadeOut();
 			MasterAudio.PlaySound("dacrula_out");
 			GameUI.NotifPop.giveInfos("Dracula is gone hunting\n outside the house");
 			GameUI.dialogPop.giveInfos("Dracula is leaving the house !");
@@ -264,36 +324,52 @@ public class LevelManager : MonoBehaviour {
 			MailmanState = MailManStateList.HasArrived;
 			MasterAudio.PlaySound("door_bell");
 			GameUI.dialogPop.giveInfos("The mail man is waiting\n for me, I should hurry");
-			GameUI.NotifPop.giveInfos("The mail man has arrived");
+			GameUI.NotifPop.giveInfos("The mail man\n has arrived");
 			break;
 		}
 		case HoursManager.DayEventList.MailManOut :
 		{
 			MailmanState = MailManStateList.Away;
 			GameUI.dialogPop.giveInfos("The mail man is gone now.");
-			GameUI.NotifPop.giveInfos("The mail man is leaving");
+			GameUI.NotifPop.giveInfos("The mail man\n is leaving");
 			break;
 		}
 		case HoursManager.DayEventList.LetterSent :
 		{
+			saveDay = currD + remainingDay;
 			MailmanState = MailManStateList.Away;
-			GameUI.dialogPop.giveInfos("I've asked Mina for some rescue \n against Dracula. I hope they'll\n arrive soon.");
+			plr.haveLetter = Player.letterList.Sent;
+			GameUI.dialogPop.giveInfos("I've asked Mina for some rescue \n against Dracula. I think they'll\n arrive within" + (saveDay - currD)  + " days.");
 			GameUI.NotifPop.giveInfos("The mail man\n is leaving\n with the letter");
+			InvokeRepeating("recallObjective", 30f, 30f);
 			break;
 		}
 
 		}
 	}
-	
-	private void GameOver()
+
+	private void recallObjective()
+	{
+		GameUI.dialogPop.giveInfos("I've asked Mina for some rescue \n against Dracula. I think they'll\n arrive within" + (saveDay - currD)  + " days.");
+	}
+
+	private void EndGame()
 	{
 		
 	}
+	private void GameOver()
+	{
+
+	}
 	private void Respawn()
 	{
+		GameUI.dialogPop.giveInfos("This place doesn't look\n really comfy. I should find a letter and\n ask Mina some help.");
 		currD = 1;
 		currH = 1;
 		currM = 1;
+		writtenPaper = 0;
+		realWrittenPaper = 0;
+		respawnPaper(PaperSpots);
 	}
 	private void GameStart()
 	{
