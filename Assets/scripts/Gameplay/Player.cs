@@ -194,6 +194,7 @@ public class Player : MonoBehaviour {
 		}
 		if (levMan.writtenPaper > 100)
 		{
+			MasterAudio.StopAllOfSound("writting");
 			Health = healthState.Alive;
 			haveLetter = letterList.HaveWritten;
 		}

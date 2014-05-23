@@ -276,7 +276,6 @@ public class LevelManager : MonoBehaviour {
 
 	public void respawnPaper(List<GameObject> _ppSpot)
 	{
-		print ("spawn!");
 		int randId = Random.Range(0, _ppSpot.Count);
 		GameObject obj = Instantiate(Resources.Load("Objects/Letter")) as GameObject;
 		obj.GetComponent<Letter>().Picked = false;
