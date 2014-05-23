@@ -20,4 +20,13 @@ public class UIBtn : MonoBehaviour {
 	{
 		GameEventManager.TriggerRespawn("btn ui");
 	}
+
+	void OnMouseOver()
+	{
+		if (GetComponent<OTSprite>() != null)
+		{
+//			if (GetComponent<OTSprite>().frameName
+//			GetComponent<OTSprite>();
+		}
+	}
 }

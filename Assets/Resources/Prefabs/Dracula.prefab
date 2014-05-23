@@ -257,7 +257,7 @@ Transform:
   m_GameObject: {fileID: 100010}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: .9375, y: 1.19791675, z: 0}
+  m_LocalScale: {x: .9375, y: 1.19791675, z: 1}
   m_Children: []
   m_Father: {fileID: 400012}
 --- !u!4 &400012
@@ -321,8 +321,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100020}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 3.81469727e-06}
-  m_LocalScale: {x: 1.48022878, y: 1.89140415, z: .0164469853}
+  m_LocalPosition: {x: 0, y: 3.81469727e-06, z: 3.81469727e-06}
+  m_LocalScale: {x: 1.48022878, y: 1.89140379, z: 1}
   m_Children: []
   m_Father: {fileID: 400022}
 --- !u!4 &400022
@@ -609,7 +609,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Animating Sprite (id=-172412)
   _position: {x: 0, y: 3.81469727e-06}
-  _size: {x: 1.48022878, y: 1.89140415}
+  _size: {x: 1.48022878, y: 1.89140379}
   _rotation: 0
   _pivot: 4
   _pivotPoint: {x: 0, y: 0}
@@ -633,8 +633,8 @@ MonoBehaviour:
   protoType: 
   baseName: 
   oSize: {x: .9375, y: 1.19791675}
-  imageSize: {x: 90, y: 114.999985}
-  _offset: {x: 0, y: 3.81469727e-06}
+  imageSize: {x: 1.48022878, y: 1.89140379}
+  _offset: {x: 0, y: 0}
   _baseOffset: {x: 0, y: 0}
   _flipHorizontal: 0
   _flipVertical: 0
@@ -645,14 +645,14 @@ MonoBehaviour:
   _alpha: 1
   _image: {fileID: 0}
   sizeImages: []
-  _frameIndex: 3
-  _frameName: dracula_spawn_01
+  _frameIndex: 2
+  _frameName: dracula_spawn_00
   _spriteContainer: {fileID: 0}
   _containerName: gameplay
   _newSprite: 0
   _animation: {fileID: 0}
   _animationFrameset: 
-  _speed: .0500000007
+  _speed: .5
   _looping: 0
   _numberOfPlays: -1
   _playOnStart: 1
