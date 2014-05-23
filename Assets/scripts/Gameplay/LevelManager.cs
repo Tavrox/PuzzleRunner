@@ -39,6 +39,7 @@ public class LevelManager : MonoBehaviour {
 	public UI GameUI;
 	public float writtenPaper;
 	public int realWrittenPaper;
+	public bool hourChecked = false;
 
 	// Use this for initialization
 	void Awake () 
@@ -118,20 +119,6 @@ public class LevelManager : MonoBehaviour {
 		{
 			GameEventManager.TriggerEndGame();
 		}
-
-//		if (Input.GetKey(KeyCode.A))
-//		{
-//			GameUI.dialogPop.giveInfos("LOL", PopUp.CharList.Dracula);
-//		}
-//		if (Input.GetKey(KeyCode.B))
-//		{
-//			GameUI.dialogPop.giveInfos("TROLLA", PopUp.CharList.Johnathan);
-//		}
-//		if (Input.GetKey(KeyCode.C))
-//		{
-//			GameUI.NotifPop.giveInfos("TROLLA");
-//		}
-		checkForDifficulty();
 	}
 
 	public void doSleep(Bed.hourList _hr)
@@ -174,6 +161,7 @@ public class LevelManager : MonoBehaviour {
 		if (currM == 59)
 		{
 			currH += 1;
+			hourChecked = false;
 			currM = 0;
 		}
 		else
@@ -186,7 +174,6 @@ public class LevelManager : MonoBehaviour {
 		{
 			parseM = "0" + currM;
 		}
-
 		checkHour();
 		if (currH < 10)
 		{
@@ -200,33 +187,39 @@ public class LevelManager : MonoBehaviour {
 	}
 	public void checkHour()
 	{
-
-		if (currH == 24)
+		if (hourChecked == false)
 		{
-			MasterAudio.PlaySound("clock_bell");
-			currH = 1;
-			currD += 1;
-		}
-		
-		if (currH > 6 && currH < 18)
-		{
-			//			Hours.currentTime = HoursManager.DayTime.Day;
-			GameObject[] objLights = GameObject.FindGameObjectsWithTag("Lights");
-			foreach (GameObject obj in objLights)
+			print ("check");
+			if (currH == 24)
 			{
-				obj.GetComponent<Light>().color = new Color(217f, 242f, 255f);
+				MasterAudio.PlaySound("clock_bell");
+				currH = 1;
+				currD += 1;
 			}
-		}
-		else
-		{
-			Hours.currentTime = HoursManager.DayTime.Night;
-			GameObject[] objLights = GameObject.FindGameObjectsWithTag("Lights");
-			foreach (GameObject obj in objLights)
+			
+			if (currH > 6 && currH < 18)
 			{
-				obj.GetComponent<Light>().color = new Color(40f, 44f, 121f);
+				Hours.currentTime = HoursManager.DayTime.Day;
+				GameObject[] objLights = GameObject.FindGameObjectsWithTag("Lights");
+				foreach (GameObject obj in objLights)
+				{
+					obj.GetComponent<Light>().color = new Color(217f, 242f, 255f);
+				}
+				CancelInvoke("laughPlz");
 			}
+			else
+			{
+				Hours.currentTime = HoursManager.DayTime.Night;
+				GameObject[] objLights = GameObject.FindGameObjectsWithTag("Lights");
+				foreach (GameObject obj in objLights)
+				{
+					obj.GetComponent<Light>().color = new Color(40f, 44f, 121f);
+				}
+				InvokeRepeating("laughPlz", 20f, 20f);
+			}
+			hourChecked = true;
+			triggerDayEvent(Hours.findEvent(currH));
 		}
-		triggerDayEvent(Hours.findEvent(currH));
 	}
 
 	public void testLights(HoursManager.DayTime _time)
@@ -236,6 +229,7 @@ public class LevelManager : MonoBehaviour {
 		{
 			case HoursManager.DayTime.Day :
 			{
+				InvokeRepeating("laughPlz", 20f, 20f);
 				Hours.currentTime = HoursManager.DayTime.Day;
 				GameObject[] objLights = GameObject.FindGameObjectsWithTag("Lights");
 				foreach (GameObject obj in objLights)
@@ -246,6 +240,7 @@ public class LevelManager : MonoBehaviour {
 			}
 			case HoursManager.DayTime.Night :
 			{
+				CancelInvoke("laughPlz");
 				Hours.currentTime = HoursManager.DayTime.Night;
 				GameObject[] objLights = GameObject.FindGameObjectsWithTag("Lights");
 				foreach (GameObject obj in objLights)
@@ -303,6 +298,7 @@ public class LevelManager : MonoBehaviour {
 		}
 		case HoursManager.DayEventList.DraculaLeaving :
 		{
+			InvokeRepeating("laughPlz", 20f, 20f);
 			GameUI.WillBack.alpha = 1f;
 			GameUI.WillBackTxt.makeFadeOut();
 			MasterAudio.PlaySound("dacrula_out");
@@ -346,6 +342,10 @@ public class LevelManager : MonoBehaviour {
 		}
 
 		}
+	}
+	private void laughPlz()
+	{
+		MasterAudio.PlaySound("laugh");
 	}
 
 	private void recallObjective()

@@ -84,30 +84,36 @@ public class Dracula : MonoBehaviour {
 
 		switch (_levman.Hours.currentTime)
 		{
-		case HoursManager.DayTime.Day :
-		{
-//			transform.position = new Vector3(500f,500f, 500f);
-			break;
-		}
-		case HoursManager.DayTime.Night :
-		{
-			switch (State)
+			case HoursManager.DayTime.Day :
 			{
-			case StateList.Patrolling :
-			{
-				Move(currWp.nextWP.transform.position);
-				rotateTowardPlayer(currWp.nextWP.transform.position, transform);
+	//			transform.position = new Vector3(500f,500f, 500f);
 				break;
 			}
-			case StateList.Chasing :
+			case HoursManager.DayTime.Night :
 			{
-				Move(_plr.transform.position);
-				rotateTowardPlayer(_plr.transform.position, transform);
-				break;
-			}
+				switch (State)
+				{
+				case StateList.Patrolling :
+				{
+					Move(currWp.nextWP.transform.position);
+					rotateTowardPlayer(currWp.nextWP.transform.position, transform);
+					break;
+				}
+				case StateList.Chasing :
+				{
+					Move(_plr.transform.position);
+					rotateTowardPlayer(_plr.transform.position, transform);
+					break;
+				}
+				case StateList.CutScene :
+				{
+					vecMove = Vector3.zero ;
+					speed = 0f;
+					break;
+				}
 			}
 			break;
-		}
+			}
 		}
 		wallBlocker();
 		gameObject.transform.position += vecMove ;
@@ -246,11 +252,11 @@ public class Dracula : MonoBehaviour {
 
 	private void checkForPlayer()
 	{
-		distToPlayer = Vector3.Distance(transform.position, _plr.transform.position);
-		if (distToPlayer < threeSoldChasingMax && distToPlayer > threeSoldChasingMin)
-		{
-			MasterAudio.PlaySound("laughs");
-		}
+//		distToPlayer = Vector3.Distance(transform.position, _plr.transform.position);
+//		if (distToPlayer < threeSoldChasingMax && distToPlayer > threeSoldChasingMin)
+//		{
+//			MasterAudio.PlaySound("laughs");
+//		}
 	}
 	private void Respawn()
 	{
@@ -264,11 +270,16 @@ public class Dracula : MonoBehaviour {
 	
 	private void GameOver()
 	{
+		State = StateList.CutScene;
 		CancelInvoke("giveWPM");
 	}
 	private void EndGame()
 	{
 		
 	}
+
+	
+	
+
 
 }

@@ -26,6 +26,13 @@ public class Player : MonoBehaviour {
 	};
 	public healthState Health;
 
+	public enum ActiviList
+	{
+		Static,
+		Walking
+	};
+	public ActiviList Activity;
+
 	public enum DirList
 	{
 		Up,
@@ -65,6 +72,7 @@ public class Player : MonoBehaviour {
 	private Transform RayUL;
 	private Transform RayDR;
 	private Transform RayUR;
+	private bool stepTriggered = false;
 
 	public int foodState = 3;
 	public int sleepState = 3;
@@ -238,54 +246,76 @@ public class Player : MonoBehaviour {
 	{
 		if (Input.GetKey(KeyCode.Q))
 		{
-			PlayAnim("walk");
 			vecMove.x -= speed;
 			MovingDir = DirList.Left;
 		}
 		else if (Input.GetKeyUp(KeyCode.Q))
 		{
-			PlayAnim("static");
 			vecMove.x -= 5f;
 		}
 		
 		if (Input.GetKey(KeyCode.S))
 		{
-			PlayAnim("walk");
 			vecMove.y -= speed;
 			MovingDir = DirList.Down;
 		}
 		else if (Input.GetKeyUp(KeyCode.S))
 		{
-			PlayAnim("static");
 			vecMove.y += 5f;
 		}
 		
 		if (Input.GetKey(KeyCode.Z))
 		{
-			PlayAnim("walk");
 			vecMove.y += speed;
 			MovingDir = DirList.Up;
 		}
 		else if (Input.GetKeyUp(KeyCode.Z))
 		{
-			PlayAnim("static");
 			vecMove.y += 5f;
 		}
 		
 		if (Input.GetKey(KeyCode.D))
 		{
-			PlayAnim("walk");
 			vecMove.x += speed;
 			MovingDir = DirList.Right;
 		}
 		else if (Input.GetKeyUp(KeyCode.D))
 		{
-			PlayAnim("static");
 			vecMove.x += 5f;
 		}
+
+		if (Input.GetKey(KeyCode.Z) || Input.GetKey(KeyCode.Q) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))
+		{
+			FootSteps();
+			PlayAnim("walk");
+			Activity = ActiviList.Walking;
+		}
+		if (!Input.GetKey(KeyCode.Z) && !Input.GetKey(KeyCode.Q) && !Input.GetKey(KeyCode.S) && !Input.GetKey(KeyCode.D))
+		{
+			Activity = ActiviList.Static;
+			PlayAnim("static");
+			CancelInvoke("Foots");
+			stepTriggered = false;
+		}
+
 		vecMove.x *= 0.1f;
 		vecMove.y *= 0.1f;
 	}
+
+	private void FootSteps()
+	{
+		if (stepTriggered != true)
+		{
+			stepTriggered = true;
+			InvokeRepeating("Foots", 0f, 0.4f);
+		}
+	}
+	private void Foots()
+	{
+		MasterAudio.PlaySound("creak");
+		MasterAudio.PlaySound("step");
+	}
+
 
 	public void giveFood()
 	{
@@ -397,6 +427,7 @@ public class Player : MonoBehaviour {
 	private void GameOver()
 	{
 		Health = healthState.Dead;
+		CancelInvoke("Foots");
 	}
 
 	private void changeRenderer()
