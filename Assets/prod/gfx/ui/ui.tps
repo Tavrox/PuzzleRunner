@@ -164,6 +164,7 @@
             <filename>pointer.png</filename>
             <filename>portrait_dracula.png</filename>
             <filename>portrait_johnathan.png</filename>
+            <filename>xbl.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

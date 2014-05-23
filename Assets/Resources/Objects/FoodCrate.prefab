@@ -209,7 +209,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.75999999, y: 1.50999999, z: 1}
+  m_Size: {x: 1.25999999, y: 1.23000002, z: 50}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!65 &6500002
 BoxCollider:
@@ -342,6 +342,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15b6d9d1d0607204fab431e05eec2413, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Picked: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

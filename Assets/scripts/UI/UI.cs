@@ -14,6 +14,8 @@ public class UI : MonoBehaviour {
 	public OTSprite FoodState;
 	public OTSprite SleepState;
 
+	public OTSprite DarkBG;
+
 	// Use this for initialization
 	public void Setup (LevelManager _lev) 
 	{
@@ -35,6 +37,11 @@ public class UI : MonoBehaviour {
 		paperText = FETool.findWithinChildren(gameObject, "Ingame/Paper/State").GetComponentInChildren<TextUI>();
 
 		Clock = FETool.findWithinChildren(gameObject, "Ingame/Panels/Clock/Hours").GetComponent<TextUI>();
+		DarkBG = FETool.findWithinChildren(gameObject, "Ingame/black").GetComponent<OTSprite>();
+		
+		GameEventManager.GameOver += GameOver;
+		GameEventManager.Respawn += Respawn;
+		GameEventManager.GameStart += GameStart;
 	}
 
 	
@@ -60,7 +67,7 @@ public class UI : MonoBehaviour {
 		{
 			Paper.frameName = "paper_found";
 			Paper.alpha = 0.1f;
-			paperText.text = "Hold R To Write";
+			paperText.text = "Hold E To Write";
 			break;
 		}
 		case Player.letterList.IsWriting :
@@ -82,6 +89,26 @@ public class UI : MonoBehaviour {
 		attributeStateSprite(levMan.plr.sleepState, SleepState);
 	}
 
+	private void DisplayDeathScreen()
+	{
+		new OTTween(DarkBG, 1f).Tween("alpha", 1f);
+	}
+
+	private void StartScreen()
+	{
+		new OTTween(DarkBG, 1f).Tween("alpha", 1f);
+	}
+
+	public void fadeDeathScreen()
+	{
+		new OTTween(DarkBG, 1f).Tween("alpha", 0f);
+	}
+
+	public void fadeStartScreen()
+	{
+		new OTTween(DarkBG, 1f).Tween("alpha", 0f);
+	}
+
 	private void attributeStateSprite(int attribute, OTSprite _spr)
 	{
 		if (attribute == 0)
@@ -100,5 +127,20 @@ public class UI : MonoBehaviour {
 		{
 			_spr.frameName = "bar_03";
 		}
+	}
+
+	private void GameStart()
+	{
+		StartScreen();
+	}
+	private void GameOver()
+	{
+		print ("dead");
+		DisplayDeathScreen();
+	}
+	private void Respawn()
+	{
+		fadeDeathScreen();
+		fadeStartScreen();
 	}
 }

@@ -15,6 +15,12 @@ public class HoursManager : MonoBehaviour {
 		DraculaLeaving,
 		LetterSent
 	};
+	public enum DayTime
+	{
+		Day,
+		Night
+	};
+	public DayTime currentTime;
 
 	public int mailManHourIn;
 	public int mailManHourOut;

@@ -72,15 +72,15 @@
             <key>clock.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{559,5},{138,138}}</string>
+                <string>{{559,5},{141,142}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{138,138}}</string>
+                <string>{{0,0},{141,142}}</string>
                 <key>sourceSize</key>
-                <string>{138,138}</string>
+                <string>{141,142}</string>
             </dict>
             <key>dial_bulle.png</key>
             <dict>
@@ -212,6 +212,19 @@
                 <key>sourceSize</key>
                 <string>{149,149}</string>
             </dict>
+            <key>xbl.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{313,467},{21,11}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{21,11}}</string>
+                <key>sourceSize</key>
+                <string>{21,11}</string>
+            </dict>
         </dict>
         <key>metadata</key>
         <dict>
@@ -222,7 +235,7 @@
             <key>size</key>
             <string>{1024,1024}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:7f46c7f54d3b3e9d1dac9ecda36f20fc:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:3523395055345f3fe29f2f9f6ee7fedd:1/1$</string>
             <key>textureFileName</key>
             <string>ui.png</string>
         </dict>

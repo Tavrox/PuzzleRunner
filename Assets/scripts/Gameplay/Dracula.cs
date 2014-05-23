@@ -31,7 +31,9 @@ public class Dracula : MonoBehaviour {
 	private Vector3 pos;
 	private Vector3 target;
 	private Vector3 direction;
+	public float initSpeed = 20f;
 	public float speed = 20f;	
+	public float modifSpeed = 1f;
 	public Vector3 vecMove;
 	
 	public Vector3 mypos = Vector3.zero;
@@ -66,6 +68,11 @@ public class Dracula : MonoBehaviour {
 		RayUL = FETool.findWithinChildren(gameObject, "RayOrigin_DR").transform;
 		RayDR = FETool.findWithinChildren(gameObject, "RayOrigin_UL").transform;
 		RayUR = FETool.findWithinChildren(gameObject, "RayOrigin_UR").transform;
+		InvokeRepeating("giveWPM", 0f, 15f);
+		
+		GameEventManager.GameOver += GameOver;
+		GameEventManager.Respawn += Respawn;
+		GameEventManager.GameStart += GameStart;
 	}
 	
 	// Update is called once per frame
@@ -73,8 +80,18 @@ public class Dracula : MonoBehaviour {
 	{
 		checkForPlayer();
 		vecMove = Vector3.zero;
-		switch (State)
+
+		switch (_levman.Hours.currentTime)
 		{
+		case HoursManager.DayTime.Day :
+		{
+//			transform.position = new Vector3(500f,500f, 500f);
+			break;
+		}
+		case HoursManager.DayTime.Night :
+		{
+			switch (State)
+			{
 			case StateList.Patrolling :
 			{
 				Move(currWp.nextWP.transform.position);
@@ -87,6 +104,9 @@ public class Dracula : MonoBehaviour {
 				rotateTowardPlayer(_plr.transform.position, transform);
 				break;
 			}
+			}
+			break;
+		}
 		}
 		wallBlocker();
 		gameObject.transform.position += vecMove ;
@@ -131,6 +151,7 @@ public class Dracula : MonoBehaviour {
 		{
 			pos = gameObject.transform.position;
 			direction = Vector3.Normalize(target - pos);
+			speed = initSpeed * modifSpeed;
 			vecMove = new Vector3 ( (speed * direction.x) * Time.deltaTime, (speed * direction.y) * Time.deltaTime, 0f);
 		}
 	}
@@ -231,6 +252,20 @@ public class Dracula : MonoBehaviour {
 		{
 			MasterAudio.PlaySound("laughs");
 		}
+	}
+	private void Respawn()
+	{
+		giveWPM();
+	}
+	
+	private void GameStart()
+	{
+//		giveWPM();
+	}
+	
+	private void GameOver()
+	{
+//		giveWPM();
 	}
 
 

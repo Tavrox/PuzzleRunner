@@ -35,6 +35,7 @@ public class Player : MonoBehaviour {
 	};
 	public DirList MovingDir;
 	public DirList FacingDir;
+	public Vector3 initpos;
 	
 	public float speed = 5f;
 	public float initSpeed = 5f;
@@ -89,6 +90,12 @@ public class Player : MonoBehaviour {
 		InvokeRepeating("consumeFood", 0f, 15f);
 		InvokeRepeating("consumeSleep", 0f, 15f);
 		halfMyY = 0.25f;
+
+		
+		
+		GameEventManager.GameOver += GameOver;
+		GameEventManager.Respawn += Respawn;
+		GameEventManager.GameStart += GameStart;
 	}
 	
 	// Update is called once per frame
@@ -98,34 +105,71 @@ public class Player : MonoBehaviour {
 		BlockedLeft = false;
 		BlockedUp = false;
 		BlockedRight = false;
-		speed = initSpeed * modifSpeed;
-
 		_target = GameObject.Find("LevelManager/Camera").GetComponent<Camera>().ScreenToWorldPoint(Input.mousePosition);
-		moveInput();
-		rotateTowardMouse(_target , transform);
-		changeRenderer();
-		wallBlocker();
-		writePaper();
-		checkForStats();
 
+		switch (Health)
+		{
+		case healthState.Dead :
+		{
+			PlayAnim("static");
+			vecMove = Vector3.zero;
+			speed = 0f;
+			break;
+
+		}
+		case healthState.Alive:
+		{
+			speed = initSpeed * modifSpeed;
+			moveInput();
+			rotateTowardMouse(_target , transform);
+			changeRenderer();
+			wallBlocker();
+			writePaper();
+			checkForStats();
+			break;
+		}
+		}
 		transform.position += vecMove * Time.deltaTime;
 	}
 
 	private void consumeFood()
 	{
 		foodState -= 1;
+		if (foodState == 1)
+		{
+			MasterAudio.PlaySound("hungry1");
+		}
+		else if (foodState == 2)
+		{
+			MasterAudio.PlaySound("hungry2");
+		}
 	}
 	private void consumeSleep()
 	{
 		sleepState -= 1;
+		if (sleepState == 1)
+		{
+			MasterAudio.PlaySound("yawn1");
+		}
+		else if (sleepState == 2)
+		{
+			MasterAudio.PlaySound("yawn2");
+		}
 	}
 
 	private void writePaper()
 	{
-		if (Input.GetKey(KeyCode.R))
+		if (Input.GetKey(KeyCode.E) && (haveLetter == letterList.Have || haveLetter == letterList.IsWriting))
 		{
+			MasterAudio.PlaySound("paper_in");
+			MasterAudio.PlaySound("writting");
 			haveLetter = letterList.IsWriting;
 			levMan.writtenPaper += 0.1f;
+		}
+		else if (Input.GetKeyUp(KeyCode.E) && (haveLetter == letterList.Have || haveLetter == letterList.IsWriting))
+		{
+			MasterAudio.StopAllOfSound("writting");
+			MasterAudio.PlaySound("paper_out");
 		}
 	}
 
@@ -318,6 +362,23 @@ public class Player : MonoBehaviour {
 		_diffY = coneParent.transform.position.y - targ.y;
 		_angle = Mathf.Atan2( _diffX, _diffY) * Mathf.Rad2Deg;
 		_trsf.rotation = Quaternion.Euler(0f, 0f, _angle - 90);
+	}
+
+	private void Respawn()
+	{
+		Health = healthState.Alive;
+		haveLetter = letterList.DontHave;
+	}
+
+	private void GameStart()
+	{
+		Health = healthState.Alive;
+		haveLetter = letterList.DontHave;
+	}
+
+	private void GameOver()
+	{
+		Health = healthState.Dead;
 	}
 
 	private void changeRenderer()

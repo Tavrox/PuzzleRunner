@@ -29,7 +29,8 @@ public class LevelManager : MonoBehaviour {
 	public List<Door> gameDoors;
 	public List<Waypoint> wpList;
 	public Camera currCam;
-
+	
+	public int currD;
 	public int currH;
 	public int currM;
 	public WaypointDirector pathDirector;
@@ -96,6 +97,8 @@ public class LevelManager : MonoBehaviour {
 		}
 
 		GameEventManager.GameOver += GameOver;
+		GameEventManager.Respawn += Respawn;
+		GameEventManager.GameStart += GameStart;
 	}
 	
 	// Update is called once per frame
@@ -119,13 +122,6 @@ public class LevelManager : MonoBehaviour {
 		checkForDifficulty();
 	}
 
-	
-	
-	private void GameOver()
-	{
-		
-	}
-	
 	private void updateMinute()
 	{
 		if (currM == 59)
@@ -147,12 +143,64 @@ public class LevelManager : MonoBehaviour {
 		{
 			parseH = "0" + currH;
 		}
+		if (currH == 24)
+		{
+			MasterAudio.PlaySound("clock_bell");
+			currH = 1;
+			currD += 1;
+		}
+
+		if (currH > 6 && currH < 18)
+		{
+			Hours.currentTime = HoursManager.DayTime.Day;
+			GameObject[] objLights = GameObject.FindGameObjectsWithTag("Lights");
+			foreach (GameObject obj in objLights)
+			{
+				obj.GetComponent<Light>().color = new Color(217f, 242f, 255f);
+			}
+		}
+		else
+		{
+			Hours.currentTime = HoursManager.DayTime.Night;
+			GameObject[] objLights = GameObject.FindGameObjectsWithTag("Lights");
+			foreach (GameObject obj in objLights)
+			{
+				obj.GetComponent<Light>().color = new Color(40f, 44f, 121f);
+			}
+		}
 		GameUI.Clock.text = parseH + ":" + parseM;
 		triggerDayEvent(Hours.findEvent(currH));
 	}
 	public void checkForDifficulty()
 	{
 
+	}
+	public void testLights(HoursManager.DayTime _time)
+	{
+
+		switch (_time)
+		{
+			case HoursManager.DayTime.Day :
+			{
+				Hours.currentTime = HoursManager.DayTime.Day;
+				GameObject[] objLights = GameObject.FindGameObjectsWithTag("Lights");
+				foreach (GameObject obj in objLights)
+				{
+					obj.GetComponent<Light>().color = new Color(217f, 242f, 255f);
+				}
+				break;
+			}
+			case HoursManager.DayTime.Night :
+			{
+				Hours.currentTime = HoursManager.DayTime.Night;
+				GameObject[] objLights = GameObject.FindGameObjectsWithTag("Lights");
+				foreach (GameObject obj in objLights)
+				{
+					obj.GetComponent<Light>().color = new Color(40f, 44f, 121f);
+				}
+				break;
+			}
+		}
 	}
 
 	public void respawnPaper(List<GameObject> _ppSpot)
@@ -174,6 +222,15 @@ public class LevelManager : MonoBehaviour {
 
 	}
 
+	public void resplenishFoods()
+	{
+		Food[] Foodies = GetComponentsInChildren<Food>();
+		foreach (Food _foo in Foodies)
+		{
+			_foo.Regen();
+		}
+	}
+
 	public void triggerDayEvent(HoursManager.DayEventList _evt)
 	{
 		switch (_evt)
@@ -188,7 +245,7 @@ public class LevelManager : MonoBehaviour {
 		}
 		case HoursManager.DayEventList.DraculaLeaving :
 		{
-			MasterAudio.PlaySound("dracula_out");
+			MasterAudio.PlaySound("dacrula_out");
 			GameUI.NotifPop.giveInfos("Dracula is gone hunting\n outside the house");
 			GameUI.dialogPop.giveInfos("Dracula is leaving the house !");
 			new OTTween(GameUI.dialogPop.OutPic, 1f).Tween("alpha", 0f);
@@ -196,7 +253,7 @@ public class LevelManager : MonoBehaviour {
 		}
 		case HoursManager.DayEventList.FoodMan :
 		{
-			spawnFood(FoodSpots);
+			resplenishFoods();
 			MasterAudio.PlaySound("eating_bell");
 			GameUI.NotifPop.giveInfos("The Carrier has\n resplenished food stocks");
 			GameUI.dialogPop.giveInfos("I can now eat in the house's kitchens");
@@ -205,6 +262,7 @@ public class LevelManager : MonoBehaviour {
 		case HoursManager.DayEventList.MailManIn :
 		{
 			MailmanState = MailManStateList.HasArrived;
+			MasterAudio.PlaySound("door_bell");
 			GameUI.dialogPop.giveInfos("The mail man is waiting\n for me, I should hurry");
 			GameUI.NotifPop.giveInfos("The mail man has arrived");
 			break;
@@ -226,5 +284,19 @@ public class LevelManager : MonoBehaviour {
 
 		}
 	}
-
+	
+	private void GameOver()
+	{
+		
+	}
+	private void Respawn()
+	{
+		currD = 1;
+		currH = 1;
+		currM = 1;
+	}
+	private void GameStart()
+	{
+		
+	}
 }
