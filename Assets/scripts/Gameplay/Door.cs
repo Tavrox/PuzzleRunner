@@ -66,13 +66,13 @@ public class Door : MonoBehaviour {
 		{
 		case HandleDoor.Closed :
 		{
-			new OTTween(blockSpr , 0.35f , OTEasing.CircIn).Tween("rotation" , openAngle);
+			new OTTween(blockSpr , levMan.plr.doorSpeed , OTEasing.CircIn).Tween("rotation" , openAngle);
 			Handle = HandleDoor.Open;
 			break;
 		}
 		case HandleDoor.Open :
 		{
-			new OTTween(blockSpr , 0.35f , OTEasing.CircIn).Tween("rotation" , closedAngle);
+			new OTTween(blockSpr , levMan.plr.doorSpeed , OTEasing.CircIn).Tween("rotation" , closedAngle);
 			Handle = HandleDoor.Closed;
 			break;
 		}

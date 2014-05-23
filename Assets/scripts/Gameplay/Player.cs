@@ -14,7 +14,8 @@ public class Player : MonoBehaviour {
 		DontHave,
 		Have,
 		IsWriting,
-		HaveWritten
+		HaveWritten,
+		Sent
 	};
 	public letterList haveLetter;
 	public enum healthState
@@ -22,7 +23,8 @@ public class Player : MonoBehaviour {
 		Alive,
 		Dead,
 		Cutscene
-	}
+	};
+	public healthState Health;
 
 	public enum DirList
 	{
@@ -33,8 +35,9 @@ public class Player : MonoBehaviour {
 	};
 	public DirList MovingDir;
 	public DirList FacingDir;
-
+	
 	public float speed = 5f;
+	public float initSpeed = 5f;
 	public float sleepQty;
 	public float hungerQty;
 	public Vector3 vecMove;
@@ -44,6 +47,7 @@ public class Player : MonoBehaviour {
 	public float _diffX = 0f;
 	public float _diffY = 0f;
 	public float _angle = 0f;
+	public OTAnimatingSprite spr;
 	
 	[SerializeField] private RaycastHit hitInfo;
 	[SerializeField] private float halfMyX;
@@ -77,6 +81,8 @@ public class Player : MonoBehaviour {
 		RayUL = FETool.findWithinChildren(gameObject, "RayOrigin_DR").transform;
 		RayDR = FETool.findWithinChildren(gameObject, "RayOrigin_UL").transform;
 		RayUR = FETool.findWithinChildren(gameObject, "RayOrigin_UR").transform;
+		spr = GetComponentInChildren<OTAnimatingSprite>();
+		spr.Play("static");
 
 		coneCollider = coneParent.GetComponentInChildren<BoxCollider>();
 		coneRenderer = coneParent.GetComponentInChildren<LineRenderer>();
@@ -92,6 +98,7 @@ public class Player : MonoBehaviour {
 		BlockedLeft = false;
 		BlockedUp = false;
 		BlockedRight = false;
+		speed = initSpeed * modifSpeed;
 
 		_target = GameObject.Find("LevelManager/Camera").GetComponent<Camera>().ScreenToWorldPoint(Input.mousePosition);
 		moveInput();
@@ -126,11 +133,11 @@ public class Player : MonoBehaviour {
 	{
 		if (foodState == 1)
 		{
-			modifSpeed = 0.5f;
+			modifSpeed = 0.6f;
 		}
 		else if (foodState == 2)
 		{
-			modifSpeed = 0.75f;
+			modifSpeed = 0.8f;
 		}
 		else if (foodState == 3)
 		{
@@ -156,45 +163,62 @@ public class Player : MonoBehaviour {
 		}
 	}
 
+	public void PlayAnim(string _anim)
+	{
+		if (spr.animationFrameset != _anim)
+		{
+			spr.Play (_anim);
+		}
+	}
+
+
 	private void moveInput()
 	{
 		if (Input.GetKey(KeyCode.LeftArrow))
 		{
+			PlayAnim("walk");
 			vecMove.x -= speed;
 			MovingDir = DirList.Left;
 		}
 		else if (Input.GetKeyUp(KeyCode.LeftArrow))
 		{
+			PlayAnim("static");
 			vecMove.x -= 5f;
 		}
 		
 		if (Input.GetKey(KeyCode.DownArrow))
 		{
+			PlayAnim("walk");
 			vecMove.y -= speed;
 			MovingDir = DirList.Down;
 		}
 		else if (Input.GetKeyUp(KeyCode.DownArrow))
 		{
+			PlayAnim("static");
 			vecMove.y += 5f;
 		}
 		
 		if (Input.GetKey(KeyCode.UpArrow))
 		{
+			PlayAnim("walk");
 			vecMove.y += speed;
 			MovingDir = DirList.Up;
 		}
 		else if (Input.GetKeyUp(KeyCode.UpArrow))
 		{
+			PlayAnim("static");
 			vecMove.y += 5f;
 		}
 		
 		if (Input.GetKey(KeyCode.RightArrow))
 		{
+			PlayAnim("walk");
 			vecMove.x += speed;
 			MovingDir = DirList.Right;
 		}
 		else if (Input.GetKeyUp(KeyCode.RightArrow))
 		{
+			PlayAnim("static");
 			vecMove.x += 5f;
 		}
 		vecMove.x *= 0.1f;

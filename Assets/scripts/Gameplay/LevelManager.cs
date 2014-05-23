@@ -12,12 +12,21 @@ public class LevelManager : MonoBehaviour {
 		Away
 	};
 	public MailManStateList MailmanState;
+	public enum DifficultyState
+	{
+		VeryEasy,
+		Easy,
+		Medium,
+		Hard,
+		VeryHard
+	};
 
 	public Player plr;
 	public Dracula Dracu;
 	public HoursManager Hours;
 	public List<GameObject> PaperSpots;
 	public List<GameObject> FoodSpots;
+	public List<Door> gameDoors;
 	public Camera currCam;
 
 	public int currH;
@@ -128,6 +137,11 @@ public class LevelManager : MonoBehaviour {
 		{
 			GameUI.NotifPop.giveInfos("TROLLA");
 		}
+		checkForDifficulty();
+	}
+
+	public void checkForDifficulty()
+	{
 
 	}
 
