@@ -28,9 +28,9 @@ public class Door : MonoBehaviour {
 	{
 		levMan = _lev;
 		blocker = transform.parent.GetComponentInChildren<DoorBlock>();
-		this.blockSpr = FETool.findWithinChildren(this.gameObject, "Block").GetComponentInChildren<OTSprite>();
+		this.blockSpr = FETool.findWithinChildren(this.gameObject, "BlockT").GetComponentInChildren<OTSprite>();
 		getRotation();
-		transform.rotation = Quaternion.Euler(0f,0f, closedAngle);
+		transform.rotation = Quaternion.Euler(new Vector3(0f,0f, closedAngle));
 	}
 
 	private void getRotation()
@@ -39,8 +39,8 @@ public class Door : MonoBehaviour {
 		{
 		case PivotList.Right :
 		{
-			openAngle = 90f;
-			closedAngle = 0f;
+			openAngle = -180f;
+			closedAngle = 90f;
 			break;
 		}
 		case PivotList.Left :
@@ -51,8 +51,8 @@ public class Door : MonoBehaviour {
 		}
 		case PivotList.Up :
 		{
-			openAngle = 0f;
-			closedAngle = 270f;
+			openAngle = 360f;
+			closedAngle = -90f;
 			break;
 		}
 		case PivotList.Down :
@@ -71,18 +71,27 @@ public class Door : MonoBehaviour {
 		{
 		case HandleDoor.Closed :
 		{
-			new OTTween(blockSpr , levMan.plr.doorSpeed , OTEasing.CircIn).Tween("rotation" , openAngle);
-			Handle = HandleDoor.Open;
-//			blocker.gameObject.layer = LayerMask.NameToLayer("Default");
+			Open();
 			break;
 		}
 		case HandleDoor.Open :
 		{
-			new OTTween(blockSpr , levMan.plr.doorSpeed , OTEasing.CircIn).Tween("rotation" , closedAngle);
-			Handle = HandleDoor.Closed;
+			Close();
 			break;
 		}
 		}
+	}
+
+	public void Open()
+	{
+		transform.rotation = Quaternion.Euler(new Vector3(0f,0f, openAngle));
+		Handle = HandleDoor.Open;
+	}
+
+	public void Close()
+	{
+		transform.rotation = Quaternion.Euler(new Vector3(0f,0f, closedAngle));
+		Handle = HandleDoor.Closed;
 	}
 
 	public void Update()
@@ -120,7 +129,6 @@ public class Door : MonoBehaviour {
 	void OnDrawGizmosSelected()
 	{
 		getRotation();
-		transform.rotation = Quaternion.Euler(0f,0f, closedAngle);
-
+		transform.rotation = Quaternion.Euler(new Vector3(0f,0f, closedAngle));
 	}
 }
