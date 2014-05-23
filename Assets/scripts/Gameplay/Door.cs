@@ -28,35 +28,40 @@ public class Door : MonoBehaviour {
 	{
 		levMan = _lev;
 		blocker = transform.parent.GetComponentInChildren<DoorBlock>();
-		this.blockSpr = FETool.findWithinChildren(this.gameObject, "Block").GetComponentInChildren<OTSprite>();
+		this.blockSpr = FETool.findWithinChildren(this.gameObject, "BlockT").GetComponentInChildren<OTSprite>();
+		getRotation();
+		transform.rotation = Quaternion.Euler(new Vector3(0f,0f, closedAngle));
+	}
+
+	private void getRotation()
+	{
 		switch (Pivot)
 		{
-			case PivotList.Left :
-			{
-				openAngle = 90f;
-				closedAngle = 0f;
-				break;
-			}
-			case PivotList.Right :
-			{
-				openAngle = 90f;
-				closedAngle = 180f;
-				break;
-			}
-			case PivotList.Up :
-			{
-				openAngle = 0f;
-				closedAngle = 270f;
-				break;
-			}
-			case PivotList.Down :
-			{
-				openAngle = 0f;
-				closedAngle = 270f;
-				break;
-			}
+		case PivotList.Right :
+		{
+			openAngle = -180f;
+			closedAngle = 90f;
+			break;
 		}
-		transform.rotation = Quaternion.Euler(0f,0f, closedAngle);
+		case PivotList.Left :
+		{
+			openAngle = 90f;
+			closedAngle = 180f;
+			break;
+		}
+		case PivotList.Up :
+		{
+			openAngle = 360f;
+			closedAngle = -90f;
+			break;
+		}
+		case PivotList.Down :
+		{
+			openAngle = 0f;
+			closedAngle = 270f;
+			break;
+		}
+		}
 	}
 
 	public void switchDoor()
@@ -66,17 +71,27 @@ public class Door : MonoBehaviour {
 		{
 		case HandleDoor.Closed :
 		{
-			new OTTween(blockSpr , levMan.plr.doorSpeed , OTEasing.CircIn).Tween("rotation" , openAngle);
-			Handle = HandleDoor.Open;
+			Open();
 			break;
 		}
 		case HandleDoor.Open :
 		{
-			new OTTween(blockSpr , levMan.plr.doorSpeed , OTEasing.CircIn).Tween("rotation" , closedAngle);
-			Handle = HandleDoor.Closed;
+			Close();
 			break;
 		}
 		}
+	}
+
+	public void Open()
+	{
+		transform.rotation = Quaternion.Euler(new Vector3(0f,0f, openAngle));
+		Handle = HandleDoor.Open;
+	}
+
+	public void Close()
+	{
+		transform.rotation = Quaternion.Euler(new Vector3(0f,0f, closedAngle));
+		Handle = HandleDoor.Closed;
 	}
 
 	public void Update()
@@ -113,34 +128,7 @@ public class Door : MonoBehaviour {
 
 	void OnDrawGizmosSelected()
 	{
-		switch (Pivot)
-		{
-		case PivotList.Left :
-		{
-			openAngle = 90f;
-			closedAngle = 0f;
-			break;
-		}
-		case PivotList.Right :
-		{
-			openAngle = 90f;
-			closedAngle = 180f;
-			break;
-		}
-		case PivotList.Up :
-		{
-			openAngle = 0f;
-			closedAngle = 270f;
-			break;
-		}
-		case PivotList.Down :
-		{
-			openAngle = 0f;
-			closedAngle = 270f;
-			break;
-		}
-		}
-		transform.rotation = Quaternion.Euler(0f,0f, closedAngle);
-
+		getRotation();
+		transform.rotation = Quaternion.Euler(new Vector3(0f,0f, closedAngle));
 	}
 }

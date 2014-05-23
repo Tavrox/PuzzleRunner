@@ -27,6 +27,7 @@ public class LevelManager : MonoBehaviour {
 	public List<GameObject> PaperSpots;
 	public List<GameObject> FoodSpots;
 	public List<Door> gameDoors;
+	public List<Waypoint> wpList;
 	public Camera currCam;
 
 	public int currH;
@@ -86,14 +87,43 @@ public class LevelManager : MonoBehaviour {
 			_dr.Setup(this);
 		}
 
+		Waypoint[] Waypo = GetComponentsInChildren<Waypoint>();
+		foreach (Waypoint _wp in Waypo)
+		{
+			wpList.Add(_wp);
+		}
+
 		GameEventManager.GameOver += GameOver;
 	}
-
-	private void GameOver()
+	
+	// Update is called once per frame
+	void Update () 
 	{
+		currCam.transform.position =  new Vector3( FETool.Round(plr.transform.position.x, 2), FETool.Round(plr.transform.position.y, 2) - 0.8f, -1000f);
+		realWrittenPaper = Mathf.RoundToInt(writtenPaper);
 
+		if (Input.GetKey(KeyCode.A))
+		{
+			GameUI.dialogPop.giveInfos("LOL", PopUp.CharList.Dracula);
+		}
+		if (Input.GetKey(KeyCode.B))
+		{
+			GameUI.dialogPop.giveInfos("TROLLA", PopUp.CharList.Johnathan);
+		}
+		if (Input.GetKey(KeyCode.C))
+		{
+			GameUI.NotifPop.giveInfos("TROLLA");
+		}
+		checkForDifficulty();
 	}
 
+	
+	
+	private void GameOver()
+	{
+		
+	}
+	
 	private void updateMinute()
 	{
 		if (currM == 59)
@@ -118,28 +148,6 @@ public class LevelManager : MonoBehaviour {
 		GameUI.Clock.text = parseH + ":" + parseM;
 		triggerDayEvent(Hours.findEvent(currH));
 	}
-	
-	// Update is called once per frame
-	void Update () 
-	{
-		currCam.transform.position =  new Vector3( FETool.Round(plr.transform.position.x, 2), FETool.Round(plr.transform.position.y, 2), -1000f);
-		realWrittenPaper = Mathf.RoundToInt(writtenPaper);
-
-		if (Input.GetKey(KeyCode.A))
-		{
-			GameUI.dialogPop.giveInfos("LOL", PopUp.CharList.Dracula);
-		}
-		if (Input.GetKey(KeyCode.B))
-		{
-			GameUI.dialogPop.giveInfos("TROLLA", PopUp.CharList.Johnathan);
-		}
-		if (Input.GetKey(KeyCode.C))
-		{
-			GameUI.NotifPop.giveInfos("TROLLA");
-		}
-		checkForDifficulty();
-	}
-
 	public void checkForDifficulty()
 	{
 
@@ -171,14 +179,14 @@ public class LevelManager : MonoBehaviour {
 		case HoursManager.DayEventList.DraculaEntering :
 		{
 			GameUI.NotifPop.giveInfos("Dracula is back from hunting");
-			GameUI.dialogPop.giveInfos("Dracula is entering the game !", PopUp.CharList.Johnathan);
+			GameUI.dialogPop.giveInfos("Dracula is entering the game !");
 			new OTTween(GameUI.dialogPop.OutPic, 1f).Tween("alpha", 1f);
 			break;
 		}
 		case HoursManager.DayEventList.DraculaLeaving :
 		{
 			GameUI.NotifPop.giveInfos("Dracula is gone hunting outside the house");
-			GameUI.dialogPop.giveInfos("Dracula is leaving the house !", PopUp.CharList.Johnathan);
+			GameUI.dialogPop.giveInfos("Dracula is leaving the house !");
 			new OTTween(GameUI.dialogPop.OutPic, 1f).Tween("alpha", 0f);
 			break;
 		}
@@ -186,21 +194,28 @@ public class LevelManager : MonoBehaviour {
 		{
 			spawnFood(FoodSpots);
 			GameUI.NotifPop.giveInfos("The Carrier has resplenished food stocks");
-			GameUI.dialogPop.giveInfos("I can now eat in the house's kitchens", PopUp.CharList.Johnathan);
+			GameUI.dialogPop.giveInfos("I can now eat in the house's kitchens");
 			break;
 		}
 		case HoursManager.DayEventList.MailManIn :
 		{
 			MailmanState = MailManStateList.HasArrived;
-			GameUI.dialogPop.giveInfos("The mail man is waiting for me, I should hurry", PopUp.CharList.Johnathan);
+			GameUI.dialogPop.giveInfos("The mail man is waiting for me, I should hurry");
 			GameUI.NotifPop.giveInfos("The mail man has arrived");
 			break;
 		}
 		case HoursManager.DayEventList.MailManOut :
 		{
 			MailmanState = MailManStateList.Away;
-			GameUI.dialogPop.giveInfos("The mail man is gone now.", PopUp.CharList.Johnathan);
+			GameUI.dialogPop.giveInfos("The mail man is gone now.");
 			GameUI.NotifPop.giveInfos("The mail man is leaving");
+			break;
+		}
+		case HoursManager.DayEventList.LetterSent :
+		{
+			MailmanState = MailManStateList.Away;
+			GameUI.dialogPop.giveInfos("I've asked Mina for some rescue \n I hope they'll arrive soon.");
+			GameUI.NotifPop.giveInfos("The mail man is leaving with the letter");
 			break;
 		}
 

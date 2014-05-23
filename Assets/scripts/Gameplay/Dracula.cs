@@ -77,6 +77,7 @@ public class Dracula : MonoBehaviour {
 			case StateList.Patrolling :
 			{
 				Move(currWp.nextWP.transform.position);
+				rotateTowardPlayer(currWp.nextWP.transform.position, transform);
 				break;
 			}
 			case StateList.Chasing :
@@ -98,6 +99,7 @@ public class Dracula : MonoBehaviour {
 		{
 			Debug.DrawLine (RayDL.position, hitInfo.point, Color.blue);
 			Debug.DrawLine (RayDR.position, hitInfo.point, Color.blue);
+			print (hitInfo.transform.gameObject.name);
 			blockDown();
 		}
 		if (Physics.Raycast(RayUL.position, Vector3.left, out hitInfo, halfMyY, wallMask) ||
@@ -105,6 +107,7 @@ public class Dracula : MonoBehaviour {
 		{
 			Debug.DrawLine (RayUL.position, hitInfo.point, Color.black);
 			Debug.DrawLine (RayDL.position, hitInfo.point, Color.black);
+			print (hitInfo.transform.gameObject.name);
 			blockLeft();
 		}
 		if (Physics.Raycast(RayUL.position, Vector3.up, out hitInfo, halfMyY, wallMask) ||
@@ -112,6 +115,7 @@ public class Dracula : MonoBehaviour {
 		{
 			Debug.DrawLine (RayUL.position, hitInfo.point, Color.white);
 			Debug.DrawLine (RayUR.position, hitInfo.point, Color.white);
+			print (hitInfo.transform.gameObject.name);
 			blockUp();
 		}
 		if (Physics.Raycast(RayUR.position, Vector3.right, out hitInfo, halfMyY, wallMask) ||
@@ -119,6 +123,7 @@ public class Dracula : MonoBehaviour {
 		{
 			Debug.DrawLine (RayUR.position, hitInfo.point, Color.red);
 			Debug.DrawLine (RayDR.position, hitInfo.point, Color.red);
+			print (hitInfo.transform.gameObject.name);
 			blockRight();
 		}
 	}
@@ -151,7 +156,7 @@ public class Dracula : MonoBehaviour {
 	{
 		currWPM = _levman.pathDirector.pickRandomWPM();
 		currWp = currWPM.pickRandomWP();
-		transform.position = currWPM.transform.position;
+		transform.position = currWp.transform.position;
 	}
 
 	public void GoToWaypoint (Waypoint _wp)
@@ -167,6 +172,23 @@ public class Dracula : MonoBehaviour {
 		_diffY = transform.position.y - targ.y;
 		_angle = Mathf.Atan2( _diffX, _diffY) * Mathf.Rad2Deg;
 		_trsf.rotation = Quaternion.Euler(0f, 0f, _angle - 180);
+	}
+
+	public void findClosestWp()
+	{
+		foreach (Waypoint wp in _levman.wpList)
+		{
+			float distWpDracula = Vector3.Distance(transform.position, wp.transform.position);
+			wp.distWP = distWpDracula;
+		}
+		_levman.wpList.Sort(delegate (Waypoint x, Waypoint y)
+      	{
+			if (x.distWP < y.distWP) return -1;
+			if (x.distWP > y.distWP) return 1;
+			else return 0;
+		});
+		currWp = _levman.wpList[0];
+		currWPM = currWp.linkedManager;
 	}
 
 	
@@ -209,15 +231,15 @@ public class Dracula : MonoBehaviour {
 
 	private void checkForPlayer()
 	{
-		distToPlayer = Vector3.Distance(transform.position, _plr.transform.position);
-		if (distToPlayer < threeSoldChasing)
-		{
-			State = StateList.Chasing;
-		}
-		else
-		{
-			State = StateList.Patrolling;
-		}
+//		distToPlayer = Vector3.Distance(transform.position, _plr.transform.position);
+//		if (distToPlayer < threeSoldChasing)
+//		{
+//			State = StateList.Chasing;
+//		}
+//		else
+//		{
+//			State = StateList.Patrolling;
+//		}
 	}
 
 

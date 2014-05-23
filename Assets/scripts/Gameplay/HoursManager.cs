@@ -12,7 +12,8 @@ public class HoursManager : MonoBehaviour {
 		MailManOut,
 		FoodMan,
 		DraculaEntering,
-		DraculaLeaving
+		DraculaLeaving,
+		LetterSent
 	};
 
 	public int mailManHourIn;
