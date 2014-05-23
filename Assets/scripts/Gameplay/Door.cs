@@ -114,7 +114,7 @@ public class Door : MonoBehaviour {
 
 	void OnTriggerStay(Collider _oth)
 	{
-		if (_oth.CompareTag("Player") && Input.GetKeyDown(KeyCode.Return))
+		if (_oth.CompareTag("Player") && Input.GetKeyDown(KeyCode.E))
 	    {
 			this.switchDoor();
 		}

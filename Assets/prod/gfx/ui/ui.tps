@@ -165,6 +165,8 @@
             <filename>portrait_dracula.png</filename>
             <filename>portrait_johnathan.png</filename>
             <filename>xbl.png</filename>
+            <filename>6h_sleep.png</filename>
+            <filename>3h_sleep.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

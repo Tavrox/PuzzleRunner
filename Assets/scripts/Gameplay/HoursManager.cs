@@ -42,7 +42,7 @@ public class HoursManager : MonoBehaviour {
 	public DayEventList findEvent(int _hour)
 	{
 		DayEventList dvl = DayEventList.None;
-		if (_hour == mailManHourIn)
+		if (_hour == mailManHourIn && _levMan.plr.haveLetter != Player.letterList.Sent)
 		{
 			dvl = DayEventList.MailManIn;
 		}
@@ -58,7 +58,7 @@ public class HoursManager : MonoBehaviour {
 		{
 			dvl = DayEventList.DraculaEntering;
 		}
-		else if (_hour == mailManHourOut)
+		else if (_hour == mailManHourOut && _levMan.plr.haveLetter != Player.letterList.Sent)
 		{
 			dvl = DayEventList.MailManOut;
 		}
