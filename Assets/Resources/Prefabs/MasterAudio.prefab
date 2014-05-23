@@ -2860,7 +2860,7 @@ AudioSource:
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Priority: 128
   DopplerLevel: 1
@@ -3382,7 +3382,7 @@ AudioSource:
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Priority: 128
   DopplerLevel: 1
@@ -4047,7 +4047,7 @@ MonoBehaviour:
     songTransitionType: 1
     MusicSettings:
     - audLocation: 0
-      clip: {fileID: 8300000, guid: 41335eb7f720ff941a6cce44418fb40d, type: 3}
+      clip: {fileID: 8300000, guid: 6c5201033dccc0d46bd5d1a24a55b871, type: 3}
       songName: Empty
       resourceFileName: 
       volume: 1
@@ -5326,9 +5326,9 @@ MonoBehaviour:
   audLocation: 0
   resourceFileName: 
   fxTailTime: 0
-  useFades: 0
+  useFades: 1
   fadeInTime: 0
-  fadeOutTime: 0
+  fadeOutTime: 4.40999985
   original_Pitch: 0
   useIntroSilence: 0
   introSilenceMin: 0
@@ -5496,9 +5496,9 @@ MonoBehaviour:
   - {fileID: 11400086}
   bulkVariationMode: 0
   logSound: 0
-  limitMode: 0
+  limitMode: 2
   limitPerXFrames: 1
-  minimumTimeBetween: .100000001
+  minimumTimeBetween: 10
   useClipAgePriority: 0
   limitPolyphony: 0
   voiceLimitCount: 1
