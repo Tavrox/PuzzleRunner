@@ -87,8 +87,8 @@ public class Player : MonoBehaviour {
 
 		coneCollider = coneParent.GetComponentInChildren<BoxCollider>();
 		coneRenderer = coneParent.GetComponentInChildren<LineRenderer>();
-		InvokeRepeating("consumeFood", 0f, 15f);
-		InvokeRepeating("consumeSleep", 0f, 15f);
+		InvokeRepeating("consumeFood", 30f, 30f);
+		InvokeRepeating("consumeSleep", 30f, 30f);
 		halfMyY = 0.25f;
 
 		

@@ -121,8 +121,7 @@ public class Door : MonoBehaviour {
 
 		if (_oth.CompareTag("Dracula") == true)
 		{
-			this.Handle = HandleDoor.Closed;
-			this.switchDoor();
+			Open();
 		}
 	}
 

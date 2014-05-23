@@ -160,7 +160,7 @@ public class Dracula : MonoBehaviour {
 	{
 		if (_oth.GetComponent<Player>() != null)
 		{
-			GameEventManager.TriggerGameOver("Dracula");
+//			GameEventManager.TriggerGameOver("Dracula");
 		}
 
 	}

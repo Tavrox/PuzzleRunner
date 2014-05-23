@@ -20,6 +20,7 @@ public static class GameEventManager {
 	{
 		if(GameStart != null && LevelManager.GAMESTATE != GameState.Live)
 		{
+			Debug.Log ("Start +" + _trigger);
 			LevelManager.GAMESTATE = GameState.Live;
 			GameOver();
 		}
@@ -29,6 +30,7 @@ public static class GameEventManager {
 	{
 		if(GameOver != null && LevelManager.GAMESTATE != GameState.GameOver)
 		{
+			Debug.Log ("GameOver +" + _gameover);
 			LevelManager.GAMESTATE = GameState.GameOver;
 			GameOver();
 		}
@@ -38,6 +40,7 @@ public static class GameEventManager {
 	{
 		if(Respawn != null)
 		{
+			Debug.Log ("Respawn +" + _trigger);
 			LevelManager.GAMESTATE = GameState.Live;
 			Respawn();
 		}

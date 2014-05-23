@@ -82,7 +82,7 @@ public class LevelManager : MonoBehaviour {
 
 		GetComponentInChildren<MailManPlace>().Setup(this);
 
-//		InvokeRepeating("updateMinute", 0f, 0.01f);
+		InvokeRepeating("updateMinute", 0f, 0.10f);
 
 		Door[] Doors = GetComponentsInChildren<Door>();
 		foreach (Door _dr in Doors)
@@ -152,7 +152,7 @@ public class LevelManager : MonoBehaviour {
 
 		if (currH > 6 && currH < 18)
 		{
-			Hours.currentTime = HoursManager.DayTime.Day;
+//			Hours.currentTime = HoursManager.DayTime.Day;
 			GameObject[] objLights = GameObject.FindGameObjectsWithTag("Lights");
 			foreach (GameObject obj in objLights)
 			{
