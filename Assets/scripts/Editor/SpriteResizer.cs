@@ -13,5 +13,10 @@ public class SpriteResizer : Editor
 			sprite = (OTSprite)target;
 			sprite.ResizeOT();
 		}
+		if (GUILayout.Button("Rename"))
+		{
+			sprite = (OTSprite)target;
+			sprite.transform.parent.name = sprite.frameName;
+		}
 	}
 }

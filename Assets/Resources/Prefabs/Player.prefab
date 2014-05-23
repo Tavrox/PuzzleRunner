@@ -464,8 +464,8 @@ MonoBehaviour:
   _alpha: 1
   _image: {fileID: 0}
   sizeImages: []
-  _frameIndex: 3
-  _frameName: johnathan_walk_01
+  _frameIndex: 1
+  _frameName: johnathan_static
   _spriteContainer: {fileID: 0}
   _containerName: john
   _newSprite: 0

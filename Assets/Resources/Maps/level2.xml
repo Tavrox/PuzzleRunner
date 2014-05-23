@@ -118,18 +118,18 @@
   <object name="Wall" type="Wall" x="1226" y="4511" width="51" height="209"/>
   <object name="Wall" type="Wall" x="1235" y="3171" width="51" height="470"/>
   <object name="Wall" type="Wall" x="1235" y="3792" width="51" height="570"/>
-  <object x="45" y="39" width="4715" height="42"/>
-  <object x="43" y="4721" width="4715" height="42"/>
-  <object x="1264" y="4234" width="1324" height="45"/>
-  <object x="1744" y="3159" width="839" height="42"/>
-  <object x="62" y="3158" width="1536" height="45"/>
-  <object x="881" y="758" width="1342" height="42"/>
-  <object x="2596" y="515" width="1178" height="39"/>
-  <object x="2581" y="1237" width="839" height="42"/>
-  <object x="2232" y="1476" width="454" height="45"/>
-  <object x="2829" y="1476" width="581" height="42"/>
-  <object x="3553" y="1479" width="1175" height="39"/>
-  <object x="2926" y="2073" width="1103" height="42"/>
+  <object type="Wall" x="45" y="39" width="4715" height="42"/>
+  <object type="Wall" x="43" y="4721" width="4715" height="42"/>
+  <object type="Wall" x="1264" y="4234" width="1324" height="45"/>
+  <object type="Wall" x="1744" y="3159" width="839" height="42"/>
+  <object type="Wall" x="62" y="3158" width="1536" height="45"/>
+  <object type="Wall" x="881" y="758" width="1342" height="42"/>
+  <object type="Wall" x="2596" y="515" width="1178" height="39"/>
+  <object type="Wall" x="2581" y="1237" width="839" height="42"/>
+  <object type="Wall" x="2232" y="1476" width="454" height="45"/>
+  <object type="Wall" x="2829" y="1476" width="581" height="42"/>
+  <object type="Wall" x="3553" y="1479" width="1175" height="39"/>
+  <object type="Wall" x="2926" y="2073" width="1103" height="42"/>
   <object x="2196" y="2555" width="766" height="42"/>
   <object x="2953" y="3515" width="712" height="42"/>
   <object x="3650" y="2912" width="715" height="48"/>

@@ -87,7 +87,7 @@ GameObject:
   - 4: {fileID: 400010}
   - 114: {fileID: 11400004}
   m_Layer: 0
-  m_Name: 3
+  m_Name: 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -103,7 +103,7 @@ GameObject:
   - 4: {fileID: 400012}
   - 114: {fileID: 11400006}
   m_Layer: 0
-  m_Name: 1
+  m_Name: 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -148,10 +148,10 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 22.6246262, y: -9.40483761, z: 0}
+  m_LocalPosition: {x: 19.9866142, y: -14.6952448, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 400006}
+  m_Father: {fileID: 400004}
 --- !u!4 &400002
 Transform:
   m_ObjectHideFlags: 1
@@ -175,9 +175,9 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 400014}
-  - {fileID: 400008}
   - {fileID: 400010}
+  - {fileID: 400000}
+  - {fileID: 400016}
   m_Father: {fileID: 400002}
 --- !u!4 &400006
 Transform:
@@ -189,9 +189,9 @@ Transform:
   m_LocalPosition: {x: 5.80000019, y: -3.20000005, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 400014}
+  - {fileID: 400008}
   - {fileID: 400012}
-  - {fileID: 400000}
-  - {fileID: 400016}
   m_Father: {fileID: 400002}
 --- !u!4 &400008
 Transform:
@@ -200,10 +200,10 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100008}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 19.9866142, y: -14.6952448, z: 0}
+  m_LocalPosition: {x: 22.6246262, y: -9.40483761, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 400004}
+  m_Father: {fileID: 400006}
 --- !u!4 &400010
 Transform:
   m_ObjectHideFlags: 1
@@ -211,7 +211,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100010}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 29.8468018, y: -15.7678051, z: 0}
+  m_LocalPosition: {x: 12.7741632, y: -15.495348, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 400004}
@@ -222,7 +222,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100012}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .545815468, y: .946393728, z: 0}
+  m_LocalPosition: {x: 26.7052307, y: -2.1373837, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 400006}
@@ -233,10 +233,10 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100014}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 12.7741632, y: -15.495348, z: 0}
+  m_LocalPosition: {x: .545815468, y: .946393728, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 400004}
+  m_Father: {fileID: 400006}
 --- !u!4 &400016
 Transform:
   m_ObjectHideFlags: 1
@@ -244,10 +244,10 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100016}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 26.7052307, y: -2.1373837, z: 0}
+  m_LocalPosition: {x: 29.8468018, y: -15.7678051, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 400006}
+  m_Father: {fileID: 400004}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -259,7 +259,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bef19b19d6e5c4c41a111ff41f9ec7bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spotType: 1
+  spotType: 0
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -271,7 +271,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bef19b19d6e5c4c41a111ff41f9ec7bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spotType: 0
+  spotType: 1
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -307,7 +307,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bef19b19d6e5c4c41a111ff41f9ec7bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spotType: 0
+  spotType: 1
 --- !u!114 &11400010
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -319,7 +319,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bef19b19d6e5c4c41a111ff41f9ec7bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spotType: 1
+  spotType: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

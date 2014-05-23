@@ -221,7 +221,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 400026}
   m_Layer: 0
-  m_Name: BG
+  m_Name: Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -385,11 +385,8 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 400046}
-  - 114: {fileID: 11400020}
-  - 23: {fileID: 2300020}
-  - 102: {fileID: 10200006}
   m_Layer: 0
-  m_Name: Text
+  m_Name: Back
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -436,8 +433,11 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 400052}
+  - 114: {fileID: 11400020}
+  - 23: {fileID: 2300020}
+  - 102: {fileID: 10200006}
   m_Layer: 0
-  m_Name: Bar
+  m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -554,7 +554,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 400066}
   m_Layer: 0
-  m_Name: Back
+  m_Name: BG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -949,7 +949,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2.30208349, y: .645833373, z: 1}
   m_Children: []
-  m_Father: {fileID: 400072}
+  m_Father: {fileID: 400046}
 --- !u!4 &400022
 Transform:
   m_ObjectHideFlags: 1
@@ -960,10 +960,10 @@ Transform:
   m_LocalPosition: {x: 5.45138741, y: -6.5829525, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 400026}
+  - {fileID: 400080}
   - {fileID: 400048}
   - {fileID: 400032}
-  - {fileID: 400076}
+  - {fileID: 400052}
   - {fileID: 400008}
   - {fileID: 400078}
   m_Father: {fileID: 400084}
@@ -989,11 +989,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100026}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.53319168, y: 3.39772606, z: 4}
+  m_LocalPosition: {x: .28159523, y: -.100000381, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 400058}
-  m_Father: {fileID: 400022}
+  - {fileID: 400064}
+  m_Father: {fileID: 400028}
 --- !u!4 &400028
 Transform:
   m_ObjectHideFlags: 1
@@ -1004,9 +1004,9 @@ Transform:
   m_LocalPosition: {x: -2.33451653, y: -2.84999847, z: 8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 400054}
-  - {fileID: 400072}
-  - {fileID: 400096}
+  - {fileID: 400026}
+  - {fileID: 400046}
+  - {fileID: 400088}
   m_Father: {fileID: 400004}
 --- !u!4 &400030
 Transform:
@@ -1019,7 +1019,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400042}
-  - {fileID: 400082}
+  - {fileID: 400096}
   - {fileID: 400038}
   m_Father: {fileID: 400084}
 --- !u!4 &400032
@@ -1108,10 +1108,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100046}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.0251731873, y: .135948181, z: -1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 400094}
+  m_Children:
+  - {fileID: 400020}
+  m_Father: {fileID: 400028}
 --- !u!4 &400048
 Transform:
   m_ObjectHideFlags: 1
@@ -1142,11 +1143,10 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100052}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .331594467, y: -.100000381, z: -1}
+  m_LocalPosition: {x: -4.60967445, y: 3.91782951, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 400090}
-  m_Father: {fileID: 400060}
+  m_Children: []
+  m_Father: {fileID: 400022}
 --- !u!4 &400054
 Transform:
   m_ObjectHideFlags: 1
@@ -1154,11 +1154,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100054}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .28159523, y: -.100000381, z: -1}
+  m_LocalPosition: {x: .331594467, y: -.100000381, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 400064}
-  m_Father: {fileID: 400028}
+  - {fileID: 400090}
+  m_Father: {fileID: 400060}
 --- !u!4 &400056
 Transform:
   m_ObjectHideFlags: 1
@@ -1169,7 +1169,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2.30208349, y: .645833373, z: 1}
   m_Children: []
-  m_Father: {fileID: 400066}
+  m_Father: {fileID: 400072}
 --- !u!4 &400058
 Transform:
   m_ObjectHideFlags: 1
@@ -1180,7 +1180,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 5.11458349, y: 1.55208337, z: 1}
   m_Children: []
-  m_Father: {fileID: 400026}
+  m_Father: {fileID: 400080}
 --- !u!4 &400060
 Transform:
   m_ObjectHideFlags: 1
@@ -1191,9 +1191,9 @@ Transform:
   m_LocalPosition: {x: -2.33451653, y: -3.54999924, z: 8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 400052}
-  - {fileID: 400066}
-  - {fileID: 400088}
+  - {fileID: 400054}
+  - {fileID: 400072}
+  - {fileID: 400082}
   m_Father: {fileID: 400004}
 --- !u!4 &400062
 Transform:
@@ -1216,7 +1216,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: .989583373, y: .208333343, z: 1}
   m_Children: []
-  m_Father: {fileID: 400054}
+  m_Father: {fileID: 400026}
 --- !u!4 &400066
 Transform:
   m_ObjectHideFlags: 1
@@ -1227,8 +1227,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 400056}
-  m_Father: {fileID: 400060}
+  - {fileID: 400070}
+  m_Father: {fileID: 400094}
 --- !u!4 &400068
 Transform:
   m_ObjectHideFlags: 1
@@ -1250,7 +1250,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.83333337, y: 1.14583337, z: 1}
   m_Children: []
-  m_Father: {fileID: 400080}
+  m_Father: {fileID: 400066}
 --- !u!4 &400072
 Transform:
   m_ObjectHideFlags: 1
@@ -1261,8 +1261,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 400020}
-  m_Father: {fileID: 400028}
+  - {fileID: 400056}
+  m_Father: {fileID: 400060}
 --- !u!4 &400074
 Transform:
   m_ObjectHideFlags: 1
@@ -1281,10 +1281,10 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100076}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.60967445, y: 3.91782951, z: 0}
+  m_LocalPosition: {x: -.0251731873, y: .135948181, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 400022}
+  m_Father: {fileID: 400094}
 --- !u!4 &400078
 Transform:
   m_ObjectHideFlags: 1
@@ -1304,11 +1304,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100080}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -2.53319168, y: 3.39772606, z: 4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 400070}
-  m_Father: {fileID: 400094}
+  - {fileID: 400058}
+  m_Father: {fileID: 400022}
 --- !u!4 &400082
 Transform:
   m_ObjectHideFlags: 1
@@ -1316,10 +1316,10 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100082}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.32479572, y: -2.74424171, z: 7}
+  m_LocalPosition: {x: -.164041519, y: .012878418, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 400030}
+  m_Father: {fileID: 400060}
 --- !u!4 &400084
 Transform:
   m_ObjectHideFlags: 1
@@ -1354,10 +1354,10 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100088}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.164041519, y: .012878418, z: -1}
+  m_LocalPosition: {x: -.214040756, y: .012878418, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 400060}
+  m_Father: {fileID: 400028}
 --- !u!4 &400090
 Transform:
   m_ObjectHideFlags: 1
@@ -1368,7 +1368,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: .989583373, y: .208333343, z: 1}
   m_Children: []
-  m_Father: {fileID: 400052}
+  m_Father: {fileID: 400054}
 --- !u!4 &400092
 Transform:
   m_ObjectHideFlags: 1
@@ -1390,8 +1390,8 @@ Transform:
   m_LocalPosition: {x: -4.50000095, y: -1.75, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 400080}
-  - {fileID: 400046}
+  - {fileID: 400066}
+  - {fileID: 400076}
   m_Father: {fileID: 400004}
 --- !u!4 &400096
 Transform:
@@ -1400,10 +1400,10 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100096}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.214040756, y: .012878418, z: -1}
+  m_LocalPosition: {x: -6.32479572, y: -2.74424171, z: 7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 400028}
+  m_Father: {fileID: 400030}
 --- !u!20 &2000000
 Camera:
   m_ObjectHideFlags: 1
@@ -1648,7 +1648,7 @@ Renderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100046}
+  m_GameObject: {fileID: 100052}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -2208,28 +2208,7 @@ TextMesh:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100046}
-  m_Text: "This is the way \n to be awake so shut\n he fuck up"
-  m_OffsetZ: 0
-  m_CharacterSize: .0299999993
-  m_LineSpacing: .50999999
-  m_Anchor: 4
-  m_Alignment: 1
-  m_TabSize: 4
-  m_FontSize: 90
-  m_FontStyle: 1
-  m_RichText: 1
-  m_Font: {fileID: 12800000, guid: bc4879d16cc1fb948868f63f406b738d, type: 3}
-  m_Color:
-    serializedVersion: 2
-    rgba: 4278198605
---- !u!102 &10200008
-TextMesh:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100076}
+  m_GameObject: {fileID: 100052}
   m_Text: "This is a very long dialog that should be \n implemented very soon, so
     shut the fuck up.\n and what if I add another line plz ?"
   m_OffsetZ: 0
@@ -2245,6 +2224,27 @@ TextMesh:
   m_Color:
     serializedVersion: 2
     rgba: 4278387632
+--- !u!102 &10200008
+TextMesh:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100076}
+  m_Text: "This is the way \n to be awake so shut\n he fuck up"
+  m_OffsetZ: 0
+  m_CharacterSize: .0299999993
+  m_LineSpacing: .50999999
+  m_Anchor: 4
+  m_Alignment: 1
+  m_TabSize: 4
+  m_FontSize: 90
+  m_FontStyle: 1
+  m_RichText: 1
+  m_Font: {fileID: 12800000, guid: bc4879d16cc1fb948868f63f406b738d, type: 3}
+  m_Color:
+    serializedVersion: 2
+    rgba: 4278198605
 --- !u!102 &10200010
 TextMesh:
   serializedVersion: 3
@@ -2273,7 +2273,7 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100088}
-  m_Text: Awake
+  m_Text: Hunger
   m_OffsetZ: 0
   m_CharacterSize: .0350000001
   m_LineSpacing: 1
@@ -2294,7 +2294,7 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100096}
-  m_Text: Hunger
+  m_Text: Awake
   m_OffsetZ: 0
   m_CharacterSize: .0350000001
   m_LineSpacing: 1
@@ -2676,7 +2676,7 @@ MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100046}
+  m_GameObject: {fileID: 100052}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 500e7447365d4d74a9d1c98671f68080, type: 3}
@@ -2684,8 +2684,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _mesh: {fileID: 0}
   initColor: {r: 0, g: 0, b: 0, a: 0}
-  DIALOG_ID: NONE
-  text: "This is the way \n to be awake so shut\n he fuck up"
+  DIALOG_ID: This is a long dialog /n loli plz
+  text: "This is a very long dialog that should be \n implemented very soon, so shut
+    the fuck up.\n and what if I add another line plz ?"
   dontTranslate: 0
   hasBeenTranslated: 0
   color: {r: .301960796, g: .129411772, b: 0, a: 1}
@@ -3026,9 +3027,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _mesh: {fileID: 0}
   initColor: {r: 0, g: 0, b: 0, a: 0}
-  DIALOG_ID: This is a long dialog /n loli plz
-  text: "This is a very long dialog that should be \n implemented very soon, so shut
-    the fuck up.\n and what if I add another line plz ?"
+  DIALOG_ID: NONE
+  text: "This is the way \n to be awake so shut\n he fuck up"
   dontTranslate: 0
   hasBeenTranslated: 0
   color: {r: .301960796, g: .129411772, b: 0, a: 1}
@@ -3064,7 +3064,7 @@ MonoBehaviour:
   _mesh: {fileID: 0}
   initColor: {r: 0, g: 0, b: 0, a: 0}
   DIALOG_ID: NONE
-  text: Awake
+  text: Hunger
   dontTranslate: 0
   hasBeenTranslated: 0
   color: {r: 1, g: 1, b: 1, a: 1}
@@ -3209,7 +3209,7 @@ MonoBehaviour:
   _mesh: {fileID: 0}
   initColor: {r: 0, g: 0, b: 0, a: 0}
   DIALOG_ID: NONE
-  text: Hunger
+  text: Awake
   dontTranslate: 0
   hasBeenTranslated: 0
   color: {r: 1, g: 1, b: 1, a: 1}

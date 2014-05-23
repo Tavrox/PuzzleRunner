@@ -194,7 +194,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100008}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.00209736824, y: .16063714, z: .669928551}
+  m_LocalPosition: {x: -.00209712982, y: .160637259, z: -.429677725}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 400014}
@@ -231,8 +231,8 @@ Transform:
   m_LocalPosition: {x: 16.2476635, y: -18.9068451, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 400008}
   - {fileID: 400016}
+  - {fileID: 400008}
   - {fileID: 400006}
   - {fileID: 400004}
   - {fileID: 400000}
@@ -246,7 +246,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100016}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.00209712982, y: .160637259, z: -.429677725}
+  m_LocalPosition: {x: -.00209736824, y: .16063714, z: .669928551}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 400014}
@@ -314,9 +314,9 @@ Light:
   m_Enabled: 1
   serializedVersion: 3
   m_Type: 2
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
-  m_Intensity: 4.5
-  m_Range: 4.07999992
+  m_Color: {r: 1, g: .639705896, b: .639705896, a: 1}
+  m_Intensity: 1.60000002
+  m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
@@ -349,9 +349,9 @@ Light:
   m_Enabled: 1
   serializedVersion: 3
   m_Type: 2
-  m_Color: {r: 1, g: .639705896, b: .639705896, a: 1}
-  m_Intensity: 1.60000002
-  m_Range: 10
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Intensity: 4.5
+  m_Range: 4.07999992
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
@@ -424,8 +424,8 @@ MonoBehaviour:
   _alpha: 1
   _image: {fileID: 0}
   sizeImages: []
-  _frameIndex: 2
-  _frameName: dracula_walk
+  _frameIndex: 0
+  _frameName: dracula_open
   _spriteContainer: {fileID: 0}
   _containerName: dracula
   _newSprite: 0
