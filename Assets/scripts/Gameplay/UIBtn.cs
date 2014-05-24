@@ -6,27 +6,77 @@ public class UIBtn : MonoBehaviour {
 	public enum btnTypeList
 	{
 		Respawn,
-		Start,
-		Leave
-	}
+		Leave,
+		LaunchTitle
+	};
+	public btnTypeList btnType;
+	public UI mainUi;
+	public OTSprite currSpr;
+	public string initName;
+	public string HighlightName = "";
+	public bool displayed;
+	public BoxCollider Coll;
 
 	// Use this for initialization
-	void Start ()
+	public void Setup (UI  _mn)
 	{
-	
+		mainUi = _mn;
+		if (GetComponentInChildren<OTSprite>() != null)
+		{
+			currSpr = GetComponentInChildren<OTSprite>();
+			initName = currSpr.frameName;
+			HighlightName = initName + "_hl";
+		}
+		if (GetComponent<BoxCollider>() != null)
+		{
+			Coll = GetComponent<BoxCollider>();
+		}
+		displayed = true;
 	}
 
 	void OnMouseDown()
 	{
-		GameEventManager.TriggerRespawn("btn ui");
+		if (displayed == true)
+		{
+			switch (btnType)
+			{
+				case btnTypeList.Respawn :
+				{
+					GameEventManager.TriggerRespawn("Respawn button");
+					break;
+				}
+				case btnTypeList.LaunchTitle :
+				{
+					mainUi.DisplayTitleMenu();
+					break;
+				}
+				case btnTypeList.Leave :
+				{
+					Application.Quit();
+					break;
+				}
+			}
+			displayed = false;
+			Coll.isTrigger = false;
+		}
 	}
 
 	void OnMouseOver()
 	{
-		if (GetComponent<OTSprite>() != null)
+//		currSpr.frameName = HighlightName;
+	}
+
+	public void reEnable()
+	{
+		Coll.isTrigger = true;
+		displayed = true;
+	}
+
+	void OnMouseExit()
+	{
+		if (currSpr != null)
 		{
-//			if (GetComponent<OTSprite>().frameName
-//			GetComponent<OTSprite>();
+			currSpr.frameName = initName;
 		}
 	}
 }

@@ -18,19 +18,19 @@ public static class GameEventManager {
 	
 	public static void TriggerGameStart(string _trigger)
 	{
-		if(GameStart != null && LevelManager.GAMESTATE != GameState.Live)
+		if(GameStart != null && LevelManager.GAMESTATE != GameState.MainMenu)
 		{
 			Debug.Log ("Start +" + _trigger);
-			LevelManager.GAMESTATE = GameState.Live;
-			GameOver();
+			LevelManager.GAMESTATE = GameState.MainMenu;
+			GameStart();
 		}
 	}
 
-	public static void TriggerGameOver(string _gameover)
+	public static void TriggerGameOver(LevelManager.DeathList _gameover)
 	{
 		if(GameOver != null && LevelManager.GAMESTATE != GameState.GameOver)
 		{
-			Debug.Log ("GameOver +" + _gameover);
+			Debug.Log ("GameOver +" + _gameover.ToString());
 			LevelManager.GAMESTATE = GameState.GameOver;
 			GameOver();
 		}
@@ -38,7 +38,7 @@ public static class GameEventManager {
 	
 	public static void TriggerRespawn(string _trigger)
 	{
-		if(Respawn != null)
+		if(Respawn != null && LevelManager.GAMESTATE != GameState.Live)
 		{
 			Debug.Log ("Respawn +" + _trigger);
 			LevelManager.GAMESTATE = GameState.Live;
@@ -46,10 +46,11 @@ public static class GameEventManager {
 		}
 	}
 
-	public static void TriggerEndGame()
+	public static void TriggerEndGame(string _trigger)
 	{
-		if(EndGame != null)
+		if(EndGame != null && LevelManager.GAMESTATE != GameState.EndGame)
 		{
+			Debug.Log ("Victory +" + _trigger);
 			LevelManager.GAMESTATE = GameState.EndGame;
 			EndGame();
 		}

@@ -154,6 +154,9 @@
             <filename>food_crate.png</filename>
             <filename>food_highlight.png</filename>
             <filename>food.png</filename>
+            <filename>dracula_spawn_02.png</filename>
+            <filename>dracula_spawn_00.png</filename>
+            <filename>dracula_spawn_01.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

@@ -167,6 +167,12 @@
             <filename>xbl.png</filename>
             <filename>6h_sleep.png</filename>
             <filename>3h_sleep.png</filename>
+            <filename>controls.png</filename>
+            <filename>sleep_6h_highlight.png</filename>
+            <filename>sleep_3h.png</filename>
+            <filename>sleep_3h_highlight.png</filename>
+            <filename>sleep_6h.png</filename>
+            <filename>portrait_mailman.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
