@@ -20,6 +20,13 @@ public class LevelManager : MonoBehaviour {
 		Hard,
 		VeryHard
 	};
+	public enum DeathList
+	{
+		Hunger,
+		Dracula,
+		Exhaust,
+		Test
+	};
 
 	public Player plr;
 	public Dracula Dracu;
@@ -33,7 +40,7 @@ public class LevelManager : MonoBehaviour {
 	public int currD;
 	public int currH;
 	public int currM;
-	public int saveDay;
+	[SerializeField] public int saveDay = 1000;
 	public string parseH;
 	public string parseM;
 	public int remainingDay = 5;
@@ -88,8 +95,6 @@ public class LevelManager : MonoBehaviour {
 
 		GetComponentInChildren<MailManPlace>().Setup(this);
 
-		InvokeRepeating("updateMinute", 0f, 0.10f);
-
 		Door[] Doors = GetComponentsInChildren<Door>();
 		foreach (Door _dr in Doors)
 		{
@@ -109,8 +114,10 @@ public class LevelManager : MonoBehaviour {
 
 		MasterAudio.PlaySound("ambiance");
 
-//		GameEventManager.TriggerGameStart();
-		GameEventManager.TriggerRespawn("init");
+		//		GAMESTATE = GameEventManager.GameState.MainMenu;
+		//		GameEventManager.TriggerRespawn("Rsp");
+		GAMESTATE = GameEventManager.GameState.Live;
+		GameEventManager.TriggerGameStart("First Init");
 	}
 	
 	// Update is called once per frame
@@ -120,7 +127,7 @@ public class LevelManager : MonoBehaviour {
 		realWrittenPaper = Mathf.RoundToInt(writtenPaper);
 		if (currD == saveDay)
 		{
-			GameEventManager.TriggerEndGame();
+			GameEventManager.TriggerEndGame("Last Day");
 		}
 	}
 
@@ -374,17 +381,23 @@ public class LevelManager : MonoBehaviour {
 
 	private void EndGame()
 	{
+		GAMESTATE = GameEventManager.GameState.EndGame;
+		CancelInvoke("updateMinute");
 		
 	}
 	private void GameOver()
 	{
+		GAMESTATE = GameEventManager.GameState.GameOver;
+		CancelInvoke("updateMinute");
 
 	}
 	private void Respawn()
 	{
+		GAMESTATE = GameEventManager.GameState.Live;
+		InvokeRepeating("updateMinute", 0f, 0.10f);
 		GameUI.dialogPop.giveInfos("This place doesn't look\n really comfy. I should find a letter and\n ask Mina some help.");
 		currD = 1;
-		currH = 1;
+		currH = 0;
 		currM = 1;
 		writtenPaper = 0;
 		realWrittenPaper = 0;
@@ -392,6 +405,7 @@ public class LevelManager : MonoBehaviour {
 	}
 	private void GameStart()
 	{
+		GAMESTATE = GameEventManager.GameState.MainMenu;
 		
 	}
 }

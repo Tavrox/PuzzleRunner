@@ -22,7 +22,8 @@ public class Player : MonoBehaviour {
 	{
 		Alive,
 		Dead,
-		Paper
+		Paper,
+		Cutscene
 	};
 	public healthState Health;
 
@@ -46,8 +47,6 @@ public class Player : MonoBehaviour {
 	
 	public float speed = 5f;
 	public float initSpeed = 5f;
-	public float sleepQty;
-	public float hungerQty;
 	public Vector3 vecMove;
 
 	public Vector3 mypos = Vector3.zero;
@@ -85,6 +84,7 @@ public class Player : MonoBehaviour {
 		coneParent = FETool.findWithinChildren(gameObject, "ParentCone");
 		gameSprite = FETool.findWithinChildren(gameObject, "Sprite");
 		levMan = _lev;
+		initpos = transform.position;
 
 		RayDL = FETool.findWithinChildren(gameObject, "RayOrigin_DL").transform;
 		RayUL = FETool.findWithinChildren(gameObject, "RayOrigin_DR").transform;
@@ -99,8 +99,6 @@ public class Player : MonoBehaviour {
 		InvokeRepeating("consumeSleep", 30f, 60f);
 		halfMyY = 0.25f;
 
-		
-		
 		GameEventManager.GameOver += GameOver;
 		GameEventManager.Respawn += Respawn;
 		GameEventManager.GameStart += GameStart;
@@ -228,9 +226,13 @@ public class Player : MonoBehaviour {
 			doorSpeed = 0.5f;
 		}
 
-		if ( foodState == 0 || sleepState == 0)
+		if ( foodState == 0)
 		{
-			GameEventManager.TriggerGameOver("Food or Sleep");
+			GameEventManager.TriggerGameOver(LevelManager.DeathList.Hunger);
+		}
+		if ( sleepState == 0)
+		{
+			GameEventManager.TriggerGameOver(LevelManager.DeathList.Exhaust);
 		}
 	}
 
@@ -416,12 +418,15 @@ public class Player : MonoBehaviour {
 	private void Respawn()
 	{
 		Health = healthState.Alive;
+		foodState = 3;
+		sleepState = 3;
 		haveLetter = letterList.DontHave;
+		transform.position = initpos;
 	}
 
 	private void GameStart()
 	{
-		Health = healthState.Alive;
+		Health = healthState.Cutscene;
 		haveLetter = letterList.DontHave;
 	}
 

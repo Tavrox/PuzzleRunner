@@ -184,12 +184,15 @@ public class Dracula : MonoBehaviour {
 
 	private void giveWPM()
 	{
-		pouf.alpha = 1f;
-		pouf.PlayOnce("pouf");
-		new OTTween(pouf, 2f).Tween("alpha", 0f);
-		currWPM = _levman.pathDirector.pickRandomWPM();
-		currWp = currWPM.pickRandomWP();
-		transform.position = currWp.transform.position;
+		if (State != StateList.Chasing)
+		{
+			pouf.alpha = 1f;
+			pouf.PlayOnce("pouf");
+			new OTTween(pouf, 2f).Tween("alpha", 0f);
+			currWPM = _levman.pathDirector.pickRandomWPM();
+			currWp = currWPM.pickRandomWP();
+			transform.position = currWp.transform.position;
+		}
 	}
 
 	public void GoToWaypoint (Waypoint _wp)

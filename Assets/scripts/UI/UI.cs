@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class UI : MonoBehaviour {
 
@@ -30,6 +31,7 @@ public class UI : MonoBehaviour {
 	public GameObject VictoryGO;
 	public GameObject DeathGO;
 	public GameObject StartGO;
+	public GameObject TitleGO;
 
 	public OTSprite DarkBG;
 
@@ -45,7 +47,7 @@ public class UI : MonoBehaviour {
 		HandClock = FETool.findWithinChildren(gameObject, "Ingame/Panels/Clock/Aiguille").GetComponentInChildren<OTSprite>();
 		FoodState = FETool.findWithinChildren(gameObject, "Ingame/Panels/PanFood/Bar").GetComponentInChildren<OTSprite>();
 		SleepState = FETool.findWithinChildren(gameObject, "Ingame/Panels/PanSleep/Bar").GetComponentInChildren<OTSprite>();
-		Controls = FETool.findWithinChildren(gameObject, "Ingame/controls").GetComponent<OTSprite>();
+		Controls = FETool.findWithinChildren(gameObject, "Ingame/Controls").GetComponentInChildren<OTSprite>();
 
 		dialogPop = FETool.findWithinChildren(gameObject, "Ingame/Dialog").GetComponent<PopUp>();
 		WillBack = FETool.findWithinChildren(gameObject, "Ingame/Dialog/WillBeBack").GetComponentInChildren<OTSprite>();
@@ -55,6 +57,7 @@ public class UI : MonoBehaviour {
 		VictoryGO = FETool.findWithinChildren(gameObject, "Ingame/Victory");
 		DeathGO = FETool.findWithinChildren(gameObject, "Ingame/Death");
 		StartGO = FETool.findWithinChildren(gameObject, "Ingame/Start");
+		TitleGO = FETool.findWithinChildren(gameObject, "Ingame/Title");
 
 		StartCoroutine("fadeControls");
 //		dialogPop.Fade();
@@ -63,7 +66,13 @@ public class UI : MonoBehaviour {
 		paperText = FETool.findWithinChildren(gameObject, "Ingame/Paper/State").GetComponentInChildren<TextUI>();
 
 		Clock = FETool.findWithinChildren(gameObject, "Ingame/Panels/Clock/Hours").GetComponent<TextUI>();
-		DarkBG = FETool.findWithinChildren(gameObject, "Ingame/black").GetComponent<OTSprite>();
+		DarkBG = FETool.findWithinChildren(gameObject, "Ingame/Black").GetComponentInChildren<OTSprite>();
+
+		UIBtn[] listBtn = GetComponentsInChildren<UIBtn>();
+		foreach ( UIBtn btn in listBtn)
+		{
+			btn.Setup(this);
+		}
 		
 		GameEventManager.GameOver += GameOver;
 		GameEventManager.Respawn += Respawn;
@@ -71,8 +80,9 @@ public class UI : MonoBehaviour {
 		GameEventManager.EndGame += EndGame;
 	}
 
-	public void FadeTextsAndSprite(GameObject _targ)
+	public void AppearTextsAndSprite(GameObject _targ)
 	{
+		new OTTween(DarkBG, 1f).Tween("alpha", 1f);
 		if (_targ.GetComponentsInChildren<OTSprite>() != null)
 		{
 			foreach (OTSprite _spr in _targ.GetComponentsInChildren<OTSprite>())
@@ -87,18 +97,45 @@ public class UI : MonoBehaviour {
 				_txt.makeFadeIn();
 			}
 		}
+		if (_targ.GetComponentsInChildren<UIBtn>() != null)
+		{
+			foreach (UIBtn _btn in _targ.GetComponentsInChildren<UIBtn>())
+			{
+				_btn.displayed = true;
+			}	
+		}
 	}
 
-	public void FadeOutTextsAndSprite(GameObject _targ)
+	public void ClearTextsAndSprite(GameObject _targ)
 	{
-		foreach (OTSprite _spr in _targ.GetComponentsInChildren<OTSprite>())
+		new OTTween(DarkBG, 1f).Tween("alpha", 0f);
+		if (_targ.GetComponentsInChildren<OTSprite>() != null)
 		{
-			_spr.alpha = 0f;
+			foreach (OTSprite _spr in _targ.GetComponentsInChildren<OTSprite>())
+			{
+				_spr.alpha = 0f;
+			}
 		}
-		foreach (TextUI _txt in _targ.GetComponentsInChildren<TextUI>())
+		if (_targ.GetComponentsInChildren<TextUI>() != null)
 		{
-			_txt.makeFadeOut();
+			foreach (TextUI _txt in _targ.GetComponentsInChildren<TextUI>())
+			{
+				_txt.makeFadeOut();
+			}
 		}
+		if (_targ.GetComponentsInChildren<UIBtn>() != null)
+		{
+			foreach (UIBtn _btn in _targ.GetComponentsInChildren<UIBtn>())
+			{
+				_btn.reEnable();
+			}
+		}
+	}
+
+	public void DisplayTitleMenu()
+	{
+		ClearTextsAndSprite(TitleGO);
+		AppearTextsAndSprite(StartGO);
 	}
 
 	
@@ -153,41 +190,6 @@ public class UI : MonoBehaviour {
 		attributeStateSprite(levMan.plr.sleepState, SleepState);
 	}
 
-	private void DisplayDeathScreen()
-	{
-		FadeTextsAndSprite(DeathGO);
-		new OTTween(DarkBG, 1f).Tween("alpha", 1f);
-	}
-	private void DisplayWinScreen()
-	{
-		FadeTextsAndSprite(VictoryGO);
-		new OTTween(DarkBG, 1f).Tween("alpha", 1f);
-	}
-
-	private void DisplayStartScreen()
-	{
-		FadeTextsAndSprite(StartGO);
-		new OTTween(DarkBG, 1f).Tween("alpha", 1f);
-	}
-
-	public void fadeDeathScreen()
-	{
-		FadeOutTextsAndSprite(DeathGO);
-		new OTTween(DarkBG, 1f).Tween("alpha", 0f);
-	}
-
-	public void fadeStartScreen()
-	{
-		FadeOutTextsAndSprite(StartGO);
-		new OTTween(DarkBG, 1f).Tween("alpha", 0f);
-	}
-	
-	public void fadeVictoryScreen()
-	{
-		FadeOutTextsAndSprite(VictoryGO);
-		new OTTween(DarkBG, 1f).Tween("alpha", 0f);
-	}
-
 	private void attributeStateSprite(int attribute, OTSprite _spr)
 	{
 		if (attribute == 0)
@@ -210,52 +212,32 @@ public class UI : MonoBehaviour {
 
 	private void GameStart()
 	{
-		print ("ok");
 		Menu = menuTypes.Title;
-		DisplayStartScreen();
-		FadeOutTextsAndSprite(VictoryGO);
+		ClearTextsAndSprite(VictoryGO);
+		ClearTextsAndSprite(DeathGO);
+		ClearTextsAndSprite(StartGO);
+		DarkBG.alpha = 1f;
+		AppearTextsAndSprite(TitleGO);
 	}
 	private void GameOver()
 	{
 		Menu = menuTypes.Death;
 		MasterAudio.PlaySound("death");
 		StartCoroutine("sayDied");
-//		MasterAudio.StopAllOfSound("dracula_out");
-//		MasterAudio.StopAllOfSound("door_bell");
-//		MasterAudio.StopAllOfSound("dracula_back");
-//		MasterAudio.StopAllOfSound("hungry_1");
-//		MasterAudio.StopAllOfSound("hungry_2");
-//		MasterAudio.StopAllOfSound("yawn1");
-//		MasterAudio.StopAllOfSound("yawn2");
 	}
 	private void EndGame()
 	{
 		Menu = menuTypes.Victory;
 		StartCoroutine("WinPlz");
-//		MasterAudio.StopAllOfSound("dracula_out");
-//		MasterAudio.StopAllOfSound("door_bell");
-//		MasterAudio.StopAllOfSound("dracula_back");
-//		MasterAudio.StopAllOfSound("hungry_1");
-//		MasterAudio.StopAllOfSound("hungry_2");
-//		MasterAudio.StopAllOfSound("yawn1");
-//		MasterAudio.StopAllOfSound("yawn2");
-//		FadeTextsAndSprite(
 	}
 	private void Respawn()
 	{
 		Menu = menuTypes.Ingame;
 		MasterAudio.FadeAllPlaylistsToVolume(1f, 3f);
-		fadeDeathScreen();
-		fadeStartScreen();
-		FadeOutTextsAndSprite(VictoryGO);
-//		MasterAudio.StopAllOfSound("dracula_out");
-//		MasterAudio.StopAllOfSound("door_bell");
-//		MasterAudio.StopAllOfSound("dracula_back");
-//		MasterAudio.StopAllOfSound("hungry_1");
-//		MasterAudio.StopAllOfSound("hungry_2");
-//		MasterAudio.StopAllOfSound("yawn1");
-//		MasterAudio.StopAllOfSound("yawn2");
-		//		fadeScreen();
+		ClearTextsAndSprite(VictoryGO);
+		ClearTextsAndSprite(DeathGO);
+		ClearTextsAndSprite(StartGO);
+		ClearTextsAndSprite(TitleGO);
 	}
 
 	IEnumerator WinPlz()
@@ -263,7 +245,7 @@ public class UI : MonoBehaviour {
 		MasterAudio.FadeAllPlaylistsToVolume(0f, 3f);
 		yield return new WaitForSeconds(3f);
 		MasterAudio.PlaySound("win");
-		DisplayWinScreen();
+		AppearTextsAndSprite(VictoryGO);
 	}
 
 	IEnumerator sayDied()
@@ -271,7 +253,7 @@ public class UI : MonoBehaviour {
 		MasterAudio.FadeAllPlaylistsToVolume(0f, 3f);
 		yield return new WaitForSeconds(3f);
 		MasterAudio.PlaySound("game_over");
-		DisplayDeathScreen();
+		AppearTextsAndSprite(DeathGO);
 	}
 
 
