@@ -86,6 +86,7 @@ public class LevelManager : MonoBehaviour {
 
 		respawnPaper(PaperSpots);
 		spawnFood(FoodSpots);
+		saveDay = 1000;
 
 		
 		MailmanState = MailManStateList.Away;
@@ -401,6 +402,7 @@ public class LevelManager : MonoBehaviour {
 		currM = 1;
 		writtenPaper = 0;
 		realWrittenPaper = 0;
+		saveDay = 1000;
 		respawnPaper(PaperSpots);
 	}
 	private void GameStart()

@@ -66,7 +66,6 @@ public class Door : MonoBehaviour {
 
 	public void switchDoor()
 	{
-		print ("open switcvh");
 		switch (Handle)
 		{
 		case HandleDoor.Closed :
