@@ -173,6 +173,8 @@
             <filename>sleep_3h_highlight.png</filename>
             <filename>sleep_6h.png</filename>
             <filename>portrait_mailman.png</filename>
+            <filename>title.png</filename>
+            <filename>logo.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class LevelBrick : MonoBehaviour {
 
@@ -13,11 +14,19 @@ public class LevelBrick : MonoBehaviour {
 		Room_Mail
 	}
 	public brickType brickDef;
+	public List<GameObject> objOnFloor;
 
 	// Use this for initialization
 	public void Setup () 
 	{
-		tag = "Wall";
+		if (brickDef == brickType.Wall)
+		{
+			tag = "Wall";
+		}
+		if (brickDef == brickType.Floor)
+		{
+			objOnFloor = new List<GameObject>();
+		}
 	}
 
 	public void giveInfos()

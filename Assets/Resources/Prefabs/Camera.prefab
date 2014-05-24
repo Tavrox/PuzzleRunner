@@ -145,7 +145,7 @@ GameObject:
   - 23: {fileID: 2300028}
   - 102: {fileID: 10200020}
   m_Layer: 0
-  m_Name: john
+  m_Name: draculaTxt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -524,7 +524,7 @@ GameObject:
   - 23: {fileID: 2300032}
   - 102: {fileID: 10200028}
   m_Layer: 0
-  m_Name: john
+  m_Name: johnTxt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1096,7 +1096,7 @@ GameObject:
   - 23: {fileID: 2300074}
   - 102: {fileID: 10200042}
   m_Layer: 0
-  m_Name: john
+  m_Name: mailTxt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1150,7 +1150,7 @@ GameObject:
   - 23: {fileID: 2300080}
   - 114: {fileID: 11400088}
   m_Layer: 0
-  m_Name: food
+  m_Name: foodSpr
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1168,7 +1168,7 @@ GameObject:
   - 23: {fileID: 2300082}
   - 114: {fileID: 11400090}
   m_Layer: 0
-  m_Name: dracula
+  m_Name: draculSpr
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1186,7 +1186,7 @@ GameObject:
   - 23: {fileID: 2300084}
   - 114: {fileID: 11400092}
   m_Layer: 0
-  m_Name: john
+  m_Name: johnSpr
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1204,7 +1204,7 @@ GameObject:
   - 23: {fileID: 2300086}
   - 114: {fileID: 11400094}
   m_Layer: 0
-  m_Name: bed
+  m_Name: bedSpr
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1222,7 +1222,7 @@ GameObject:
   - 23: {fileID: 2300088}
   - 114: {fileID: 11400096}
   m_Layer: 0
-  m_Name: mailman
+  m_Name: mailmanSpr
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1949,8 +1949,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100098}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 5}
-  m_LocalScale: {x: 7.84375, y: .416666687, z: 1}
+  m_LocalPosition: {x: .685893059, y: .579730034, z: 5.00511122}
+  m_LocalScale: {x: 3.39583349, y: .666666687, z: 1}
   m_Children: []
   m_Father: {fileID: 400152}
 --- !u!4 &400100
@@ -1999,7 +1999,7 @@ Transform:
   m_GameObject: {fileID: 100106}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.51905251, y: .597120285, z: .000849025557}
-  m_LocalScale: {x: .773508906, y: .79237473, z: .0188660733}
+  m_LocalScale: {x: .773508906, y: .79237473, z: 1}
   m_Children: []
   m_Father: {fileID: 400120}
 --- !u!4 &400108
@@ -2173,7 +2173,7 @@ Transform:
   m_GameObject: {fileID: 100134}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.51908016, y: -1.71557999, z: -.00146367191}
-  m_LocalScale: {x: 1.80219448, y: 1.80219448, z: .0187728591}
+  m_LocalScale: {x: 1.80219448, y: 1.80219448, z: 1}
   m_Children: []
   m_Father: {fileID: 400120}
 --- !u!4 &400136
@@ -2184,7 +2184,7 @@ Transform:
   m_GameObject: {fileID: 100136}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.57411003, y: 3.01815414, z: .00286074309}
-  m_LocalScale: {x: 1.38665473, y: 1.38665473, z: .041599635}
+  m_LocalScale: {x: 1.38665473, y: 1.38665473, z: 1}
   m_Children: []
   m_Father: {fileID: 400120}
 --- !u!4 &400138
@@ -2195,7 +2195,7 @@ Transform:
   m_GameObject: {fileID: 100138}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -3.28754234, y: 2.9709959, z: .00329975015}
-  m_LocalScale: {x: 1.38665473, y: 1.38665473, z: .041599635}
+  m_LocalScale: {x: 1.38665473, y: 1.38665473, z: 1}
   m_Children: []
   m_Father: {fileID: 400120}
 --- !u!4 &400140
@@ -2204,9 +2204,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100140}
-  m_LocalRotation: {x: 0, y: 0, z: .707106829, w: .707106829}
+  m_LocalRotation: {x: 0, y: 0, z: .707107127, w: .707106531}
   m_LocalPosition: {x: 2.65501595, y: -1.78763962, z: -.00205314113}
-  m_LocalScale: {x: 1.19610131, y: 1.92050111, z: .00842325203}
+  m_LocalScale: {x: 1.19610131, y: 1.92050123, z: 1}
   m_Children: []
   m_Father: {fileID: 400120}
 --- !u!4 &400142
@@ -2217,7 +2217,7 @@ Transform:
   m_GameObject: {fileID: 100142}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 5.4845562, y: .491016388, z: -5.74392325e-05}
-  m_LocalScale: {x: 1.3276782, y: 1.33664906, z: .00897079799}
+  m_LocalScale: {x: 1.3276782, y: 1.33664906, z: 1}
   m_Children: []
   m_Father: {fileID: 400120}
 --- !u!4 &400144
@@ -2239,7 +2239,7 @@ Transform:
   m_GameObject: {fileID: 100146}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: .259525299, y: 1.97239685, z: .00194644427}
-  m_LocalScale: {x: 9.75445557, y: 4.53957367, z: 1}
+  m_LocalScale: {x: 9.75445461, y: 4.53957367, z: 1}
   m_Children: []
   m_Father: {fileID: 400100}
 --- !u!4 &400148
@@ -3877,7 +3877,7 @@ TextMesh:
   m_Font: {fileID: 12800000, guid: bc4879d16cc1fb948868f63f406b738d, type: 3}
   m_Color:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 16777215
 --- !u!102 &10200022
 TextMesh:
   serializedVersion: 3
@@ -3961,7 +3961,7 @@ TextMesh:
   m_Font: {fileID: 12800000, guid: bc4879d16cc1fb948868f63f406b738d, type: 3}
   m_Color:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 16777215
 --- !u!102 &10200030
 TextMesh:
   serializedVersion: 3
@@ -4009,7 +4009,7 @@ TextMesh:
   m_Font: {fileID: 12800000, guid: bc4879d16cc1fb948868f63f406b738d, type: 3}
   m_Color:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 16777215
 --- !u!102 &10200034
 TextMesh:
   serializedVersion: 3
@@ -4114,7 +4114,7 @@ TextMesh:
   m_Font: {fileID: 12800000, guid: bc4879d16cc1fb948868f63f406b738d, type: 3}
   m_Color:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 16777215
 --- !u!102 &10200044
 TextMesh:
   serializedVersion: 3
@@ -4156,7 +4156,7 @@ TextMesh:
   m_Font: {fileID: 12800000, guid: bc4879d16cc1fb948868f63f406b738d, type: 3}
   m_Color:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 16777215
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5083,8 +5083,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _name: controls
-  _position: {x: 0, y: 0}
-  _size: {x: 7.84375, y: .416666687}
+  _position: {x: .685893059, y: .579730034}
+  _size: {x: 3.39583349, y: .666666687}
   _rotation: 0
   _pivot: 4
   _pivotPoint: {x: 0, y: 0}
@@ -5107,8 +5107,8 @@ MonoBehaviour:
     height: 0
   protoType: Sprite
   baseName: controls
-  oSize: {x: 7.84375, y: .416666687}
-  imageSize: {x: 7.84375, y: .416666687}
+  oSize: {x: 3.39583349, y: .666666687}
+  imageSize: {x: 3.39583349, y: .666666687}
   _offset: {x: 0, y: 0}
   _baseOffset: {x: 0, y: 0}
   _flipHorizontal: 0
@@ -5120,8 +5120,8 @@ MonoBehaviour:
   _alpha: 1
   _image: {fileID: 0}
   sizeImages: []
-  _frameIndex: 8
-  _frameName: controls
+  _frameIndex: 0
+  _frameName: 3h_sleep
   _spriteContainer: {fileID: 0}
   _containerName: ui
   _newSprite: 0
@@ -5342,7 +5342,7 @@ MonoBehaviour:
   protoType: 
   baseName: paper
   oSize: {x: .427083343, y: .4375}
-  imageSize: {x: 40.9999962, y: 41.9999962}
+  imageSize: {x: .773508906, y: .79237473}
   _offset: {x: 0, y: 0}
   _baseOffset: {x: 0, y: 0}
   _flipHorizontal: 0
@@ -5351,7 +5351,7 @@ MonoBehaviour:
   _additive: 0
   _materialReference: transparent
   _tintColor: {r: 1, g: 1, b: 1, a: 1}
-  _alpha: 1
+  _alpha: 0
   _image: {fileID: 0}
   sizeImages: []
   _frameIndex: 8
@@ -5554,7 +5554,7 @@ MonoBehaviour:
   _additive: 0
   _materialReference: transparent
   _tintColor: {r: 1, g: 1, b: 1, a: 1}
-  _alpha: 1
+  _alpha: 0
   _image: {fileID: 0}
   sizeImages: []
   _frameIndex: 26
@@ -5627,7 +5627,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a18d0574a4fa59946a49ede6640a1f55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _name: food
+  _name: foodSpr
   _position: {x: -2.51908016, y: -1.71557999}
   _size: {x: 1.80219448, y: 1.80219448}
   _rotation: 0
@@ -5651,9 +5651,9 @@ MonoBehaviour:
     width: 0
     height: 0
   protoType: 
-  baseName: food
+  baseName: foodSpr
   oSize: {x: 1, y: 1}
-  imageSize: {x: 96, y: 95.9999924}
+  imageSize: {x: 1.80219448, y: 1.80219448}
   _offset: {x: 0, y: 0}
   _baseOffset: {x: 0, y: 0}
   _flipHorizontal: 0
@@ -5661,8 +5661,8 @@ MonoBehaviour:
   _transparent: 1
   _additive: 0
   _materialReference: transparent
-  _tintColor: {r: 1, g: 1, b: 1, a: 1}
-  _alpha: 1
+  _tintColor: {r: 1, g: 1, b: 1, a: 0}
+  _alpha: 0
   _image: {fileID: 0}
   sizeImages: []
   _frameIndex: 5
@@ -5681,7 +5681,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a18d0574a4fa59946a49ede6640a1f55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _name: dracula
+  _name: draculSpr
   _position: {x: 1.57411003, y: 3.01815414}
   _size: {x: 1.38665473, y: 1.38665473}
   _rotation: 0
@@ -5705,9 +5705,9 @@ MonoBehaviour:
     width: 0
     height: 0
   protoType: 
-  baseName: dracula
+  baseName: draculSpr
   oSize: {x: 1.55208337, y: 1.55208337}
-  imageSize: {x: 148.999985, y: 149}
+  imageSize: {x: 1.38665473, y: 1.38665473}
   _offset: {x: 0, y: 0}
   _baseOffset: {x: 0, y: 0}
   _flipHorizontal: 0
@@ -5716,7 +5716,7 @@ MonoBehaviour:
   _additive: 0
   _materialReference: transparent
   _tintColor: {r: 1, g: 1, b: 1, a: 1}
-  _alpha: 1
+  _alpha: 0
   _image: {fileID: 0}
   sizeImages: []
   _frameIndex: 18
@@ -5735,7 +5735,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a18d0574a4fa59946a49ede6640a1f55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _name: john
+  _name: johnSpr
   _position: {x: -3.28754234, y: 2.9709959}
   _size: {x: 1.38665473, y: 1.38665473}
   _rotation: 0
@@ -5759,9 +5759,9 @@ MonoBehaviour:
     width: 0
     height: 0
   protoType: 
-  baseName: john
+  baseName: johnSpr
   oSize: {x: 1.55208337, y: 1.55208337}
-  imageSize: {x: 148.999985, y: 149}
+  imageSize: {x: 1.38665473, y: 1.38665473}
   _offset: {x: 0, y: 0}
   _baseOffset: {x: 0, y: 0}
   _flipHorizontal: 0
@@ -5769,8 +5769,8 @@ MonoBehaviour:
   _transparent: 1
   _additive: 0
   _materialReference: transparent
-  _tintColor: {r: 1, g: 1, b: 1, a: 1}
-  _alpha: 1
+  _tintColor: {r: 1, g: 1, b: 1, a: 0}
+  _alpha: 0
   _image: {fileID: 0}
   sizeImages: []
   _frameIndex: 19
@@ -5789,10 +5789,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a18d0574a4fa59946a49ede6640a1f55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _name: bed
+  _name: bedSpr
   _position: {x: 2.65501595, y: -1.78763962}
-  _size: {x: 1.19610131, y: 1.92050111}
-  _rotation: 90.0000076
+  _size: {x: 1.19610131, y: 1.92050123}
+  _rotation: 90.000061
   _pivot: 4
   _pivotPoint: {x: 0, y: 0}
   _registerInput: 0
@@ -5813,9 +5813,9 @@ MonoBehaviour:
     width: 0
     height: 0
   protoType: 
-  baseName: bed
+  baseName: bedSpr
   oSize: {x: 1.47916675, y: 2.375}
-  imageSize: {x: 141.999985, y: 228}
+  imageSize: {x: 1.19610131, y: 1.92050123}
   _offset: {x: 0, y: 0}
   _baseOffset: {x: 0, y: 0}
   _flipHorizontal: 0
@@ -5823,8 +5823,8 @@ MonoBehaviour:
   _transparent: 1
   _additive: 0
   _materialReference: transparent
-  _tintColor: {r: 1, g: 1, b: 1, a: 1}
-  _alpha: 1
+  _tintColor: {r: 1, g: 1, b: 1, a: 0}
+  _alpha: 0
   _image: {fileID: 0}
   sizeImages: []
   _frameIndex: 2
@@ -5843,7 +5843,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a18d0574a4fa59946a49ede6640a1f55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _name: mailman
+  _name: mailmanSpr
   _position: {x: 5.4845562, y: .491016388}
   _size: {x: 1.3276782, y: 1.33664906}
   _rotation: 0
@@ -5867,9 +5867,9 @@ MonoBehaviour:
     width: 0
     height: 0
   protoType: 
-  baseName: mailman
+  baseName: mailmanSpr
   oSize: {x: 1.54166675, y: 1.55208337}
-  imageSize: {x: 147.999985, y: 149}
+  imageSize: {x: 1.3276782, y: 1.33664906}
   _offset: {x: 0, y: 0}
   _baseOffset: {x: 0, y: 0}
   _flipHorizontal: 0
@@ -5878,7 +5878,7 @@ MonoBehaviour:
   _additive: 0
   _materialReference: transparent
   _tintColor: {r: 1, g: 1, b: 1, a: 1}
-  _alpha: 1
+  _alpha: 0
   _image: {fileID: 0}
   sizeImages: []
   _frameIndex: 20
@@ -5989,7 +5989,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Sprite (id=-1077028)
   _position: {x: .259525299, y: 1.97239685}
-  _size: {x: 9.75445557, y: 4.53957367}
+  _size: {x: 9.75445461, y: 4.53957367}
   _rotation: 0
   _pivot: 4
   _pivotPoint: {x: 0, y: 0}
@@ -6013,7 +6013,7 @@ MonoBehaviour:
   protoType: 
   baseName: 
   oSize: {x: 10.833334, y: 5.04166698}
-  imageSize: {x: 9.75445557, y: 4.53957367}
+  imageSize: {x: 9.75445461, y: 4.53957367}
   _offset: {x: 0, y: 0}
   _baseOffset: {x: 0, y: 0}
   _flipHorizontal: 0

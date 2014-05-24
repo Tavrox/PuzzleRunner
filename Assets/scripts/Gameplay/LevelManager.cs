@@ -50,6 +50,7 @@ public class LevelManager : MonoBehaviour {
 	public int realWrittenPaper;
 	public bool hourChecked = false;
 	private bool delaySleep;
+	private Bed[] bedList; 
 
 	// Use this for initialization
 	void Awake () 
@@ -84,7 +85,7 @@ public class LevelManager : MonoBehaviour {
 			FoodSpots.Add(obj.gameObject);
 		}
 
-		respawnPaper(PaperSpots);
+//		respawnPaper(PaperSpots);
 		spawnFood(FoodSpots);
 		saveDay = 1000;
 
@@ -95,6 +96,7 @@ public class LevelManager : MonoBehaviour {
 		GameUI.Setup(this);
 
 		GetComponentInChildren<MailManPlace>().Setup(this);
+		bedList = GetComponentsInChildren<Bed>();
 
 		Door[] Doors = GetComponentsInChildren<Door>();
 		foreach (Door _dr in Doors)
@@ -115,10 +117,10 @@ public class LevelManager : MonoBehaviour {
 
 		MasterAudio.PlaySound("ambiance");
 
-		//		GAMESTATE = GameEventManager.GameState.MainMenu;
-		//		GameEventManager.TriggerRespawn("Rsp");
-		GAMESTATE = GameEventManager.GameState.Live;
-		GameEventManager.TriggerGameStart("First Init");
+				GAMESTATE = GameEventManager.GameState.MainMenu;
+				GameEventManager.TriggerRespawn("Rsp");
+//		GAMESTATE = GameEventManager.GameState.Live;
+//		GameEventManager.TriggerGameStart("First Init");
 	}
 	
 	// Update is called once per frame
@@ -136,6 +138,10 @@ public class LevelManager : MonoBehaviour {
 	{
 		if (delaySleep == false)
 		{
+			foreach (Bed _bd in bedList)
+			{
+				_bd.GetComponentInChildren<OTSprite>().alpha = 0f;
+			}
 			delaySleep = true;
 			plr.foodState -= 1;
 			switch (_hr)
@@ -185,6 +191,10 @@ public class LevelManager : MonoBehaviour {
 	{
 		yield return new WaitForSeconds(3f);
 		delaySleep = false;
+		foreach (Bed _bd in bedList)
+		{
+			_bd.GetComponentInChildren<OTSprite>().alpha = 1f;
+		}
 	}
 
 	private void updateMinute()
@@ -370,6 +380,11 @@ public class LevelManager : MonoBehaviour {
 
 		}
 	}
+
+	public void changeBedCollide()
+	{
+	}
+
 	private void laughPlz()
 	{
 		MasterAudio.PlaySound("laugh");

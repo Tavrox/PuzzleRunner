@@ -59,6 +59,7 @@ public class Dracula : MonoBehaviour {
 
 	public float threeSoldChasingMin = 10f;
 	public float threeSoldChasingMax = 5f;
+	public LevelBrick currFloor;
 
 	// Use this for initialization
 	public void Setup (LevelManager _lev) 
@@ -67,13 +68,12 @@ public class Dracula : MonoBehaviour {
 		_plr = _levman.plr;
 		spr = FETool.findWithinChildren(gameObject, "Sprite").GetComponentInChildren<OTAnimatingSprite>();
 		pouf = FETool.findWithinChildren(gameObject, "Pouf").GetComponentInChildren<OTAnimatingSprite>();
-		giveWPM();
+		randomSpawn();
 		
 		RayDL = FETool.findWithinChildren(gameObject, "RayOrigin_DL").transform;
 		RayUL = FETool.findWithinChildren(gameObject, "RayOrigin_DR").transform;
 		RayDR = FETool.findWithinChildren(gameObject, "RayOrigin_UL").transform;
 		RayUR = FETool.findWithinChildren(gameObject, "RayOrigin_UR").transform;
-		InvokeRepeating("giveWPM", 0f, 15f);
 		
 		GameEventManager.GameOver += GameOver;
 		GameEventManager.Respawn += Respawn;
@@ -84,38 +84,37 @@ public class Dracula : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
-		checkForPlayer();
 		vecMove = Vector3.zero;
+		checkFloor();
 
 		switch (_levman.Hours.currentTime)
 		{
 			case HoursManager.DayTime.Day :
 			{
-	//			transform.position = new Vector3(500f,500f, 500f);
+				transform.position = new Vector3(500f,500f, 500f);
 				break;
 			}
 			case HoursManager.DayTime.Night :
 			{
-				switch (State)
-				{
-				case StateList.Patrolling :
-				{
-					Move(currWp.nextWP.transform.position);
-					rotateTowardPlayer(currWp.nextWP.transform.position, transform);
-					break;
-				}
-				case StateList.Chasing :
-				{
-					Move(_plr.transform.position);
-					rotateTowardPlayer(_plr.transform.position, transform);
-					break;
-				}
-				case StateList.CutScene :
-				{
-					vecMove = Vector3.zero ;
-					speed = 0f;
-					break;
-				}
+			switch (State)
+			{
+			case StateList.Patrolling :
+			{
+			PlayAnim("patrolling");
+			break;
+			}
+			case StateList.Chasing :
+			{
+			Move(_plr.transform.position);
+			rotateTowardPlayer(_plr.transform.position, transform);
+			break;
+			}
+			case StateList.CutScene :
+			{
+				vecMove = Vector3.zero ;
+				speed = 0f;
+				break;
+			}
 			}
 			break;
 			}
@@ -170,29 +169,65 @@ public class Dracula : MonoBehaviour {
 
 	void OnTriggerEnter(Collider _oth)
 	{
-		if (_oth.GetComponent<Player>() != null)
+		if (_oth.GetComponent<LevelBrick>() != null && _oth.GetComponent<LevelBrick>().brickDef == LevelBrick.brickType.Floor)
 		{
-//			GameEventManager.TriggerGameOver("Dracula");
+			currFloor = _oth.GetComponent<LevelBrick>();
+			currFloor.objOnFloor.Add(this.gameObject);
 		}
-
+	}
+	void OnTriggerExit(Collider _oth)
+	{
+		if (_oth.GetComponent<LevelBrick>() != null && _oth.GetComponent<LevelBrick>().brickDef == LevelBrick.brickType.Floor)
+		{ 
+			_oth.GetComponent<LevelBrick>().objOnFloor.Remove(this.gameObject);
+		}
 	}
 
-	private void turnTowardWp(Waypoint _wp)
-	{
 
-	}
-
-	private void giveWPM()
+	private void randomSpawn()
 	{
-		if (State != StateList.Chasing)
+		if (State != StateList.Chasing && _levman.Hours.currentTime != HoursManager.DayTime.Day)
 		{
+			currWPM = _levman.pathDirector.pickRandomWPM();
+			Waypoint _WP = currWPM.pickRandomWP();
+			currWp = currWPM.pickRandomWP();
+			pouf.transform.parent.transform.position = _WP.transform.position;
 			pouf.alpha = 1f;
 			pouf.PlayOnce("pouf");
-			new OTTween(pouf, 2f).Tween("alpha", 0f);
-			currWPM = _levman.pathDirector.pickRandomWPM();
-			currWp = currWPM.pickRandomWP();
-			transform.position = currWp.transform.position;
+			StartCoroutine(doAppear(_WP));
+			new OTTween(spr, 0.01f).Tween("alpha", 0f);
+			new OTTween(transform, 0.01f).Tween("position", currWp.transform.position);
+			new OTTween(spr, 0.03f).Tween("alpha", 1f);
+//			transform.position = currWp.transform.position;
 		}
+	}
+	IEnumerator doAppear(Waypoint __wp)
+	{
+		yield return new WaitForSeconds(1f);
+		transform.position = __wp.transform.position;
+		currFloor.objOnFloor.Remove(this.gameObject);
+	}
+
+	public void checkFloor()
+	{
+		if (currFloor.objOnFloor.Contains(_plr.gameObject))
+		{
+			State = StateList.Chasing;
+			target = _levman.plr.transform.position;
+			print ("spotted");
+		}
+		else
+		{
+			print ("unspotted");
+			State = StateList.Patrolling;
+			target = Vector3.zero;
+		}
+	}
+
+	IEnumerator WaitSec(float _sec)
+	{
+		yield return new WaitForSeconds(_sec);
+		randomSpawn();
 	}
 
 	public void GoToWaypoint (Waypoint _wp)
@@ -208,6 +243,14 @@ public class Dracula : MonoBehaviour {
 		_diffY = transform.position.y - targ.y;
 		_angle = Mathf.Atan2( _diffX, _diffY) * Mathf.Rad2Deg;
 		_trsf.rotation = Quaternion.Euler(0f, 0f, _angle - 180);
+	}
+
+	public void PlayAnim(string _anim)
+	{
+		if (spr.animationFrameset != _anim)
+		{
+			spr.Play (_anim);
+		}
 	}
 
 	public void findClosestWp()
@@ -232,6 +275,7 @@ public class Dracula : MonoBehaviour {
 	{
 		if (MovingDir != DirList.Up)
 		{
+			print ("blocked");
 			vecMove.y = 0f;
 			BlockedDown = true;
 		}
@@ -240,6 +284,7 @@ public class Dracula : MonoBehaviour {
 	{
 		if (MovingDir != DirList.Right)
 		{
+			print ("blocked");
 			vecMove.x = 0f;
 			BlockedDown = true;
 		}
@@ -248,6 +293,7 @@ public class Dracula : MonoBehaviour {
 	{
 		if (MovingDir != DirList.Left)
 		{
+			print ("blocked");
 			vecMove.x = 0f;
 			BlockedDown = true;
 		}
@@ -256,22 +302,16 @@ public class Dracula : MonoBehaviour {
 	{
 		if (MovingDir != DirList.Down)
 		{
+			print ("blocked");
 			vecMove.y = 0f;
 			BlockedDown = true;
 		}
 	}
 
-	private void checkForPlayer()
-	{
-//		distToPlayer = Vector3.Distance(transform.position, _plr.transform.position);
-//		if (distToPlayer < threeSoldChasingMax && distToPlayer > threeSoldChasingMin)
-//		{
-//			MasterAudio.PlaySound("laughs");
-//		}
-	}
+
 	private void Respawn()
 	{
-		InvokeRepeating("giveWPM", 15f, 30f);
+		InvokeRepeating("randomSpawn", 15f, 30f);
 	}
 	
 	private void GameStart()
@@ -282,7 +322,7 @@ public class Dracula : MonoBehaviour {
 	private void GameOver()
 	{
 		State = StateList.CutScene;
-		CancelInvoke("giveWPM");
+		CancelInvoke("randomSpawn");
 	}
 	private void EndGame()
 	{

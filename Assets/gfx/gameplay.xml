@@ -121,6 +121,19 @@
                 <key>sourceSize</key>
                 <string>{41,42}</string>
             </dict>
+            <key>paper_writting.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{152,346},{87,108}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{87,108}}</string>
+                <key>sourceSize</key>
+                <string>{87,108}</string>
+            </dict>
         </dict>
         <key>metadata</key>
         <dict>
@@ -131,7 +144,7 @@
             <key>size</key>
             <string>{256,512}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:46cbd797b7b330b773fbd0d8944d8468:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:9afcb1a9cae7f12b96d64f1856648159:1/1$</string>
             <key>textureFileName</key>
             <string>gameplay.png</string>
         </dict>

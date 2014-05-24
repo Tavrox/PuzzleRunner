@@ -113,14 +113,27 @@ public class Door : MonoBehaviour {
 
 	void OnTriggerStay(Collider _oth)
 	{
+
+		if (_oth.CompareTag("Player"))
+		{
+			_oth.GetComponent<Player>().onDoor = true;
+		}
 		if (_oth.CompareTag("Player") && Input.GetKeyDown(KeyCode.E))
 	    {
 			this.switchDoor();
+			_oth.GetComponent<Player>().PlayAnim("open");
 		}
-
 		if (_oth.CompareTag("Dracula") == true)
 		{
 			Open();
+		}
+	}
+
+	void OnTriggerExit(Collider _oth)
+	{
+		if (_oth.CompareTag("Player"))
+		{
+			_oth.GetComponent<Player>().onDoor = false;
 		}
 	}
 

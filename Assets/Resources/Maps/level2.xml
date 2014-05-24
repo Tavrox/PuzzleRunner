@@ -130,19 +130,43 @@
   <object type="Wall" x="2829" y="1476" width="581" height="42"/>
   <object type="Wall" x="3553" y="1479" width="1175" height="39"/>
   <object type="Wall" x="2926" y="2073" width="1103" height="42"/>
-  <object x="2196" y="2555" width="766" height="42"/>
-  <object x="2953" y="3515" width="712" height="42"/>
-  <object x="3650" y="2912" width="715" height="48"/>
-  <object x="4150" y="752" width="575" height="51"/>
-  <object x="3776" y="753" width="230" height="48"/>
-  <object x="3421" y="994" width="103" height="45"/>
-  <object x="3676" y="994" width="115" height="45"/>
-  <object x="4515" y="2912" width="230" height="48"/>
-  <object x="2570" y="3509" width="230" height="48"/>
-  <object x="82" y="2073" width="318" height="48"/>
-  <object x="552" y="2076" width="351" height="48"/>
-  <object x="2912" y="2476" width="51" height="115"/>
-  <object x="33" y="4036" width="54" height="712"/>
-  <object x="998" y="58" width="38" height="717"/>
+  <object type="Wall" x="2196" y="2555" width="766" height="42"/>
+  <object type="Wall" x="2953" y="3515" width="712" height="42"/>
+  <object type="Wall" x="3650" y="2912" width="715" height="48"/>
+  <object type="Wall" x="4150" y="752" width="575" height="51"/>
+  <object type="Wall" x="3776" y="753" width="230" height="48"/>
+  <object type="Wall" x="3421" y="994" width="103" height="45"/>
+  <object type="Wall" x="3676" y="994" width="115" height="45"/>
+  <object type="Wall" x="4515" y="2912" width="230" height="48"/>
+  <object type="Wall" x="2570" y="3509" width="230" height="48"/>
+  <object type="Wall" x="82" y="2073" width="318" height="48"/>
+  <object type="Wall" x="552" y="2076" width="351" height="48"/>
+  <object type="Wall" x="2912" y="2476" width="51" height="115"/>
+  <object type="Wall" x="33" y="4036" width="54" height="712"/>
+  <object type="Wall" x="998" y="58" width="38" height="717"/>
+  <object name="Floor" type="Floor" x="172" y="3300" width="980" height="1324"/>
+  <object name="Floor" type="Floor" x="1342" y="3277" width="1100" height="851"/>
+  <object name="Floor" type="Floor" x="1325" y="4351" width="1157" height="294"/>
+  <object name="Floor" type="Floor" x="2660" y="3658" width="901" height="987"/>
+  <object name="Floor" type="Floor" x="2732" y="2732" width="748" height="688"/>
+  <object name="Floor" type="Floor" x="188" y="2248" width="576" height="760"/>
+  <object name="Floor" type="Floor" x="196" y="188" width="583" height="1741"/>
+  <object name="Floor" type="Floor" x="1048" y="908" width="1021" height="2124"/>
+  <object name="Floor" type="Floor" x="2333" y="1599" width="517" height="878"/>
+  <object name="Floor" type="Floor" x="3052" y="2216" width="482" height="339"/>
+  <object name="Floor" type="Floor" x="3006" y="1554" width="1021" height="483"/>
+  <object name="Floor" type="Floor" x="2656" y="636" width="674" height="507"/>
+  <object name="Floor" type="Floor" x="1132" y="156" width="513" height="485"/>
+  <object name="Floor" type="Floor" x="1880" y="156" width="608" height="500"/>
+  <object name="Floor" type="Floor" x="2336" y="732" width="136" height="644"/>
+  <object name="Floor" type="Floor" x="2564" y="1332" width="1108" height="80"/>
+  <object name="Floor" type="Floor" x="2708" y="164" width="968" height="284"/>
+  <object name="Floor" type="Floor" x="3872" y="152" width="414" height="542"/>
+  <object name="Floor" type="Floor" x="4468" y="184" width="164" height="470"/>
+  <object name="Floor" type="Floor" x="3896" y="871" width="720" height="531"/>
+  <object name="Floor" type="Floor" x="3504" y="624" width="187" height="663"/>
+  <object name="Floor" type="Floor" x="4144" y="1636" width="456" height="416"/>
+  <object name="Floor" type="Floor" x="3788" y="2188" width="797" height="614"/>
+  <object name="Floor" type="Floor" x="3792" y="3092" width="820" height="1480"/>
  </objectgroup>
 </map>

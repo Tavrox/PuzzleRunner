@@ -55,6 +55,7 @@ public class Player : MonoBehaviour {
 	public float _diffY = 0f;
 	public float _angle = 0f;
 	public OTAnimatingSprite spr;
+	private Vector3 direction;
 	
 	[SerializeField] private RaycastHit hitInfo;
 	[SerializeField] private float halfMyX;
@@ -77,6 +78,11 @@ public class Player : MonoBehaviour {
 	public int sleepState = 3;
 	public float doorSpeed;
 	public float modifSpeed;
+	public LevelBrick currFloor;
+	public bool onDoor = false;
+
+	public OTSprite paper;
+	public TextUI papertxt;
 
 	// Use this for initialization
 	public void Setup (LevelManager _lev) 
@@ -90,6 +96,11 @@ public class Player : MonoBehaviour {
 		RayUL = FETool.findWithinChildren(gameObject, "RayOrigin_DR").transform;
 		RayDR = FETool.findWithinChildren(gameObject, "RayOrigin_UL").transform;
 		RayUR = FETool.findWithinChildren(gameObject, "RayOrigin_UR").transform;
+
+		paper = FETool.findWithinChildren(gameObject, "Paper").GetComponentInChildren<OTSprite>();
+		papertxt = FETool.findWithinChildren(gameObject, "Paper").GetComponentInChildren<TextUI>();
+		papertxt.color = Color.clear;
+
 		spr = GetComponentInChildren<OTAnimatingSprite>();
 		spr.Play("static");
 
@@ -112,6 +123,7 @@ public class Player : MonoBehaviour {
 		BlockedUp = false;
 		BlockedRight = false;
 		_target = GameObject.Find("LevelManager/Camera").GetComponent<Camera>().ScreenToWorldPoint(Input.mousePosition);
+		direction = _target.normalized;
 
 		switch (Health)
 		{
@@ -175,19 +187,26 @@ public class Player : MonoBehaviour {
 	{
 		if (haveLetter != letterList.HaveWritten)
 		{
-			if (Input.GetKey(KeyCode.E) && (haveLetter == letterList.Have || haveLetter == letterList.IsWriting))
+			if (Input.GetKey(KeyCode.E) && (haveLetter == letterList.Have || haveLetter == letterList.IsWriting) && onDoor == false)
 			{
 				Health = healthState.Paper;
 				MasterAudio.PlaySound("paper_in");
 				MasterAudio.PlaySound("writting");
 				haveLetter = letterList.IsWriting;
 				levMan.writtenPaper += 0.1f;
+				paper.alpha = 1f;
+				papertxt.color = papertxt.initColor;
+				papertxt.text = levMan.realWrittenPaper + "%";
+				paper.transform.parent.rotation = Quaternion.Euler(new Vector3(0f, 0f, 0f));
 			}
 			else if (Input.GetKeyUp(KeyCode.E) && (haveLetter == letterList.Have || haveLetter == letterList.IsWriting))
 			{
 				Health = healthState.Alive;
 				MasterAudio.StopAllOfSound("writting");
 				MasterAudio.PlaySound("paper_out");
+				paper.alpha = 0f;
+					papertxt.color = Color.clear;
+					paper.transform.parent.rotation = Quaternion.Euler(new Vector3(0f, 0f, 0f));
 			}
 		}
 		if (levMan.writtenPaper > 100)
@@ -195,6 +214,8 @@ public class Player : MonoBehaviour {
 			MasterAudio.StopAllOfSound("writting");
 			Health = healthState.Alive;
 			haveLetter = letterList.HaveWritten;
+			paper.alpha = 0f;
+			papertxt.color = Color.clear;
 		}
 	}
 
@@ -344,6 +365,14 @@ public class Player : MonoBehaviour {
 	private void wallBlocker()
 	{
 		mypos = transform.position;
+		Debug.DrawLine (RayDL.position, hitInfo.point, Color.blue);
+		Debug.DrawLine (RayDR.position, hitInfo.point, Color.blue);
+		Debug.DrawLine (RayUL.position, hitInfo.point, Color.black);
+		Debug.DrawLine (RayDL.position, hitInfo.point, Color.black);
+		Debug.DrawLine (RayUL.position, hitInfo.point, Color.white);
+		Debug.DrawLine (RayUR.position, hitInfo.point, Color.white);
+		Debug.DrawLine (RayUR.position, hitInfo.point, Color.red);
+		Debug.DrawLine (RayDR.position, hitInfo.point, Color.red);
 		if (Physics.Raycast(RayDL.position, Vector3.down, out hitInfo, halfMyY, wallMask) ||
 		    Physics.Raycast(RayDR.position, Vector3.down, out hitInfo, halfMyY, wallMask))
 		{
@@ -373,6 +402,23 @@ public class Player : MonoBehaviour {
 			blockRight();
 		}
 	}
+
+	void OnTriggerEnter(Collider _oth)
+	{
+		if (_oth.GetComponent<LevelBrick>() != null && _oth.GetComponent<LevelBrick>().brickDef == LevelBrick.brickType.Floor)
+		{
+			currFloor = _oth.GetComponent<LevelBrick>();
+			currFloor.objOnFloor.Add(this.gameObject);
+		}
+	}
+	void OnTriggerExit(Collider _oth)
+	{
+		if (_oth.GetComponent<LevelBrick>() != null && _oth.GetComponent<LevelBrick>().brickDef == LevelBrick.brickType.Floor)
+		{
+			_oth.GetComponent<LevelBrick>().objOnFloor.Remove(this.gameObject);
+		}
+	}
+
 
 	private void blockDown()
 	{
@@ -439,6 +485,10 @@ public class Player : MonoBehaviour {
 	private void changeRenderer()
 	{
 //		coneRenderer.SetPosition(0, new Vector3(0,0f,0f) );
+	}
+
+	void OnDrawGizmosSelected()
+	{
 	}
 
 }

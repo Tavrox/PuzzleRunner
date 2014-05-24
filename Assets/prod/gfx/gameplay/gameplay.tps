@@ -157,6 +157,7 @@
             <filename>dracula_spawn_02.png</filename>
             <filename>dracula_spawn_00.png</filename>
             <filename>dracula_spawn_01.png</filename>
+            <filename>paper_writting.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

@@ -31,7 +31,7 @@ public class UIBtn : MonoBehaviour {
 		{
 			Coll = GetComponent<BoxCollider>();
 		}
-		displayed = true;
+		displayed = false;
 	}
 
 	void OnMouseDown()
@@ -55,6 +55,7 @@ public class UIBtn : MonoBehaviour {
 					Application.Quit();
 					break;
 				}
+				print ("Clicked On" + name);
 			}
 			displayed = false;
 			Coll.isTrigger = false;
@@ -70,6 +71,11 @@ public class UIBtn : MonoBehaviour {
 	{
 		Coll.isTrigger = true;
 		displayed = true;
+	}
+	public void reDisable()
+	{
+		Coll.isTrigger = false;
+		displayed = false;
 	}
 
 	void OnMouseExit()

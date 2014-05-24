@@ -32,12 +32,12 @@ public class Waypoint : MonoBehaviour {
 
 	void OnTriggerEnter(Collider _other)
 	{
-		if (_other.GetComponent<Dracula>() != null)
-		{
-			_other.GetComponent<Dracula>().GoToWaypoint(linkedManager.findNextWaypoint(this));
-			passedUpon = true;
-			delayRetrigger();
-		}
+//		if (_other.GetComponent<Dracula>() != null)
+//		{
+////			_other.GetComponent<Dracula>().GoToWaypoint(linkedManager.findNextWaypoint(this));
+////			passedUpon = true;
+////			delayRetrigger();
+//		}
 	}
 
 	IEnumerator delayRetrigger()

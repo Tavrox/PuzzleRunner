@@ -61,6 +61,10 @@ public class LevelTestor : Editor
 		{
 			GameEventManager.TriggerEndGame("Test");
 		}
+		if (GUILayout.Button("Bed colls"))
+		{
+//			changeBedCollide();
+		}
 	}
 	
 }

@@ -101,7 +101,7 @@ public class UI : MonoBehaviour {
 		{
 			foreach (UIBtn _btn in _targ.GetComponentsInChildren<UIBtn>())
 			{
-				_btn.displayed = true;
+				_btn.reEnable();
 			}	
 		}
 	}
@@ -127,7 +127,7 @@ public class UI : MonoBehaviour {
 		{
 			foreach (UIBtn _btn in _targ.GetComponentsInChildren<UIBtn>())
 			{
-				_btn.reEnable();
+				_btn.reDisable();
 			}
 		}
 	}
@@ -222,6 +222,7 @@ public class UI : MonoBehaviour {
 	private void GameOver()
 	{
 		Menu = menuTypes.Death;
+
 		MasterAudio.PlaySound("death");
 		StartCoroutine("sayDied");
 	}
@@ -253,6 +254,9 @@ public class UI : MonoBehaviour {
 		MasterAudio.FadeAllPlaylistsToVolume(0f, 3f);
 		yield return new WaitForSeconds(3f);
 		MasterAudio.PlaySound("game_over");
+		ClearTextsAndSprite(VictoryGO);
+		ClearTextsAndSprite(DeathGO);
+		ClearTextsAndSprite(StartGO);
 		AppearTextsAndSprite(DeathGO);
 	}
 

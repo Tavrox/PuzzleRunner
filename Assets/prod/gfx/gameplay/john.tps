@@ -126,7 +126,7 @@
             <string></string>
         </struct>
         <key>autoAliasEnabled</key>
-        <true/>
+        <false/>
         <key>trimSpriteNames</key>
         <false/>
         <key>globalSpriteSettings</key>
@@ -152,6 +152,12 @@
             <filename>johnathan_walk_01.png</filename>
             <filename>johnathan_open.png</filename>
             <filename>johnathan_static.png</filename>
+            <filename>johnathan_walk_06.png</filename>
+            <filename>johnathan_walk_07.png</filename>
+            <filename>johnathan_walk_02.png</filename>
+            <filename>johnathan_walk_03.png</filename>
+            <filename>johnathan_walk_04.png</filename>
+            <filename>johnathan_walk_05.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
