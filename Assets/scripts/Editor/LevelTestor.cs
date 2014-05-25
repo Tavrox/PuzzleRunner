@@ -53,10 +53,19 @@ public class LevelTestor : Editor
 			LevelManager.GAMESTATE = GameEventManager.GameState.MainMenu;
 			GameEventManager.TriggerRespawn("test");
 		}
+		if (GUILayout.Button("GameOverHunger"))
+		{
+			GameEventManager.TriggerGameOver(LevelManager.DeathList.Test);
+		}
+		if (GUILayout.Button("GameOverExhaust"))
+		{
+			GameEventManager.TriggerGameOver(LevelManager.DeathList.Test);
+		}
 		if (GUILayout.Button("GameOver"))
 		{
 			GameEventManager.TriggerGameOver(LevelManager.DeathList.Test);
 		}
+
 		if (GUILayout.Button("Victory"))
 		{
 			GameEventManager.TriggerEndGame("Test");

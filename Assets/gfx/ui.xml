@@ -225,10 +225,36 @@
                 <key>sourceSize</key>
                 <string>{160,149}</string>
             </dict>
+            <key>paper_sent.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{849,322},{160,149}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{160,149}}</string>
+                <key>sourceSize</key>
+                <string>{160,149}</string>
+            </dict>
+            <key>paper_sent_ui.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{1014,322},{160,149}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{160,149}}</string>
+                <key>sourceSize</key>
+                <string>{160,149}</string>
+            </dict>
             <key>pointer.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{849,322},{19,43}}</string>
+                <string>{{1179,322},{19,43}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -241,7 +267,7 @@
             <key>portrait_dracula.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{873,322},{149,149}}</string>
+                <string>{{1203,322},{149,149}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -254,7 +280,7 @@
             <key>portrait_johnathan.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1027,322},{149,149}}</string>
+                <string>{{1357,322},{149,149}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -267,7 +293,7 @@
             <key>portrait_mailman.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1181,322},{148,149}}</string>
+                <string>{{1511,322},{148,149}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -280,7 +306,7 @@
             <key>sleep_3h.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1334,322},{129,44}}</string>
+                <string>{{1664,322},{129,44}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -293,7 +319,7 @@
             <key>sleep_3h_highlight.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1468,322},{129,44}}</string>
+                <string>{{1798,322},{129,44}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -306,7 +332,7 @@
             <key>sleep_6h.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1602,322},{129,44}}</string>
+                <string>{{5,476},{129,44}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -319,7 +345,7 @@
             <key>sleep_6h_highlight.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1736,322},{129,44}}</string>
+                <string>{{139,476},{129,44}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -332,7 +358,7 @@
             <key>title.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{5,476},{1040,484}}</string>
+                <string>{{273,476},{1040,484}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -342,10 +368,23 @@
                 <key>sourceSize</key>
                 <string>{1040,484}</string>
             </dict>
+            <key>villager_rescue.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{5,965},{757,340}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{757,340}}</string>
+                <key>sourceSize</key>
+                <string>{757,340}</string>
+            </dict>
             <key>xbl.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1050,476},{21,11}}</string>
+                <string>{{767,965},{21,11}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -363,9 +402,9 @@
             <key>realTextureFileName</key>
             <string>ui.png</string>
             <key>size</key>
-            <string>{2048,1024}</string>
+            <string>{2048,2048}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:1d32bba1ebbf7ea42981cdbc4a08aae8:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:a0425f0db81a1411a1ef4c073d3889fd:1/1$</string>
             <key>textureFileName</key>
             <string>ui.png</string>
         </dict>

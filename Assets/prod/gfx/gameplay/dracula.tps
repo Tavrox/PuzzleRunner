@@ -151,6 +151,63 @@
             <filename>dracula_walk.png</filename>
             <filename>dracula_open.png</filename>
             <filename>dracula_static.png</filename>
+            <filename>dracula_walk_06.png</filename>
+            <filename>dracula_parkour.png</filename>
+            <filename>dracula_searching_00.png</filename>
+            <filename>dracula_searching_01.png</filename>
+            <filename>dracula_searching_02.png</filename>
+            <filename>dracula_searching_03.png</filename>
+            <filename>dracula_searching_04.png</filename>
+            <filename>dracula_searching_05.png</filename>
+            <filename>dracula_searching_06.png</filename>
+            <filename>dracula_searching_07.png</filename>
+            <filename>dracula_searching_08.png</filename>
+            <filename>dracula_searching_09.png</filename>
+            <filename>dracula_searching_10.png</filename>
+            <filename>dracula_searching_11.png</filename>
+            <filename>dracula_searching_12.png</filename>
+            <filename>dracula_searching_13.png</filename>
+            <filename>dracula_searching_14.png</filename>
+            <filename>dracula_searching_15.png</filename>
+            <filename>dracula_searching_16.png</filename>
+            <filename>dracula_searching_17.png</filename>
+            <filename>dracula_searching_18.png</filename>
+            <filename>dracula_searching_19.png</filename>
+            <filename>dracula_searching_20.png</filename>
+            <filename>dracula_searching_21.png</filename>
+            <filename>dracula_searching_22.png</filename>
+            <filename>dracula_searching_23.png</filename>
+            <filename>dracula_searching_24.png</filename>
+            <filename>dracula_searching_25.png</filename>
+            <filename>dracula_searching_26.png</filename>
+            <filename>dracula_searching_27.png</filename>
+            <filename>dracula_searching_28.png</filename>
+            <filename>dracula_searching_29.png</filename>
+            <filename>dracula_searching_30.png</filename>
+            <filename>dracula_searching_31.png</filename>
+            <filename>dracula_searching_32.png</filename>
+            <filename>dracula_searching_33.png</filename>
+            <filename>dracula_searching_34.png</filename>
+            <filename>dracula_searching_35.png</filename>
+            <filename>dracula_searching_36.png</filename>
+            <filename>dracula_searching_37.png</filename>
+            <filename>dracula_searching_38.png</filename>
+            <filename>dracula_searching_39.png</filename>
+            <filename>dracula_searching_40.png</filename>
+            <filename>dracula_searching_41.png</filename>
+            <filename>dracula_slaughtering_00.png</filename>
+            <filename>dracula_slaughtering_01.png</filename>
+            <filename>dracula_slaughtering_02.png</filename>
+            <filename>dracula_slaughtering_03.png</filename>
+            <filename>dracula_spawn_00.png</filename>
+            <filename>dracula_spawn_01.png</filename>
+            <filename>dracula_spawn_02.png</filename>
+            <filename>dracula_walk_00.png</filename>
+            <filename>dracula_walk_01.png</filename>
+            <filename>dracula_walk_02.png</filename>
+            <filename>dracula_walk_03.png</filename>
+            <filename>dracula_walk_04.png</filename>
+            <filename>dracula_walk_05.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

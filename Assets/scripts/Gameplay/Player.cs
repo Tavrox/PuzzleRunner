@@ -61,6 +61,7 @@ public class Player : MonoBehaviour {
 	[SerializeField] private float halfMyX;
 	[SerializeField] private float halfMyY;
 	protected int wallMask = 1 << 8;
+	protected int furnitureMask = 1 << 9;
 
 	private bool BlockedUp = false;
 	private bool BlockedDown = false;
@@ -82,6 +83,7 @@ public class Player : MonoBehaviour {
 	public bool onDoor = false;
 
 	public OTSprite paper;
+	public OTSprite bubble;
 	public TextUI papertxt;
 
 	// Use this for initialization
@@ -89,6 +91,7 @@ public class Player : MonoBehaviour {
 	{
 		coneParent = FETool.findWithinChildren(gameObject, "ParentCone");
 		gameSprite = FETool.findWithinChildren(gameObject, "Sprite");
+		bubble = FETool.findWithinChildren(gameObject, "Bubble").GetComponentInChildren<OTSprite>();
 		levMan = _lev;
 		initpos = transform.position;
 
@@ -108,9 +111,12 @@ public class Player : MonoBehaviour {
 		coneRenderer = coneParent.GetComponentInChildren<LineRenderer>();
 		halfMyY = 0.25f;
 
+		bubble.alpha = 0f;
+
 		GameEventManager.GameOver += GameOver;
 		GameEventManager.Respawn += Respawn;
 		GameEventManager.GameStart += GameStart;
+		GameEventManager.EndGame += EndGame;
 	}
 	
 	// Update is called once per frame
@@ -159,6 +165,7 @@ public class Player : MonoBehaviour {
 	private void consumeFood()
 	{
 		foodState -= 1;
+		displayBubbleInfo("think_eat");
 		if (foodState == 1)
 		{
 			MasterAudio.PlaySound("hungry1");
@@ -171,6 +178,7 @@ public class Player : MonoBehaviour {
 	private void consumeSleep()
 	{
 		sleepState -= 1;
+		displayBubbleInfo("think_sleep");
 		if (sleepState == 1)
 		{
 			MasterAudio.PlaySound("yawn1");
@@ -179,6 +187,12 @@ public class Player : MonoBehaviour {
 		{
 			MasterAudio.PlaySound("yawn2");
 		}
+	}
+
+	public void displayBubbleInfo(string _str)
+	{
+		new OTTween(bubble, 1f).Tween("alpha", 1f).PingPong();
+		bubble.frameName = _str;
 	}
 
 	private void writePaper()
@@ -207,7 +221,7 @@ public class Player : MonoBehaviour {
 				paper.transform.parent.rotation = Quaternion.Euler(new Vector3(0f, 0f, 0f));
 			}
 		}
-		if (levMan.writtenPaper > 100)
+		if (levMan.writtenPaper > 100 && haveLetter != letterList.Sent)
 		{
 			MasterAudio.StopAllOfSound("writting");
 			Health = healthState.Alive;
@@ -363,14 +377,6 @@ public class Player : MonoBehaviour {
 	private void wallBlocker()
 	{
 		mypos = transform.position;
-		Debug.DrawLine (RayDL.position, hitInfo.point, Color.blue);
-		Debug.DrawLine (RayDR.position, hitInfo.point, Color.blue);
-		Debug.DrawLine (RayUL.position, hitInfo.point, Color.black);
-		Debug.DrawLine (RayDL.position, hitInfo.point, Color.black);
-		Debug.DrawLine (RayUL.position, hitInfo.point, Color.white);
-		Debug.DrawLine (RayUR.position, hitInfo.point, Color.white);
-		Debug.DrawLine (RayUR.position, hitInfo.point, Color.red);
-		Debug.DrawLine (RayDR.position, hitInfo.point, Color.red);
 		if (Physics.Raycast(RayDL.position, Vector3.down, out hitInfo, halfMyY, wallMask) ||
 		    Physics.Raycast(RayDR.position, Vector3.down, out hitInfo, halfMyY, wallMask))
 		{
@@ -394,6 +400,35 @@ public class Player : MonoBehaviour {
 		}
 		if (Physics.Raycast(RayUR.position, Vector3.right, out hitInfo, halfMyY, wallMask) ||
 		    Physics.Raycast(RayDR.position, Vector3.right, out hitInfo, halfMyY, wallMask))
+		{
+			Debug.DrawLine (RayUR.position, hitInfo.point, Color.red);
+			Debug.DrawLine (RayDR.position, hitInfo.point, Color.red);
+			blockRight();
+		}
+		//
+		if (Physics.Raycast(RayDL.position, Vector3.down, out hitInfo, halfMyY, furnitureMask) ||
+		    Physics.Raycast(RayDR.position, Vector3.down, out hitInfo, halfMyY, furnitureMask))
+		{
+			Debug.DrawLine (RayDL.position, hitInfo.point, Color.blue);
+			Debug.DrawLine (RayDR.position, hitInfo.point, Color.blue);
+			blockDown();
+		}
+		if (Physics.Raycast(RayUL.position, Vector3.left, out hitInfo, halfMyY, furnitureMask) ||
+		    Physics.Raycast(RayDL.position, Vector3.left, out hitInfo, halfMyY, furnitureMask))
+		{
+			Debug.DrawLine (RayUL.position, hitInfo.point, Color.black);
+			Debug.DrawLine (RayDL.position, hitInfo.point, Color.black);
+			blockLeft();
+		}
+		if (Physics.Raycast(RayUL.position, Vector3.up, out hitInfo, halfMyY, furnitureMask) ||
+		    Physics.Raycast(RayUR.position, Vector3.up, out hitInfo, halfMyY, furnitureMask))
+		{
+			Debug.DrawLine (RayUL.position, hitInfo.point, Color.white);
+			Debug.DrawLine (RayUR.position, hitInfo.point, Color.white);
+			blockUp();
+		}
+		if (Physics.Raycast(RayUR.position, Vector3.right, out hitInfo, halfMyY, furnitureMask) ||
+		    Physics.Raycast(RayDR.position, Vector3.right, out hitInfo, halfMyY, furnitureMask))
 		{
 			Debug.DrawLine (RayUR.position, hitInfo.point, Color.red);
 			Debug.DrawLine (RayDR.position, hitInfo.point, Color.red);
@@ -467,7 +502,7 @@ public class Player : MonoBehaviour {
 		haveLetter = letterList.DontHave;
 		transform.position = initpos;
 		InvokeRepeating("consumeFood", LevelManager.TUNING.delaySecConsumeFood, LevelManager.TUNING.everySecConsumeFood);
-		InvokeRepeating("consumeSleep", LevelManager.TUNING.delaySecConsumeSleep, LevelManager.TUNING.everySecConsumeFood);
+		InvokeRepeating("consumeSleep", LevelManager.TUNING.delaySecConsumeSleep, LevelManager.TUNING.everySecConsumeSleep);
 	}
 
 	private void GameStart()
@@ -476,8 +511,15 @@ public class Player : MonoBehaviour {
 		haveLetter = letterList.DontHave;
 	}
 
+	private void EndGame()
+	{
+		Health = healthState.Cutscene;
+		haveLetter = letterList.DontHave;
+	}
+
 	private void GameOver()
 	{
+		print (LevelManager.CAUSEDEATH);
 		Health = healthState.Dead;
 		if (LevelManager.CAUSEDEATH == LevelManager.DeathList.Dracula)
 		{

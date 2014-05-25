@@ -17,6 +17,7 @@ public class UI : MonoBehaviour {
 	public OTSprite WillBack;
 	public OTSprite Controls;
 	public TextUI WillBackTxt;
+	public TextUI OtherText;
 
 	public enum menuTypes
 	{
@@ -52,6 +53,7 @@ public class UI : MonoBehaviour {
 		dialogPop = FETool.findWithinChildren(gameObject, "Ingame/Dialog").GetComponent<PopUp>();
 		WillBack = FETool.findWithinChildren(gameObject, "Ingame/Dialog/WillBeBack").GetComponentInChildren<OTSprite>();
 		WillBackTxt = FETool.findWithinChildren(gameObject, "Ingame/Dialog/WillBeBack").GetComponentInChildren<TextUI>();
+		OtherText = FETool.findWithinChildren(gameObject, "Ingame/Dialog/OtherText").GetComponentInChildren<TextUI>();
 		dialogPop.Setup();
 
 		VictoryGO = FETool.findWithinChildren(gameObject, "Ingame/Victory");
@@ -154,7 +156,7 @@ public class UI : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
-		HandClock.rotation = 360 - (24* levMan.currH);
+		HandClock.rotation = 360 - (15 * levMan.currH);
 
 		switch (levMan.plr.haveLetter)
 		{
@@ -180,8 +182,15 @@ public class UI : MonoBehaviour {
 		}
 		case Player.letterList.HaveWritten :
 		{
-			Paper.frameName = "paper_found";
+			Paper.frameName = "paper_sent";
 			paperText.text = "Deliver Mailman";
+			break;
+		}
+		case Player.letterList.Sent :
+		{
+			Paper.frameName = "paper_sent_ui";
+			int remDay = levMan.saveDay - levMan.currD;
+			paperText.text = "Wait " + remDay.ToString() + " days";
 			break;
 		}
 		}
@@ -195,10 +204,12 @@ public class UI : MonoBehaviour {
 		if ( _char == PopUp.CharList.Dracula)
 		{
 			dialogPop.DraculaPic.frameName = "portrait_dracula";
+			OtherText.text = "Dracula";
 		}
 		else if (_char == PopUp.CharList.MailMan)
 		{
 			dialogPop.DraculaPic.frameName = "portrait_mailman";
+			OtherText.text = "MailMan";
 		}
 	}
 
@@ -230,11 +241,11 @@ public class UI : MonoBehaviour {
 		ClearTextsAndSprite(StartGO);
 		DarkBG.alpha = 1f;
 		AppearTextsAndSprite(TitleGO);
+		FETool.findWithinChildren(gameObject, "Ingame/Title/Play").GetComponent<TextUI>().color = Color.white;
 	}
 	private void GameOver()
 	{
 		Menu = menuTypes.Death;
-
 		MasterAudio.PlaySound("death");
 		StartCoroutine("sayDied");
 	}

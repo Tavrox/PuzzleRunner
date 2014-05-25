@@ -62,12 +62,16 @@ public class LevelManager : MonoBehaviour {
 
 		Hours = gameObject.AddComponent<HoursManager>();
 		Hours.Setup(this);
+		
+		remainingDay = TUNING.DaysComingBeforeSaveDay;
 
 		pathDirector = GetComponentInChildren<WaypointDirector>();
 		pathDirector.Setup(this);
 
 		Dracu = GetComponentInChildren<Dracula>();
 		Dracu.Setup(this);
+		
+		Diff = DifficultyState.BeforeLetter;
 
 		PaperSpots = new List<GameObject>();
 		GameObject pSpot = FETool.findWithinChildren(gameObject, "Spots/PaperSpot");
@@ -119,10 +123,10 @@ public class LevelManager : MonoBehaviour {
 
 		MasterAudio.PlaySound("ambiance");
 
-				GAMESTATE = GameEventManager.GameState.MainMenu;
-				GameEventManager.TriggerRespawn("Rsp");
-//		GAMESTATE = GameEventManager.GameState.Live;
-//		GameEventManager.TriggerGameStart("First Init");
+//				GAMESTATE = GameEventManager.GameState.MainMenu;
+//				GameEventManager.TriggerRespawn("Rsp");
+		GAMESTATE = GameEventManager.GameState.Live;
+		GameEventManager.TriggerGameStart("First Init");
 	}
 	
 	// Update is called once per frame
@@ -365,6 +369,7 @@ public class LevelManager : MonoBehaviour {
 			}
 			case HoursManager.DayEventList.MailManIn :
 			{
+				plr.displayBubbleInfo("think_post");
 				MailmanState = MailManStateList.HasArrived;
 				MasterAudio.PlaySound("door_bell");
 				GameUI.discoverCharacter(PopUp.CharList.MailMan);
@@ -382,8 +387,10 @@ public class LevelManager : MonoBehaviour {
 			}
 			case HoursManager.DayEventList.LetterSent :
 			{
-				saveDay = currD + remainingDay;
+				Diff = DifficultyState.WaitingSave;
+				saveDay = currD + TUNING.DaysComingBeforeSaveDay;
 				GameUI.discoverCharacter(PopUp.CharList.Dracula);
+				GameUI.Paper.frameName = "paper_sent";
 				MailmanState = MailManStateList.Away;
 				plr.haveLetter = Player.letterList.Sent;
 				GameUI.dialogPop.giveInfos("I've asked Mina for some rescue \n against Dracula. I think they'll\n arrive within" + (saveDay - currD)  + " days.", PopUp.CharList.Johnathan);

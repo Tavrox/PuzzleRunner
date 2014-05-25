@@ -49,8 +49,10 @@ public class Dracula : MonoBehaviour {
 	private bool BlockedLeft = false;
 	private bool BlockedRight = false;
 	protected int wallMask = 1 << 8;
+	protected int furnitureMask = 1 << 9;
 	public OTAnimatingSprite spr;
 	public OTAnimatingSprite pouf;
+	private LevelBrick[] _Brucjs;
 
 	
 	public float _diffX = 0f;
@@ -79,6 +81,8 @@ public class Dracula : MonoBehaviour {
 		GameEventManager.Respawn += Respawn;
 		GameEventManager.GameStart += GameStart;
 		GameEventManager.EndGame += EndGame;
+		
+		_Brucjs = FindObjectsOfType<LevelBrick>();
 	}
 	
 	// Update is called once per frame
@@ -89,12 +93,12 @@ public class Dracula : MonoBehaviour {
 
 		switch (_levman.Hours.currentTime)
 		{
-			case HoursManager.DayTime.Day :
+			case HoursManager.DayTime.Night :
 			{
 				transform.position = new Vector3(500f,500f, 500f);
 				break;
 			}
-			case HoursManager.DayTime.Night :
+			case HoursManager.DayTime.Day :
 			{
 			switch (State)
 			{
@@ -156,6 +160,31 @@ public class Dracula : MonoBehaviour {
 		}
 	}
 
+	private void furnitureChecker()
+	{
+		mypos = transform.position;
+		if (Physics.Raycast(RayDL.position, Vector3.down, out hitInfo, halfMyY, furnitureMask) ||
+		    Physics.Raycast(RayDR.position, Vector3.down, out hitInfo, halfMyY, furnitureMask))
+		{
+			PlayAnim("prout");
+		}
+		if (Physics.Raycast(RayUL.position, Vector3.left, out hitInfo, halfMyY, furnitureMask) ||
+		    Physics.Raycast(RayDL.position, Vector3.left, out hitInfo, halfMyY, furnitureMask))
+		{
+			PlayAnim("prout");
+		}
+		if (Physics.Raycast(RayUL.position, Vector3.up, out hitInfo, halfMyY, furnitureMask) ||
+		    Physics.Raycast(RayUR.position, Vector3.up, out hitInfo, halfMyY, furnitureMask))
+		{
+			PlayAnim("prout");
+		}
+		if (Physics.Raycast(RayUR.position, Vector3.right, out hitInfo, halfMyY, furnitureMask) ||
+		    Physics.Raycast(RayDR.position, Vector3.right, out hitInfo, halfMyY, furnitureMask))
+		{
+			PlayAnim("prout");
+		}
+	}
+
 	private void Move(Vector3 target)
 	{
 		if (currWp != null)
@@ -186,12 +215,14 @@ public class Dracula : MonoBehaviour {
 
 	private void randomSpawn()
 	{
-		if (State != StateList.Chasing && _levman.Hours.currentTime != HoursManager.DayTime.Day)
+		if (State != StateList.Chasing && _levman.Hours.currentTime == HoursManager.DayTime.Day)
 		{
+			currWPM = _levman.pathDirector.waypointsMan[0];
 			switch (_levman.Diff)
 			{
 			case LevelManager.DifficultyState.BeforeLetter :
 			{
+				print ("spawn" + _levman.Diff);
 				currWPM = _levman.pathDirector._DraculaListSpawnBeforeSendingLetter;
 				break;
 			}
@@ -201,6 +232,7 @@ public class Dracula : MonoBehaviour {
 				break;
 			}
 			}
+//			print ("spawn");
 			Waypoint _WP = currWPM.pickRandomWP();
 			currWp = currWPM.pickRandomWP();
 			pouf.transform.parent.transform.position = _WP.transform.position;
@@ -208,7 +240,7 @@ public class Dracula : MonoBehaviour {
 			pouf.PlayOnce("pouf");
 			StartCoroutine(doAppear(_WP));
 			new OTTween(spr, 0.01f).Tween("alpha", 0f);
-			new OTTween(transform, 0.01f).Tween("position", currWp.transform.position);
+			new OTTween(transform, 0.1f).Tween("position", currWp.transform.position);
 			new OTTween(spr, 0.03f).Tween("alpha", 1f);
 //			transform.position = currWp.transform.position;
 		}

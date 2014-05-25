@@ -21,7 +21,7 @@ public class WaypointDirector : MonoBehaviour {
 			wpm.Setup(_lm);
 		}
 		_DraculaListSpawnBeforeSendingLetter = waypointsMan[0];
-		_DraculaListSpawnBeforeSendingLetter = waypointsMan[1];
+		_DraculaListSpawnBeforeSaving = waypointsMan[1];
 	}
 
 	public WaypointManager pickRandomWPM()

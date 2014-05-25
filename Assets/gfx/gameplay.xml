@@ -46,7 +46,7 @@
             <key>dracula_spawn_01.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{5,125},{90,115}}</string>
+                <string>{{237,5},{90,115}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -59,7 +59,7 @@
             <key>dracula_spawn_02.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{100,125},{90,115}}</string>
+                <string>{{332,5},{90,115}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -72,7 +72,7 @@
             <key>food.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{5,245},{96,96}}</string>
+                <string>{{5,125},{96,96}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -85,7 +85,7 @@
             <key>food_crate.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{106,245},{96,96}}</string>
+                <string>{{106,125},{96,96}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -98,7 +98,7 @@
             <key>food_highlight.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{5,346},{96,96}}</string>
+                <string>{{207,125},{96,96}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -111,7 +111,7 @@
             <key>paper.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{106,346},{41,42}}</string>
+                <string>{{308,125},{41,42}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -121,10 +121,36 @@
                 <key>sourceSize</key>
                 <string>{41,42}</string>
             </dict>
+            <key>paper_sent.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{5,226},{160,149}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{160,149}}</string>
+                <key>sourceSize</key>
+                <string>{160,149}</string>
+            </dict>
+            <key>paper_sent_ui.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{170,226},{160,149}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{160,149}}</string>
+                <key>sourceSize</key>
+                <string>{160,149}</string>
+            </dict>
             <key>paper_writting.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{152,346},{87,108}}</string>
+                <string>{{335,226},{87,108}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -134,6 +160,45 @@
                 <key>sourceSize</key>
                 <string>{87,108}</string>
             </dict>
+            <key>think_eat.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{5,380},{151,127}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{151,127}}</string>
+                <key>sourceSize</key>
+                <string>{151,127}</string>
+            </dict>
+            <key>think_post.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{161,380},{151,127}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{151,127}}</string>
+                <key>sourceSize</key>
+                <string>{151,127}</string>
+            </dict>
+            <key>think_sleep.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{317,380},{151,127}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{151,127}}</string>
+                <key>sourceSize</key>
+                <string>{151,127}</string>
+            </dict>
         </dict>
         <key>metadata</key>
         <dict>
@@ -142,9 +207,9 @@
             <key>realTextureFileName</key>
             <string>gameplay.png</string>
             <key>size</key>
-            <string>{256,512}</string>
+            <string>{512,512}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:9afcb1a9cae7f12b96d64f1856648159:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:4961868177abcae9a473365a8ba4b2a1:1/1$</string>
             <key>textureFileName</key>
             <string>gameplay.png</string>
         </dict>

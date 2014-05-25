@@ -158,6 +158,11 @@
             <filename>dracula_spawn_00.png</filename>
             <filename>dracula_spawn_01.png</filename>
             <filename>paper_writting.png</filename>
+            <filename>paper_sent_ui.png</filename>
+            <filename>think_eat.png</filename>
+            <filename>think_post.png</filename>
+            <filename>think_sleep.png</filename>
+            <filename>paper_sent.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

@@ -162,6 +162,19 @@
             <filename>johnathan_slaughtered_01.png</filename>
             <filename>johnathan_slaughtered_02.png</filename>
             <filename>johnathan_slaughtered_03.png</filename>
+            <filename>johnathan_exhausted_03.png</filename>
+            <filename>johnathan_exhausted_04.png</filename>
+            <filename>johnathan_exhausted_05.png</filename>
+            <filename>johnathan_exhausted_06.png</filename>
+            <filename>johnathan_exhausted_07.png</filename>
+            <filename>johnathan_exhausted_08.png</filename>
+            <filename>johnathan_exhausted_09.png</filename>
+            <filename>johnathan_exhausted_10.png</filename>
+            <filename>johnathan_exhausted_11.png</filename>
+            <filename>johnathan_exhausted_12.png</filename>
+            <filename>johnathan_exhausted_00.png</filename>
+            <filename>johnathan_exhausted_01.png</filename>
+            <filename>johnathan_exhausted_02.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
