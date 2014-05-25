@@ -276,7 +276,6 @@ public class Dracula : MonoBehaviour {
 	{
 		if (MovingDir != DirList.Up)
 		{
-			print ("blocked");
 			vecMove.y = 0f;
 			BlockedDown = true;
 		}
@@ -285,7 +284,6 @@ public class Dracula : MonoBehaviour {
 	{
 		if (MovingDir != DirList.Right)
 		{
-			print ("blocked");
 			vecMove.x = 0f;
 			BlockedDown = true;
 		}
@@ -294,7 +292,6 @@ public class Dracula : MonoBehaviour {
 	{
 		if (MovingDir != DirList.Left)
 		{
-			print ("blocked");
 			vecMove.x = 0f;
 			BlockedDown = true;
 		}
@@ -303,7 +300,6 @@ public class Dracula : MonoBehaviour {
 	{
 		if (MovingDir != DirList.Down)
 		{
-			print ("blocked");
 			vecMove.y = 0f;
 			BlockedDown = true;
 		}

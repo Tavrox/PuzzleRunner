@@ -32,6 +32,7 @@ public static class GameEventManager {
 		{
 			Debug.Log ("GameOver +" + _gameover.ToString());
 			LevelManager.GAMESTATE = GameState.GameOver;
+			LevelManager.CAUSEDEATH = _gameover;
 			GameOver();
 		}
 	}

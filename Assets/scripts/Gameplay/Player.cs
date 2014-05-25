@@ -479,6 +479,10 @@ public class Player : MonoBehaviour {
 	private void GameOver()
 	{
 		Health = healthState.Dead;
+		if (LevelManager.CAUSEDEATH == LevelManager.DeathList.Dracula)
+		{
+			PlayAnim("die");
+		}
 		CancelInvoke("Foots");
 		CancelInvoke("consumeFood");
 		CancelInvoke("consumeSleep");

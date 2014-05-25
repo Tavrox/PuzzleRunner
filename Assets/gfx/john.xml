@@ -17,7 +17,7 @@
                 <key>sourceSize</key>
                 <string>{90,115}</string>
             </dict>
-            <key>johnathan_static.png</key>
+            <key>johnathan_slaughtered_00.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{100,5},{90,115}}</string>
@@ -30,7 +30,7 @@
                 <key>sourceSize</key>
                 <string>{90,115}</string>
             </dict>
-            <key>johnathan_walk_00.png</key>
+            <key>johnathan_slaughtered_01.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{195,5},{90,115}}</string>
@@ -43,7 +43,7 @@
                 <key>sourceSize</key>
                 <string>{90,115}</string>
             </dict>
-            <key>johnathan_walk_01.png</key>
+            <key>johnathan_slaughtered_02.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{290,5},{90,115}}</string>
@@ -56,7 +56,7 @@
                 <key>sourceSize</key>
                 <string>{90,115}</string>
             </dict>
-            <key>johnathan_walk_02.png</key>
+            <key>johnathan_slaughtered_03.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{385,5},{90,115}}</string>
@@ -69,7 +69,7 @@
                 <key>sourceSize</key>
                 <string>{90,115}</string>
             </dict>
-            <key>johnathan_walk_03.png</key>
+            <key>johnathan_static.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{5,125},{90,115}}</string>
@@ -82,7 +82,7 @@
                 <key>sourceSize</key>
                 <string>{90,115}</string>
             </dict>
-            <key>johnathan_walk_04.png</key>
+            <key>johnathan_walk_00.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{100,125},{90,115}}</string>
@@ -95,7 +95,7 @@
                 <key>sourceSize</key>
                 <string>{90,115}</string>
             </dict>
-            <key>johnathan_walk_05.png</key>
+            <key>johnathan_walk_01.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{195,125},{90,115}}</string>
@@ -108,7 +108,7 @@
                 <key>sourceSize</key>
                 <string>{90,115}</string>
             </dict>
-            <key>johnathan_walk_06.png</key>
+            <key>johnathan_walk_02.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{290,125},{90,115}}</string>
@@ -121,10 +121,62 @@
                 <key>sourceSize</key>
                 <string>{90,115}</string>
             </dict>
-            <key>johnathan_walk_07.png</key>
+            <key>johnathan_walk_03.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{385,125},{90,115}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{90,115}}</string>
+                <key>sourceSize</key>
+                <string>{90,115}</string>
+            </dict>
+            <key>johnathan_walk_04.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{5,245},{90,115}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{90,115}}</string>
+                <key>sourceSize</key>
+                <string>{90,115}</string>
+            </dict>
+            <key>johnathan_walk_05.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{100,245},{90,115}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{90,115}}</string>
+                <key>sourceSize</key>
+                <string>{90,115}</string>
+            </dict>
+            <key>johnathan_walk_06.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{195,245},{90,115}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{90,115}}</string>
+                <key>sourceSize</key>
+                <string>{90,115}</string>
+            </dict>
+            <key>johnathan_walk_07.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{290,245},{90,115}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -142,9 +194,9 @@
             <key>realTextureFileName</key>
             <string>john.png</string>
             <key>size</key>
-            <string>{512,256}</string>
+            <string>{512,512}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:0f9af5f07ced9bf5b1867bb5ac6ee2f3:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:a156d30df593494878bf980ac1a6b54a:1/1$</string>
             <key>textureFileName</key>
             <string>john.png</string>
         </dict>

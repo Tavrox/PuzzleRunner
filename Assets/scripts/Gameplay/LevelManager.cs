@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class LevelManager : MonoBehaviour {
 
 	public static GameEventManager.GameState GAMESTATE;
+	public static DeathList CAUSEDEATH;
 
 	public enum MailManStateList
 	{
@@ -22,10 +23,10 @@ public class LevelManager : MonoBehaviour {
 	};
 	public enum DeathList
 	{
+		Test,
 		Hunger,
 		Dracula,
-		Exhaust,
-		Test
+		Exhaust
 	};
 
 	public Player plr;

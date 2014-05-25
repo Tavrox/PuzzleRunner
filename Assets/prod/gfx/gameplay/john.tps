@@ -158,6 +158,10 @@
             <filename>johnathan_walk_03.png</filename>
             <filename>johnathan_walk_04.png</filename>
             <filename>johnathan_walk_05.png</filename>
+            <filename>johnathan_slaughtered_00.png</filename>
+            <filename>johnathan_slaughtered_01.png</filename>
+            <filename>johnathan_slaughtered_02.png</filename>
+            <filename>johnathan_slaughtered_03.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
