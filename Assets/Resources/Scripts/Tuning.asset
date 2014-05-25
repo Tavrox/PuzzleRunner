@@ -11,8 +11,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85cbc128246f5f945aa4830fe515e5a1, type: 3}
   m_Name: Tuning
   m_EditorClassIdentifier: 
-  delayPopDracula: 10
-  everySecPopDracula: 0
+  delayPopDracula: 1
+  everySecPopDracula: 1
   everySecConsumeFood: 50
   everySecConsumeSleep: 40
   delaySecConsumeFood: 15
