@@ -175,6 +175,9 @@
             <filename>portrait_mailman.png</filename>
             <filename>title.png</filename>
             <filename>logo.png</filename>
+            <filename>villager_rescue.png</filename>
+            <filename>../gameplay/paper_sent_ui.png</filename>
+            <filename>../gameplay/paper_sent.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
