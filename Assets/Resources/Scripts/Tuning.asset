@@ -11,14 +11,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85cbc128246f5f945aa4830fe515e5a1, type: 3}
   m_Name: Tuning
   m_EditorClassIdentifier: 
-  delayPopDracula: 0
-  everySecPopDracula: 5
-  everySecConsumeFood: 0
-  everySecConsumeSleep: 0
-  delaySecConsumeFood: 0
-  delaySecConsumeSleep: 0
-  writingSpeed: 0
+  delayPopDracula: 10
+  everySecPopDracula: 0
+  everySecConsumeFood: 50
+  everySecConsumeSleep: 40
+  delaySecConsumeFood: 15
+  delaySecConsumeSleep: 30
+  writingSpeed: .0500000007
   speedModifierPlayerHunger1: .600000024
   speedModifierPlayerHunger2: .800000012
-  DaysComingBeforeSaveDay: 0
-  timeBeforeEndNotification: .5
+  DaysComingBeforeSaveDay: 2
+  timeBeforeEndNotification: 10
