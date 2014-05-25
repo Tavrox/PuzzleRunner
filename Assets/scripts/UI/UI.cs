@@ -190,6 +190,18 @@ public class UI : MonoBehaviour {
 		attributeStateSprite(levMan.plr.sleepState, SleepState);
 	}
 
+	public void discoverCharacter(PopUp.CharList _char)
+	{
+		if ( _char == PopUp.CharList.Dracula)
+		{
+			dialogPop.DraculaPic.frameName = "portrait_dracula";
+		}
+		else if (_char == PopUp.CharList.MailMan)
+		{
+			dialogPop.DraculaPic.frameName = "portrait_mailman";
+		}
+	}
+
 	private void attributeStateSprite(int attribute, OTSprite _spr)
 	{
 		if (attribute == 0)

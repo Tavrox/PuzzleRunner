@@ -85,12 +85,14 @@ public class Door : MonoBehaviour {
 	{
 		transform.rotation = Quaternion.Euler(new Vector3(0f,0f, openAngle));
 		Handle = HandleDoor.Open;
+		MasterAudio.PlaySound("dooropen");
 	}
 
 	public void Close()
 	{
 		transform.rotation = Quaternion.Euler(new Vector3(0f,0f, closedAngle));
 		Handle = HandleDoor.Closed;
+		MasterAudio.PlaySound("doorclose");
 	}
 
 	public void Update()
@@ -113,7 +115,6 @@ public class Door : MonoBehaviour {
 
 	void OnTriggerStay(Collider _oth)
 	{
-
 		if (_oth.CompareTag("Player"))
 		{
 			_oth.GetComponent<Player>().onDoor = true;

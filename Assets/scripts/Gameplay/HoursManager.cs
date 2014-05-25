@@ -34,7 +34,7 @@ public class HoursManager : MonoBehaviour {
 		_levMan = _lev;
 		mailManHourIn = 8;
 		mailManHourOut = 12;
-		foodManHour = 15;
+		foodManHour = 16;
 		draculaLeavingHour = 18;
 		draculaEnteringHour = 6;
 	}

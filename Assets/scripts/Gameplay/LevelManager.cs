@@ -157,6 +157,7 @@ public class LevelManager : MonoBehaviour {
 				currH += 1;
 				checkHour();
 				hourChecked = false;
+				plr.giveSleep();
 				break;
 			}
 			case Bed.hourList.Six :
@@ -180,6 +181,8 @@ public class LevelManager : MonoBehaviour {
 				currH += 1;
 				checkHour();
 				hourChecked = false;
+				plr.giveSleep();
+				plr.giveSleep();
 				break;
 			}
 			}
@@ -230,7 +233,7 @@ public class LevelManager : MonoBehaviour {
 			{
 				parseH = "0" + currH;
 			}
-			if (currH == 24)
+			if (currH == 24 && GAMESTATE == GameEventManager.GameState.Live)
 			{
 				MasterAudio.PlaySound("clock_bell");
 				currH = 1;
@@ -323,61 +326,71 @@ public class LevelManager : MonoBehaviour {
 
 	public void triggerDayEvent(HoursManager.DayEventList _evt)
 	{
-		switch (_evt)
+		
+		if (LevelManager.GAMESTATE == GameEventManager.GameState.Live)
 		{
-		case HoursManager.DayEventList.DraculaEntering :
-		{
-			GameUI.WillBackTxt.makeFadeOut();
-			MasterAudio.PlaySound("dracula_back");
-			GameUI.NotifPop.giveInfos("Dracula is back\n from hunting");
-			GameUI.dialogPop.giveInfos("Dracula is entering the game !");
-			new OTTween(GameUI.dialogPop.OutPic, 1f).Tween("alpha", 0f);
-			break;
-		}
-		case HoursManager.DayEventList.DraculaLeaving :
-		{
-			InvokeRepeating("laughPlz", 20f, 20f);
-			GameUI.WillBackTxt.makeFadeIn();
-			MasterAudio.PlaySound("dacrula_out");
-			GameUI.NotifPop.giveInfos("Dracula is gone hunting\n outside the house");
-			GameUI.dialogPop.giveInfos("Dracula is leaving the house !");
-			new OTTween(GameUI.dialogPop.OutPic, 1f).Tween("alpha", 1f);
-			break;
-		}
-		case HoursManager.DayEventList.FoodMan :
-		{
-			resplenishFoods();
-			MasterAudio.PlaySound("eating_bell");
-			GameUI.NotifPop.giveInfos("The Carrier has\n resplenished food stocks");
-			GameUI.dialogPop.giveInfos("I can now eat in the house's kitchens");
-			break;
-		}
-		case HoursManager.DayEventList.MailManIn :
-		{
-			MailmanState = MailManStateList.HasArrived;
-			MasterAudio.PlaySound("door_bell");
-			GameUI.dialogPop.giveInfos("The mail man is waiting\n for me, I should hurry", PopUp.CharList.MailMan);
-			GameUI.NotifPop.giveInfos("The mail man\n has arrived");
-			break;
-		}
-		case HoursManager.DayEventList.MailManOut :
-		{
-			MailmanState = MailManStateList.Away;
-			GameUI.dialogPop.giveInfos("The mail man is gone now.", PopUp.CharList.Johnathan);
-			GameUI.NotifPop.giveInfos("The mail man\n is leaving");
-			break;
-		}
-		case HoursManager.DayEventList.LetterSent :
-		{
-			saveDay = currD + remainingDay;
-			MailmanState = MailManStateList.Away;
-			plr.haveLetter = Player.letterList.Sent;
-			GameUI.dialogPop.giveInfos("I've asked Mina for some rescue \n against Dracula. I think they'll\n arrive within" + (saveDay - currD)  + " days.");
-			GameUI.NotifPop.giveInfos("The mail man\n is leaving\n with the letter");
-			InvokeRepeating("recallObjective", 30f, 30f);
-			break;
-		}
+			switch (_evt)
+			{
+			case HoursManager.DayEventList.DraculaEntering :
+			{
+				GameUI.WillBackTxt.makeFadeOut();
+				GameUI.discoverCharacter(PopUp.CharList.Dracula);
+				MasterAudio.PlaySound("dracula_back");
+				GameUI.NotifPop.giveInfos("Dracula is back\n from hunting");
+				GameUI.dialogPop.giveInfos("Your blood look so tasty,\n come to me Johnathan.", PopUp.CharList.Dracula);
+				new OTTween(GameUI.dialogPop.OutPic, 1f).Tween("alpha", 0f);
+				break;
+			}
+			case HoursManager.DayEventList.DraculaLeaving :
+			{
+				GameUI.discoverCharacter(PopUp.CharList.Dracula);
+				InvokeRepeating("laughPlz", 20f, 60f);
+				GameUI.WillBackTxt.makeFadeIn();
+				MasterAudio.PlaySound("dacrula_out");
+				GameUI.NotifPop.giveInfos("Dracula has left \n the house");
+				GameUI.dialogPop.giveInfos("I need some fresh blood...\n but I will be back. !", PopUp.CharList.Dracula);
+				new OTTween(GameUI.dialogPop.OutPic, 1f).Tween("alpha", 1f);
+				break;
+			}
+			case HoursManager.DayEventList.FoodMan :
+			{
+				resplenishFoods();
+				GameUI.discoverCharacter(PopUp.CharList.Dracula);
+				MasterAudio.PlaySound("eating_bell");
+				GameUI.NotifPop.giveInfos("The Carrier has\n resplenished \nfood stocks");
+				GameUI.dialogPop.giveInfos("I can now eat in the house's kitchens.\n If I don't eat, I'll die.", PopUp.CharList.Johnathan);
+				break;
+			}
+			case HoursManager.DayEventList.MailManIn :
+			{
+				MailmanState = MailManStateList.HasArrived;
+				MasterAudio.PlaySound("door_bell");
+				GameUI.discoverCharacter(PopUp.CharList.MailMan);
+				GameUI.dialogPop.giveInfos("*Knock Knock*\n Hey it's the mail man.\n Is anybody here ?", PopUp.CharList.MailMan);
+				GameUI.NotifPop.giveInfos("The mail man\n has arrived");
+				break;
+			}
+			case HoursManager.DayEventList.MailManOut :
+			{
+				MailmanState = MailManStateList.Away;
+				GameUI.discoverCharacter(PopUp.CharList.Dracula);
+				GameUI.dialogPop.giveInfos("The mail man is gone now.\n I need to wait the next day for him.", PopUp.CharList.Johnathan);
+				GameUI.NotifPop.giveInfos("The mail man\n is leaving");
+				break;
+			}
+			case HoursManager.DayEventList.LetterSent :
+			{
+				saveDay = currD + remainingDay;
+				GameUI.discoverCharacter(PopUp.CharList.Dracula);
+				MailmanState = MailManStateList.Away;
+				plr.haveLetter = Player.letterList.Sent;
+				GameUI.dialogPop.giveInfos("I've asked Mina for some rescue \n against Dracula. I think they'll\n arrive within" + (saveDay - currD)  + " days.", PopUp.CharList.Johnathan);
+				GameUI.NotifPop.giveInfos("The mail man\n is leaving\n with the letter");
+				InvokeRepeating("recallObjective", 30f, 30f);
+				break;
+			}
 
+			}
 		}
 	}
 
@@ -405,15 +418,14 @@ public class LevelManager : MonoBehaviour {
 	{
 		GAMESTATE = GameEventManager.GameState.GameOver;
 		CancelInvoke("updateMinute");
-
 	}
 	private void Respawn()
 	{
 		GAMESTATE = GameEventManager.GameState.Live;
 		InvokeRepeating("updateMinute", 0f, 0.10f);
-		GameUI.dialogPop.giveInfos("This place doesn't look\n really comfy. I should find a letter and\n ask Mina some help.");
+		GameUI.dialogPop.giveInfos("This place doesn't look really comfy. \n I should find a paper and send a letter\n to Mina for some help.");
 		currD = 1;
-		currH = 0;
+		currH = 13;
 		currM = 1;
 		writtenPaper = 0;
 		realWrittenPaper = 0;

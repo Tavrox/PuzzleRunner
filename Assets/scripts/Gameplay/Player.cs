@@ -106,8 +106,6 @@ public class Player : MonoBehaviour {
 
 		coneCollider = coneParent.GetComponentInChildren<BoxCollider>();
 		coneRenderer = coneParent.GetComponentInChildren<LineRenderer>();
-		InvokeRepeating("consumeFood", 30f, 30f);
-		InvokeRepeating("consumeSleep", 30f, 60f);
 		halfMyY = 0.25f;
 
 		GameEventManager.GameOver += GameOver;
@@ -468,6 +466,8 @@ public class Player : MonoBehaviour {
 		sleepState = 3;
 		haveLetter = letterList.DontHave;
 		transform.position = initpos;
+		InvokeRepeating("consumeFood", 30f, 30f);
+		InvokeRepeating("consumeSleep", 30f, 60f);
 	}
 
 	private void GameStart()
@@ -480,6 +480,8 @@ public class Player : MonoBehaviour {
 	{
 		Health = healthState.Dead;
 		CancelInvoke("Foots");
+		CancelInvoke("consumeFood");
+		CancelInvoke("consumeSleep");
 	}
 
 	private void changeRenderer()

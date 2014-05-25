@@ -117,7 +117,7 @@ public class PopUp : MonoBehaviour {
 			case CharList.Dracula :
 			{
 				linkText.makeFadeIn();
-				BG.transform.parent.transform.localScale = new Vector3(1f, 1f, 1f);
+				BG.transform.parent.transform.localScale = new Vector3(-1f, 1f, 1f);
 				break;
 			}
 				
