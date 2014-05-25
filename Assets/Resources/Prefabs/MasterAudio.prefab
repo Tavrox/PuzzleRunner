@@ -6284,10 +6284,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weight: 1
-  useRandomPitch: 0
+  useRandomPitch: 1
   randomPitchMode: 0
-  randomPitchMin: 0
-  randomPitchMax: 0
+  randomPitchMin: -.189999998
+  randomPitchMax: .189999998
   useRandomVolume: 0
   randomVolumeMode: 0
   randomVolumeMin: 0
@@ -6331,9 +6331,9 @@ MonoBehaviour:
   - {fileID: 11400122}
   bulkVariationMode: 0
   logSound: 0
-  limitMode: 0
+  limitMode: 2
   limitPerXFrames: 1
-  minimumTimeBetween: .100000001
+  minimumTimeBetween: .540000021
   useClipAgePriority: 0
   limitPolyphony: 0
   voiceLimitCount: 1
@@ -6351,10 +6351,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weight: 1
-  useRandomPitch: 0
+  useRandomPitch: 1
   randomPitchMode: 0
-  randomPitchMin: 0
-  randomPitchMax: 0
+  randomPitchMin: -.180000007
+  randomPitchMax: .189999998
   useRandomVolume: 0
   randomVolumeMode: 0
   randomVolumeMin: 0
@@ -6398,9 +6398,9 @@ MonoBehaviour:
   - {fileID: 11400126}
   bulkVariationMode: 0
   logSound: 0
-  limitMode: 0
+  limitMode: 2
   limitPerXFrames: 1
-  minimumTimeBetween: .100000001
+  minimumTimeBetween: 2
   useClipAgePriority: 0
   limitPolyphony: 0
   voiceLimitCount: 1

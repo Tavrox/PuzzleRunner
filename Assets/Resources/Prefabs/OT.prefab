@@ -468,7 +468,7 @@ MonoBehaviour:
   _atlasDataFile: {fileID: 4900000, guid: dc81434eb7e817c4c922eeb0105240e5, type: 3}
   reloadData: 0
   bytesDataFile: 2154
-  id: 60
+  id: 66
 --- !u!114 &11400008
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -481,130 +481,207 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _name: ui
-  _sheetSize: {x: 1024, y: 1024}
+  _sheetSize: {x: 2048, y: 1024}
   texture: {fileID: 2800000, guid: ccd3758825e08974283f4bbe18c65a84, type: 3}
   sizeTextures: []
   generateSprites: 0
   atlasData:
-  - name: back_in
+  - name: 3h_sleep
     position: {x: 5, y: 5}
+    offset: {x: 0, y: 0}
+    rotated: 0
+    size: {x: 326, y: 64}
+    frameSize: {x: 326, y: 64}
+    metaData: []
+  - name: 6h_sleep
+    position: {x: 336, y: 5}
+    offset: {x: 0, y: 0}
+    rotated: 0
+    size: {x: 377, y: 64}
+    frameSize: {x: 377, y: 64}
+    metaData: []
+  - name: back_in
+    position: {x: 718, y: 5}
     offset: {x: 0, y: 0}
     rotated: 0
     size: {x: 149, y: 149}
     frameSize: {x: 149, y: 149}
     metaData: []
   - name: bar_00
-    position: {x: 159, y: 5}
+    position: {x: 872, y: 5}
     offset: {x: 0, y: 0}
     rotated: 0
     size: {x: 95, y: 20}
     frameSize: {x: 95, y: 20}
     metaData: []
   - name: bar_01
-    position: {x: 259, y: 5}
+    position: {x: 972, y: 5}
     offset: {x: 0, y: 0}
     rotated: 0
     size: {x: 95, y: 20}
     frameSize: {x: 95, y: 20}
     metaData: []
   - name: bar_02
-    position: {x: 359, y: 5}
+    position: {x: 1072, y: 5}
     offset: {x: 0, y: 0}
     rotated: 0
     size: {x: 95, y: 20}
     frameSize: {x: 95, y: 20}
     metaData: []
   - name: bar_03
-    position: {x: 459, y: 5}
+    position: {x: 1172, y: 5}
     offset: {x: 0, y: 0}
     rotated: 0
     size: {x: 95, y: 20}
     frameSize: {x: 95, y: 20}
     metaData: []
   - name: clock
-    position: {x: 559, y: 5}
+    position: {x: 1272, y: 5}
     offset: {x: 0, y: 0}
     rotated: 0
-    size: {x: 138, y: 138}
-    frameSize: {x: 138, y: 138}
+    size: {x: 141, y: 142}
+    frameSize: {x: 141, y: 142}
+    metaData: []
+  - name: controls
+    position: {x: 5, y: 159}
+    offset: {x: 0, y: 0}
+    rotated: 0
+    size: {x: 753, y: 40}
+    frameSize: {x: 753, y: 40}
     metaData: []
   - name: dial_bulle
-    position: {x: 5, y: 159}
+    position: {x: 763, y: 159}
     offset: {x: 0, y: 0}
     rotated: 0
     size: {x: 491, y: 149}
     frameSize: {x: 491, y: 149}
     metaData: []
+  - name: logo
+    position: {x: 1259, y: 159}
+    offset: {x: 0, y: 0}
+    rotated: 0
+    size: {x: 260, y: 158}
+    frameSize: {x: 260, y: 158}
+    metaData: []
   - name: look_for_paper
-    position: {x: 501, y: 159}
+    position: {x: 1524, y: 159}
     offset: {x: 0, y: 0}
     rotated: 0
     size: {x: 160, y: 149}
     frameSize: {x: 160, y: 149}
     metaData: []
   - name: notification
-    position: {x: 666, y: 159}
+    position: {x: 1689, y: 159}
     offset: {x: 0, y: 0}
     rotated: 0
     size: {x: 176, y: 110}
     frameSize: {x: 176, y: 110}
     metaData: []
   - name: pan_bars
-    position: {x: 5, y: 313}
+    position: {x: 5, y: 322}
     offset: {x: 0, y: 0}
     rotated: 0
     size: {x: 222, y: 149}
     frameSize: {x: 222, y: 149}
     metaData: []
   - name: pan_food_bar
-    position: {x: 232, y: 313}
+    position: {x: 232, y: 322}
     offset: {x: 0, y: 0}
     rotated: 0
     size: {x: 221, y: 62}
     frameSize: {x: 221, y: 62}
     metaData: []
   - name: pan_sleep_bar
-    position: {x: 458, y: 313}
+    position: {x: 458, y: 322}
     offset: {x: 0, y: 0}
     rotated: 0
     size: {x: 221, y: 62}
     frameSize: {x: 221, y: 62}
     metaData: []
   - name: paper_found
-    position: {x: 684, y: 313}
+    position: {x: 684, y: 322}
     offset: {x: 0, y: 0}
     rotated: 0
     size: {x: 160, y: 149}
     frameSize: {x: 160, y: 149}
     metaData: []
   - name: pointer
-    position: {x: 849, y: 313}
+    position: {x: 849, y: 322}
     offset: {x: 0, y: 0}
     rotated: 0
     size: {x: 19, y: 43}
     frameSize: {x: 19, y: 43}
     metaData: []
   - name: portrait_dracula
-    position: {x: 5, y: 467}
+    position: {x: 873, y: 322}
     offset: {x: 0, y: 0}
     rotated: 0
     size: {x: 149, y: 149}
     frameSize: {x: 149, y: 149}
     metaData: []
   - name: portrait_johnathan
-    position: {x: 159, y: 467}
+    position: {x: 1027, y: 322}
     offset: {x: 0, y: 0}
     rotated: 0
     size: {x: 149, y: 149}
     frameSize: {x: 149, y: 149}
+    metaData: []
+  - name: portrait_mailman
+    position: {x: 1181, y: 322}
+    offset: {x: 0, y: 0}
+    rotated: 0
+    size: {x: 148, y: 149}
+    frameSize: {x: 148, y: 149}
+    metaData: []
+  - name: sleep_3h
+    position: {x: 1334, y: 322}
+    offset: {x: 0, y: 0}
+    rotated: 0
+    size: {x: 129, y: 44}
+    frameSize: {x: 129, y: 44}
+    metaData: []
+  - name: sleep_3h_highlight
+    position: {x: 1468, y: 322}
+    offset: {x: 0, y: 0}
+    rotated: 0
+    size: {x: 129, y: 44}
+    frameSize: {x: 129, y: 44}
+    metaData: []
+  - name: sleep_6h
+    position: {x: 1602, y: 322}
+    offset: {x: 0, y: 0}
+    rotated: 0
+    size: {x: 129, y: 44}
+    frameSize: {x: 129, y: 44}
+    metaData: []
+  - name: sleep_6h_highlight
+    position: {x: 1736, y: 322}
+    offset: {x: 0, y: 0}
+    rotated: 0
+    size: {x: 129, y: 44}
+    frameSize: {x: 129, y: 44}
+    metaData: []
+  - name: title
+    position: {x: 5, y: 476}
+    offset: {x: 0, y: 0}
+    rotated: 0
+    size: {x: 1040, y: 484}
+    frameSize: {x: 1040, y: 484}
+    metaData: []
+  - name: xbl
+    position: {x: 1050, y: 476}
+    offset: {x: 0, y: 0}
+    rotated: 0
+    size: {x: 21, y: 11}
+    frameSize: {x: 21, y: 11}
     metaData: []
   offsetSizing: 1
   metaType: 
   metaData: []
   _atlasDataFile: {fileID: 4900000, guid: 40600e6d6a0c2304596ccecf34e2d279, type: 3}
   reloadData: 0
-  bytesDataFile: 8245
-  id: 60
+  bytesDataFile: 13800
+  id: 67
 --- !u!114 &11400010
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -618,7 +695,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: john
   _fps: 30
-  _duration: .166666672
+  _duration: .466666669
   framesets:
   - name: static
     container: {fileID: 11400018}
@@ -634,8 +711,8 @@ MonoBehaviour:
     _containerName: john
   - name: walk
     container: {fileID: 11400018}
-    startFrame: 1
-    endFrame: 3
+    startFrame: 5
+    endFrame: 13
     frameNames: []
     frameNameMask: 
     sortFrameNames: 0
@@ -654,7 +731,19 @@ MonoBehaviour:
     playCount: 1
     pingPong: 0
     singleDuration: 0
-    startIndex: 4
+    startIndex: 10
+    _containerName: john
+  - name: die
+    container: {fileID: 11400018}
+    startFrame: 2
+    endFrame: 4
+    frameNames: []
+    frameNameMask: 
+    sortFrameNames: 0
+    playCount: 1
+    pingPong: 0
+    singleDuration: 0
+    startIndex: 11
     _containerName: john
 --- !u!114 &11400012
 MonoBehaviour:
@@ -669,7 +758,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: dracula
   _fps: 30
-  _duration: .100000001
+  _duration: .13333334
   framesets:
   - name: static
     container: {fileID: 11400006}
@@ -707,6 +796,18 @@ MonoBehaviour:
     singleDuration: 0
     startIndex: 2
     _containerName: dracula
+  - name: open
+    container: {fileID: 11400006}
+    startFrame: 0
+    endFrame: 0
+    frameNames: []
+    frameNameMask: 
+    sortFrameNames: 0
+    playCount: 1
+    pingPong: 0
+    singleDuration: 0
+    startIndex: 3
+    _containerName: dracula
 --- !u!114 &11400014
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -719,7 +820,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _name: gameplay
-  _sheetSize: {x: 256, y: 256}
+  _sheetSize: {x: 256, y: 512}
   texture: {fileID: 2800000, guid: d589575a4acfc7a49a22b9d0e77d67dd, type: 3}
   sizeTextures: []
   generateSprites: 0
@@ -728,51 +829,79 @@ MonoBehaviour:
     position: {x: 5, y: 5}
     offset: {x: 0, y: 0}
     rotated: 0
-    size: {x: 59, y: 17}
-    frameSize: {x: 59, y: 17}
+    size: {x: 117, y: 34}
+    frameSize: {x: 117, y: 34}
     metaData: []
   - name: doorpost
-    position: {x: 69, y: 5}
+    position: {x: 127, y: 5}
     offset: {x: 0, y: 0}
     rotated: 0
-    size: {x: 5, y: 10}
-    frameSize: {x: 5, y: 10}
+    size: {x: 10, y: 20}
+    frameSize: {x: 10, y: 20}
+    metaData: []
+  - name: dracula_spawn_00
+    position: {x: 142, y: 5}
+    offset: {x: 0, y: 0}
+    rotated: 0
+    size: {x: 90, y: 115}
+    frameSize: {x: 90, y: 115}
+    metaData: []
+  - name: dracula_spawn_01
+    position: {x: 5, y: 125}
+    offset: {x: 0, y: 0}
+    rotated: 0
+    size: {x: 90, y: 115}
+    frameSize: {x: 90, y: 115}
+    metaData: []
+  - name: dracula_spawn_02
+    position: {x: 100, y: 125}
+    offset: {x: 0, y: 0}
+    rotated: 0
+    size: {x: 90, y: 115}
+    frameSize: {x: 90, y: 115}
     metaData: []
   - name: food
-    position: {x: 79, y: 5}
+    position: {x: 5, y: 245}
     offset: {x: 0, y: 0}
     rotated: 0
     size: {x: 96, y: 96}
     frameSize: {x: 96, y: 96}
     metaData: []
   - name: food_crate
-    position: {x: 5, y: 106}
+    position: {x: 106, y: 245}
     offset: {x: 0, y: 0}
     rotated: 0
     size: {x: 96, y: 96}
     frameSize: {x: 96, y: 96}
     metaData: []
   - name: food_highlight
-    position: {x: 106, y: 106}
+    position: {x: 5, y: 346}
     offset: {x: 0, y: 0}
     rotated: 0
     size: {x: 96, y: 96}
     frameSize: {x: 96, y: 96}
     metaData: []
   - name: paper
-    position: {x: 207, y: 106}
+    position: {x: 106, y: 346}
     offset: {x: 0, y: 0}
     rotated: 0
     size: {x: 41, y: 42}
     frameSize: {x: 41, y: 42}
+    metaData: []
+  - name: paper_writting
+    position: {x: 152, y: 346}
+    offset: {x: 0, y: 0}
+    rotated: 0
+    size: {x: 87, y: 108}
+    frameSize: {x: 87, y: 108}
     metaData: []
   offsetSizing: 1
   metaType: 
   metaData: []
   _atlasDataFile: {fileID: 4900000, guid: 4b1ad9f6d9135fc4b91f0965229cb5fd, type: 3}
   reloadData: 0
-  bytesDataFile: 3518
-  id: 60
+  bytesDataFile: 5576
+  id: 68
 --- !u!114 &11400016
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -815,7 +944,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _name: john
-  _sheetSize: {x: 256, y: 256}
+  _sheetSize: {x: 512, y: 512}
   texture: {fileID: 2800000, guid: 91567014881099748b4771f5a19926ca, type: 3}
   sizeTextures: []
   generateSprites: 0
@@ -827,22 +956,92 @@ MonoBehaviour:
     size: {x: 90, y: 115}
     frameSize: {x: 90, y: 115}
     metaData: []
-  - name: johnathan_static
+  - name: johnathan_slaughtered_00
     position: {x: 100, y: 5}
     offset: {x: 0, y: 0}
     rotated: 0
     size: {x: 90, y: 115}
     frameSize: {x: 90, y: 115}
     metaData: []
-  - name: johnathan_walk_00
+  - name: johnathan_slaughtered_01
+    position: {x: 195, y: 5}
+    offset: {x: 0, y: 0}
+    rotated: 0
+    size: {x: 90, y: 115}
+    frameSize: {x: 90, y: 115}
+    metaData: []
+  - name: johnathan_slaughtered_02
+    position: {x: 290, y: 5}
+    offset: {x: 0, y: 0}
+    rotated: 0
+    size: {x: 90, y: 115}
+    frameSize: {x: 90, y: 115}
+    metaData: []
+  - name: johnathan_slaughtered_03
+    position: {x: 385, y: 5}
+    offset: {x: 0, y: 0}
+    rotated: 0
+    size: {x: 90, y: 115}
+    frameSize: {x: 90, y: 115}
+    metaData: []
+  - name: johnathan_static
     position: {x: 5, y: 125}
     offset: {x: 0, y: 0}
     rotated: 0
     size: {x: 90, y: 115}
     frameSize: {x: 90, y: 115}
     metaData: []
-  - name: johnathan_walk_01
+  - name: johnathan_walk_00
     position: {x: 100, y: 125}
+    offset: {x: 0, y: 0}
+    rotated: 0
+    size: {x: 90, y: 115}
+    frameSize: {x: 90, y: 115}
+    metaData: []
+  - name: johnathan_walk_01
+    position: {x: 195, y: 125}
+    offset: {x: 0, y: 0}
+    rotated: 0
+    size: {x: 90, y: 115}
+    frameSize: {x: 90, y: 115}
+    metaData: []
+  - name: johnathan_walk_02
+    position: {x: 290, y: 125}
+    offset: {x: 0, y: 0}
+    rotated: 0
+    size: {x: 90, y: 115}
+    frameSize: {x: 90, y: 115}
+    metaData: []
+  - name: johnathan_walk_03
+    position: {x: 385, y: 125}
+    offset: {x: 0, y: 0}
+    rotated: 0
+    size: {x: 90, y: 115}
+    frameSize: {x: 90, y: 115}
+    metaData: []
+  - name: johnathan_walk_04
+    position: {x: 5, y: 245}
+    offset: {x: 0, y: 0}
+    rotated: 0
+    size: {x: 90, y: 115}
+    frameSize: {x: 90, y: 115}
+    metaData: []
+  - name: johnathan_walk_05
+    position: {x: 100, y: 245}
+    offset: {x: 0, y: 0}
+    rotated: 0
+    size: {x: 90, y: 115}
+    frameSize: {x: 90, y: 115}
+    metaData: []
+  - name: johnathan_walk_06
+    position: {x: 195, y: 245}
+    offset: {x: 0, y: 0}
+    rotated: 0
+    size: {x: 90, y: 115}
+    frameSize: {x: 90, y: 115}
+    metaData: []
+  - name: johnathan_walk_07
+    position: {x: 290, y: 245}
     offset: {x: 0, y: 0}
     rotated: 0
     size: {x: 90, y: 115}
@@ -853,8 +1052,8 @@ MonoBehaviour:
   metaData: []
   _atlasDataFile: {fileID: 4900000, guid: ea1aa9d17fce5e44cac2714c8fd98ba0, type: 3}
   reloadData: 0
-  bytesDataFile: 2634
-  id: 60
+  bytesDataFile: 7424
+  id: 67
 --- !u!114 &11400020
 MonoBehaviour:
   m_ObjectHideFlags: 1

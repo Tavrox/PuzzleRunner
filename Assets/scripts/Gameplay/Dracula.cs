@@ -188,7 +188,19 @@ public class Dracula : MonoBehaviour {
 	{
 		if (State != StateList.Chasing && _levman.Hours.currentTime != HoursManager.DayTime.Day)
 		{
-			currWPM = _levman.pathDirector.pickRandomWPM();
+			switch (_levman.Diff)
+			{
+			case LevelManager.DifficultyState.BeforeLetter :
+			{
+				currWPM = _levman.pathDirector._DraculaListSpawnBeforeSendingLetter;
+				break;
+			}
+			case LevelManager.DifficultyState.WaitingSave :
+			{
+				currWPM = _levman.pathDirector._DraculaListSpawnBeforeSaving;
+				break;
+			}
+			}
 			Waypoint _WP = currWPM.pickRandomWP();
 			currWp = currWPM.pickRandomWP();
 			pouf.transform.parent.transform.position = _WP.transform.position;
@@ -308,7 +320,7 @@ public class Dracula : MonoBehaviour {
 
 	private void Respawn()
 	{
-		InvokeRepeating("randomSpawn", 15f, 30f);
+		InvokeRepeating("randomSpawn", LevelManager.TUNING.delayPopDracula, LevelManager.TUNING.everySecPopDracula);
 	}
 	
 	private void GameStart()

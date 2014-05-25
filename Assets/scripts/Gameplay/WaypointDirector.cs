@@ -7,6 +7,8 @@ public class WaypointDirector : MonoBehaviour {
 
 	private LevelManager _lm;
 	public List<WaypointManager> waypointsMan = new List<WaypointManager>();
+	public WaypointManager _DraculaListSpawnBeforeSendingLetter;
+	public WaypointManager _DraculaListSpawnBeforeSaving;
 
 	// Use this for initialization
 	public void Setup (LevelManager _levMan)
@@ -18,6 +20,8 @@ public class WaypointDirector : MonoBehaviour {
 			waypointsMan.Add(wpm);
 			wpm.Setup(_lm);
 		}
+		_DraculaListSpawnBeforeSendingLetter = waypointsMan[0];
+		_DraculaListSpawnBeforeSendingLetter = waypointsMan[1];
 	}
 
 	public WaypointManager pickRandomWPM()

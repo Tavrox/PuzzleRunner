@@ -6,6 +6,7 @@ public class LevelManager : MonoBehaviour {
 
 	public static GameEventManager.GameState GAMESTATE;
 	public static DeathList CAUSEDEATH;
+	public static DTTuning TUNING;
 
 	public enum MailManStateList
 	{
@@ -15,12 +16,10 @@ public class LevelManager : MonoBehaviour {
 	public MailManStateList MailmanState;
 	public enum DifficultyState
 	{
-		VeryEasy,
-		Easy,
-		Medium,
-		Hard,
-		VeryHard
+		BeforeLetter,
+		WaitingSave
 	};
+	public DifficultyState Diff;
 	public enum DeathList
 	{
 		Test,
@@ -58,6 +57,8 @@ public class LevelManager : MonoBehaviour {
 	{
 		plr = GetComponentInChildren<Player>();
 		plr.Setup(this);
+
+		TUNING = Resources.Load("Scripts/Tuning") as DTTuning;
 
 		Hours = gameObject.AddComponent<HoursManager>();
 		Hours.Setup(this);

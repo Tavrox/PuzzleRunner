@@ -337,7 +337,7 @@ Transform:
   m_GameObject: {fileID: 100020}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: .356214404, y: .442197144, z: 37.7341576}
+  m_LocalScale: {x: .356214404, y: .442197174, z: 1}
   m_Children: []
   m_Father: {fileID: 400024}
 --- !u!4 &400022
@@ -347,7 +347,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100022}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.122768402, y: .00246238708, z: -1}
+  m_LocalPosition: {x: .001039505, y: -.05859375, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 400024}
@@ -397,7 +397,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 10100, guid: 0000000000000000e000000000000000, type: 0}
+  - {fileID: 2100000, guid: 98deeb8c160f12d45a70bdeadc233f0c, type: 3}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -489,15 +489,15 @@ TextMesh:
   m_GameObject: {fileID: 100022}
   m_Text: 100%
   m_OffsetZ: 0
-  m_CharacterSize: .0199999996
+  m_CharacterSize: .0250000004
   m_LineSpacing: 1
-  m_Anchor: 0
-  m_Alignment: 0
+  m_Anchor: 4
+  m_Alignment: 1
   m_TabSize: 4
   m_FontSize: 50
   m_FontStyle: 0
   m_RichText: 1
-  m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Font: {fileID: 12800000, guid: 98deeb8c160f12d45a70bdeadc233f0c, type: 3}
   m_Color:
     serializedVersion: 2
     rgba: 0
@@ -626,7 +626,7 @@ MonoBehaviour:
   _image: {fileID: 0}
   sizeImages: []
   _frameIndex: 1
-  _frameName: johnathan_static
+  _frameName: johnathan_slaughtered_00
   _spriteContainer: {fileID: 0}
   _containerName: john
   _newSprite: 0
@@ -657,7 +657,7 @@ MonoBehaviour:
   text: Superb text
   dontTranslate: 0
   hasBeenTranslated: 0
-  color: {r: 1, g: 1, b: 1, a: 1}
+  color: {r: 0, g: 0, b: 0, a: 1}
 --- !u!114 &11400006
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -671,7 +671,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: PaperSpr
   _position: {x: 0, y: 0}
-  _size: {x: .356214404, y: .442197144}
+  _size: {x: .356214404, y: .442197174}
   _rotation: 0
   _pivot: 4
   _pivotPoint: {x: 0, y: 0}
@@ -695,7 +695,7 @@ MonoBehaviour:
   protoType: 
   baseName: PaperSpr
   oSize: {x: .90625, y: 1.125}
-  imageSize: {x: .00944010634, y: .0117187519}
+  imageSize: {x: .356214404, y: .442197174}
   _offset: {x: 0, y: 0}
   _baseOffset: {x: 0, y: 0}
   _flipHorizontal: 0
@@ -704,7 +704,7 @@ MonoBehaviour:
   _additive: 0
   _materialReference: transparent
   _tintColor: {r: 1, g: 1, b: 1, a: 1}
-  _alpha: 1
+  _alpha: 0
   _image: {fileID: 0}
   sizeImages: []
   _frameIndex: 9

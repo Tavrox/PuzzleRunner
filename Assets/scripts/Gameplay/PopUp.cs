@@ -105,7 +105,7 @@ public class PopUp : MonoBehaviour {
 
 	IEnumerator FadeAway()
 	{
-		yield return new WaitForSeconds(3f);
+		yield return new WaitForSeconds(LevelManager.TUNING.timeBeforeEndNotification);
 		new OTTween(BG, 1f).Tween("alpha", 0f);
 		linkText.makeFadeOut(0.5f);
 	}
@@ -136,7 +136,7 @@ public class PopUp : MonoBehaviour {
 				break;
 			}
 		}
-		InvokeRepeating("checkForInput", 2f, 0.1f);
+//		InvokeRepeating("checkForInput", 2f, 0.1f);
 	}
 
 	public void Fade()

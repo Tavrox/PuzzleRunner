@@ -191,7 +191,7 @@ public class Player : MonoBehaviour {
 				MasterAudio.PlaySound("paper_in");
 				MasterAudio.PlaySound("writting");
 				haveLetter = letterList.IsWriting;
-				levMan.writtenPaper += 0.1f;
+				levMan.writtenPaper += LevelManager.TUNING.writingSpeed;
 				paper.alpha = 1f;
 				papertxt.color = papertxt.initColor;
 				papertxt.text = levMan.realWrittenPaper + "%";
@@ -203,8 +203,8 @@ public class Player : MonoBehaviour {
 				MasterAudio.StopAllOfSound("writting");
 				MasterAudio.PlaySound("paper_out");
 				paper.alpha = 0f;
-					papertxt.color = Color.clear;
-					paper.transform.parent.rotation = Quaternion.Euler(new Vector3(0f, 0f, 0f));
+				papertxt.color = Color.clear;
+				paper.transform.parent.rotation = Quaternion.Euler(new Vector3(0f, 0f, 0f));
 			}
 		}
 		if (levMan.writtenPaper > 100)
@@ -221,11 +221,11 @@ public class Player : MonoBehaviour {
 	{
 		if (foodState == 1)
 		{
-			modifSpeed = 0.6f;
+			modifSpeed = LevelManager.TUNING.speedModifierPlayerHunger1;
 		}
 		else if (foodState == 2)
 		{
-			modifSpeed = 0.8f;
+			modifSpeed = LevelManager.TUNING.speedModifierPlayerHunger2;
 		}
 		else if (foodState == 3)
 		{
@@ -466,8 +466,8 @@ public class Player : MonoBehaviour {
 		sleepState = 3;
 		haveLetter = letterList.DontHave;
 		transform.position = initpos;
-		InvokeRepeating("consumeFood", 30f, 30f);
-		InvokeRepeating("consumeSleep", 30f, 60f);
+		InvokeRepeating("consumeFood", LevelManager.TUNING.delaySecConsumeFood, LevelManager.TUNING.everySecConsumeFood);
+		InvokeRepeating("consumeSleep", LevelManager.TUNING.delaySecConsumeSleep, LevelManager.TUNING.everySecConsumeFood);
 	}
 
 	private void GameStart()
