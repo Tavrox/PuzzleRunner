@@ -210,17 +210,18 @@ public class Dracula : MonoBehaviour {
 
 	public void checkFloor()
 	{
-		if (currFloor.objOnFloor.Contains(_plr.gameObject))
+		if (currFloor != null)
 		{
-			State = StateList.Chasing;
-			target = _levman.plr.transform.position;
-			print ("spotted");
-		}
-		else
-		{
-			print ("unspotted");
-			State = StateList.Patrolling;
-			target = Vector3.zero;
+			if (currFloor.objOnFloor.Contains(_plr.gameObject))
+			{
+				State = StateList.Chasing;
+				target = _levman.plr.transform.position;
+			}
+			else
+			{
+				State = StateList.Patrolling;
+				target = Vector3.zero;
+			}
 		}
 	}
 

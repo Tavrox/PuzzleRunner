@@ -199,7 +199,7 @@ public class Player : MonoBehaviour {
 				papertxt.text = levMan.realWrittenPaper + "%";
 				paper.transform.parent.rotation = Quaternion.Euler(new Vector3(0f, 0f, 0f));
 			}
-			else if (Input.GetKeyUp(KeyCode.E) && (haveLetter == letterList.Have || haveLetter == letterList.IsWriting))
+			else if (Input.GetKeyUp(KeyCode.E) && (haveLetter == letterList.Have || haveLetter == letterList.IsWriting) && onDoor == false)
 			{
 				Health = healthState.Alive;
 				MasterAudio.StopAllOfSound("writting");

@@ -17,6 +17,7 @@ public class Bed : MonoBehaviour
 	}
 	void OnMouseOver()
 	{
+		print ("ok");
 		if (GetComponentInChildren<OTSprite>() != null && Hour == hourList.Six)
 		{
 			GetComponentInChildren<OTSprite>().frameName = "sleep_6h_highlight";
